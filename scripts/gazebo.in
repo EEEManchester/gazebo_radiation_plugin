@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+rosrun gazebo_ros gazebo -s "$<TARGET_FILE:gazebo_radiation_plugins>" "$@"

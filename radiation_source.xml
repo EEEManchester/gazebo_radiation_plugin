@@ -1,0 +1,9 @@
+<library path="lib/libradiation_source">
+  <class name="sensors/radiation_source"
+         type="gazebo::sensors::RadiationSource"
+         base_class_type="gazebo::sensors::Sensor">
+    <description> 
+      Rad source for gazebo
+    </description>
+  </class>
+</library>
