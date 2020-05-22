@@ -37,9 +37,9 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
-add_library(${PROJECT_NAME} src/CustomSensorPreloader.cpp)
-add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES})
+add_library(custom_sensor_preloader src/CustomSensorPreloader.cpp)
+add_dependencies(custom_sensor_preloader ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(custom_sensor_preloader ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES})
 
 add_library(radiation_source src/RadiationSource.cpp)
 add_dependencies(radiation_source ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
@@ -66,7 +66,7 @@ file(GENERATE
   OUTPUT "${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/gazebo"
   INPUT "${CMAKE_CURRENT_SOURCE_DIR}/scripts/gazebo.in")
 
-install(TARGETS  radiation_source radiation_source_plugin radiation_sensor radiation_sensor_plugin
+install(TARGETS custom_sensor_preloader radiation_source radiation_source_plugin radiation_sensor radiation_sensor_plugin
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 )
 
