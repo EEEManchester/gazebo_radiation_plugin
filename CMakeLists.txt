@@ -37,23 +37,23 @@ include_directories(
   ${Boost_INCLUDE_DIRS}
 )
 
-add_library(custom_sensor_preloader src/CustomSensorPreloader.cpp)
+add_library(custom_sensor_preloader SHARED src/CustomSensorPreloader.cpp)
 add_dependencies(custom_sensor_preloader ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(custom_sensor_preloader ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GAZEBO_LIBRARIES})
 
-add_library(radiation_source src/RadiationSource.cpp)
+add_library(radiation_source  SHARED src/RadiationSource.cpp)
 add_dependencies(radiation_source ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(radiation_source ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${IGNITION-MSGS_LIBRARIES})
 
-add_library(radiation_source_plugin src/RadiationSourcePlugin.cpp)
+add_library(radiation_source_plugin SHARED src/RadiationSourcePlugin.cpp)
 add_dependencies(radiation_source_plugin ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(radiation_source_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${IGNITION-MSGS_LIBRARIES})
 
-add_library(radiation_sensor src/RadiationSensor.cpp)
+add_library(radiation_sensor SHARED src/RadiationSensor.cpp)
 add_dependencies(radiation_sensor ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(radiation_sensor ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${IGNITION-MSGS_LIBRARIES})
 
-add_library(radiation_sensor_plugin src/RadiationSensorPlugin.cpp)
+add_library(radiation_sensor_plugin SHARED src/RadiationSensorPlugin.cpp)
 add_dependencies(radiation_sensor_plugin ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(radiation_sensor_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${IGNITION-MSGS_LIBRARIES})
 

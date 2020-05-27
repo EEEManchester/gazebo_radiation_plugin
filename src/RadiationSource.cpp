@@ -1,5 +1,5 @@
 #include <gazebo_radiation_plugins/RadiationSource.h>
-
+#include <gazebo_radiation_plugins/RadiationSensor.h>
 
 //DESTRUCTOR/CONSTRUCTOR  NEEDS TO SEARCH FOR SENSORS AND ADD/REMOVE SOURCES!!
 //ADD NOISE TO SOURCE
@@ -26,6 +26,7 @@ gazebo::sensors::RadiationSource::RadiationSource()
 
 gazebo::sensors::RadiationSource::~RadiationSource() 
 {
+  
 }
 
 
@@ -46,87 +47,66 @@ void gazebo::sensors::RadiationSource::Load(const std::string &_worldName)
 
   if (this->sdf->GetElement("topic"))
   {
-    this->scanPub_pose = this->node->Advertise<msgs::Pose>(this->sdf->GetElement("topic")->Get<std::string>()+"/pose");
-    this->scanPub_value = this->node->Advertise<msgs::Any>(this->sdf->GetElement("topic")->Get<std::string>()+"/value");}
-    
     this->topic = this->sdf->GetElement("topic")->Get<std::string>();
-    this->radiation_type = this->topic.substr(0, this->topic.find("/"));
+    this->name = this->topic.substr(0, this->topic.find("/"));
+    this->radiation_type = this->topic.substr(this->name.size()+1, this->topic.find("/"));
 
-    gzmsg<< this->radiation_type << std::endl;
 
-  this->entity = this->world->GetEntity(this->ParentName());
+    this->scanPub_pose = this->node->Advertise<msgs::Pose>(this->name+"/pose");
+    this->scanPub_value = this->node->Advertise<msgs::Any>(this->name+"/value");
+    this->scanPub_type = this->node->Advertise<msgs::Any>(this->name+"/type");
+  
+ 
+    this->entity = this->world->GetEntity(this->ParentName());
 
-  /*
-  // Add the tag to all the RFID sensors.
-  Sensor_V sensors = SensorManager::Instance()->GetSensors();
-  for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
-  {
-    if ((*iter)->Type() == "rfid")
+    n.getParam("/sources/"+this->name,params);
+
+    this->radiation = params["value"];
+    this->units = static_cast<std::string>(params["units"]);
+    this->noise = params["noise"];
+
+
+    // Add the tag to all the RFID sensors.
+    Sensor_V sensors = SensorManager::Instance()->GetSensors();
+    for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
     {
-      std::dynamic_pointer_cast<RFIDSensor>(*iter)->AddTag(this);
+
+      //gzmsg << (*iter)->Type() << std::endl;
+      if ((*iter)->Type() == "radiation_sensor")
+      {
+        std::dynamic_pointer_cast<RadiationSensor>(*iter)->AddSource(this);
+        
+      }
     }
+
+
   }
-  */
 }
 
-/*
-void gazebo::sensors::RadiationSource::Load(const std::string &_worldName, sdf::ElementPtr _sdf)
-{
-  Sensor::Load(_worldName, _sdf);
-
-  this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-    std::bind(&gazebo::sensors::RadiationSource::OnUpdate, this));
-
-  this->entity = this->world->GetEntity(this->ParentName());
-
-
-  if (this->sdf->GetElement("topic"))
-  {
-
-
-    this->scanPub_pose = this->node->Advertise<msgs::Pose>(
-        this->sdf->GetElement("topic")->Get<std::string>()+"_pose");
-    this->scanPub_value = this->node->Advertise<msgs::Vector2d>(
-        this->sdf->GetElement("topic")->Get<std::string>()+"_value");
-  
-    std::string pose_topic = this->sdf->GetElement("topic")->Get<std::string>()+"_pose";
-    std::string rad_topic = this->sdf->GetElement("topic")->Get<std::string>()+"_value";
-  }
-
-  // Initialize ros, if it has not already bee initialized.
-  if (!ros::isInitialized())
-  {
-    int argc = 0;
-    char **argv = NULL;
-    ros::init(argc, argv, "radiation_sim_rosnode",
-        ros::init_options::NoSigintHandler);
-  }
-
-  // Create our ROS node. This acts in a similar manner to
-  // the Gazebo node
-  this->rosNode.reset(new ros::NodeHandle("radiation_sim_rosnode"));
-
-
-  
-
-  gzmsg << "Example custom sensor loaded" << std::endl;
-
-
-}
-*/
 
 void gazebo::sensors::RadiationSource::Fini()
 {
+
+  Sensor_V sensors = SensorManager::Instance()->GetSensors();
+  for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
+  {
+
+    //gzmsg << (*iter)->Type() << std::endl;
+    if ((*iter)->Type() == "radiation_sensor")
+    {
+      std::dynamic_pointer_cast<RadiationSensor>(*iter)->RemoveSource(this->name);
+      
+    }
+  }
+
   Sensor::Fini();
   this->entity.reset();
-  this->radiation = 50.0;
 }
 
 void gazebo::sensors::RadiationSource::Init()
 {
   Sensor::Init();
 
-  this->radiation = 100.0;
 
 }
 
@@ -139,12 +119,15 @@ bool gazebo::sensors::RadiationSource::UpdateImpl(const bool force)
     msgs::Set(&msg_pose, pose);
 
     msgs::Any msg_value;
+    msg_value = msgs::ConvertAny(this->radiation + rand()/(RAND_MAX/this->noise));
 
-    msg_value = msgs::ConvertAny(this->radiation);
+    msgs::Any msg_type;
+    msg_type = msgs::ConvertAny(this->radiation_type);
 
 
     this->scanPub_pose->Publish(msg_pose);
     this->scanPub_value->Publish(msg_value);   
+    this->scanPub_type->Publish(msg_type);   
 
     }
 
@@ -152,4 +135,15 @@ bool gazebo::sensors::RadiationSource::UpdateImpl(const bool force)
 ignition::math::Pose3d gazebo::sensors::RadiationSource::GetPose() const
 {
   return this->entity->GetWorldPose().Ign();
+  
 }
+
+// void gazebo::sensors::RadiationSource::SetPose() const
+// {
+//   //from rosparam server!!!
+//   return this->entity->SetWorldPose();s
+// }
+
+ sdf::ElementPtr gazebo::sensors::RadiationSource::GetSDF(){
+   return this->sdf;
+ }

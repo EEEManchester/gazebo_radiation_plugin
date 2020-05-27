@@ -55,20 +55,26 @@ class GAZEBO_VISIBLE RadiationSource : public Sensor
   protected: void Fini() override;
 
   public: ignition::math::Pose3d GetPose() const;
+  public: sdf::ElementPtr GetSDF();
+  public: void OnUpdate();
 
   public: ignition::math::Pose3d pose;
   public: double radiation;
   public: std::string radiation_type;
+  public: std::string name;
   public: std::string topic;
-
-
-  public: void OnUpdate();
+  public: std::string units;
+  public: double noise;
 
   public: physics::EntityPtr entity;
 
-
   public: transport::PublisherPtr scanPub_pose;
   public: transport::PublisherPtr scanPub_value;
+  public: transport::PublisherPtr scanPub_type;
+
+
+  public: ros::NodeHandle n;
+  private: XmlRpc::XmlRpcValue params;
 
   
 

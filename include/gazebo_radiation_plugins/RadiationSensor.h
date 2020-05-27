@@ -35,6 +35,8 @@
 #include <ignition/math/Pose3.hh>
 
 #include <memory>
+#include <math.h>
+
 
 // It is very important that your custom sensor class is defined inside the
 // gazebo::sensors namespace.
@@ -55,11 +57,15 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   protected: bool UpdateImpl(bool force) override;
   protected: void Fini() override;
 
-  public: void AddSource(RadiationSource *_rs);
 
+  public: sdf::ElementPtr GetSDF();
+  public: void AddSource(RadiationSource *_rs);
+  public: void RemoveSource(std::string);
   private: void EvaluateSources();
 
   private: double CheckSourceRange(const ignition::math::Pose3d &_pose);
+  private: double CheckSourceAngle(const ignition::math::Pose3d &_pose);
+
 
   public: ignition::math::Pose3d GetPose() const;
   public: ignition::math::Pose3d pose;
@@ -74,8 +80,18 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   public: double radiation;
   public: std::string topic;
   public: std::string sensor_type; 
+  
 
   public: std::vector<RadiationSource*> sources;
+
+  public: ros::NodeHandle n;
+  private: XmlRpc::XmlRpcValue params;
+
+  private: double sensitivity_function(double);
+
+  private: double mu = 0.0;
+  private: double sig = 0.2;
+
 
 };
 
