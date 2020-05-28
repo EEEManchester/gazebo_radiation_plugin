@@ -261,9 +261,9 @@ bool gazebo::sensors::RadiationSensor::CheckSourceViewable(const gazebo::sensors
       } 
       else
       {
-        gzwarn << entityName << " is blocking "  << s->name <<" at a distance of " << blocking_dist << " metres"<< std::endl;
-        gzwarn << this->entity->GetWorldPose().Ign().Pos()[0] <<"," << this->entity->GetWorldPose().Ign().Pos()[1] << "," << this->entity->GetWorldPose().Ign().Pos()[2] << std::endl;
-        gzwarn <<  s->GetPose().Pos()[0] << "," <<  s->GetPose().Pos()[1] << "," <<  s->GetPose().Pos()[2] <<std::endl;
+        gzwarn << entityName << " is blocking "  << s->name <<": " << blocking_dist << " metres"<< std::endl;
+        //gzwarn << this->entity->GetWorldPose().Ign().Pos()[0] <<"," << this->entity->GetWorldPose().Ign().Pos()[1] << "," << this->entity->GetWorldPose().Ign().Pos()[2] << std::endl;
+        //gzwarn <<  s->GetPose().Pos()[0] << "," <<  s->GetPose().Pos()[1] << "," <<  s->GetPose().Pos()[2] <<std::endl;
         return false;
       }
 }
