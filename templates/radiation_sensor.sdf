@@ -2,7 +2,8 @@
 <sdf version="1.4">
   <model name="sensor">
     <pose>0 0 0.0 0 0 0</pose>
-    <static>false</static>
+    <static>true</static>
+    <self_collide>false</self_collide>
     <link name="link">
       <inertial>
         <mass>1.0</mass>
@@ -16,6 +17,7 @@
           <izz>0.083</izz>       <!-- for a box: izz = 0.083 * mass * (x*x + y*y) -->
         </inertia>
       </inertial>
+      <!--
       <collision name="collision">
         <geometry>
           <box>
@@ -23,6 +25,7 @@
           </box>
         </geometry>
       </collision>
+      -->
       <visual name="visual">
         <pose> 0 0 0 0 0 0</pose>
         <geometry>

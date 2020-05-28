@@ -68,6 +68,14 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
       n.getParam(this->topic+"/type",this->sensor_type);
     } 
 
+  if (n.hasParam(this->topic+"/range")){
+      n.getParam(this->topic+"/range",this->sensor_range);
+    }
+  else{
+    this->sensor_range = 1000000.0;
+  }
+
+
   // Add the tag to all the RFID sensors.
   Sensor_V sensors = SensorManager::Instance()->GetSensors();
   for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
@@ -81,6 +89,10 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
       this->AddSource(sensorPtr);
     }
   }
+
+  this->blockingRay = boost::dynamic_pointer_cast<gazebo::physics::RayShape>(
+  this->world->GetPhysicsEngine()->CreateShape("ray", gazebo::physics::CollisionPtr()));
+
   
 }
 
@@ -125,21 +137,26 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
   for (ci = this->sources.begin(); ci != this->sources.end(); ci++)
   {
     ignition::math::Pose3d pos = (*ci)->GetPose();
-    std::string type = (*ci)->radiation_type;
-    double value = (*ci)->radiation;
     double dist = this->CheckSourceRange(pos);
-    double sensitivity = sensitivity_function(this->CheckSourceAngle(pos)/2.0);
-    //gzmsg << (*ci)->name << " " << sensitivity << std::endl;
-    rad += sensitivity*value/((dist*dist)+(+3.3E-5*3.3E-5));
-    float r = rand()/RAND_MAX;
-
-    if (r < (rad - floor(rad))){
-      this->radiation = floor(rad);
-    } else {
-      this->radiation = ceil(rad);
+    if (dist <= this->sensor_range){
+      if (CheckSourceViewable(*ci)){
+        std::string type = (*ci)->radiation_type;
+        double value = (*ci)->radiation;
+        
+        double sensitivity = sensitivity_function(this->CheckSourceAngle(pos)/2.0);
+        //gzmsg << (*ci)->name << " " << sensitivity << std::endl;
+        rad += sensitivity*value/((dist*dist)+(+3.3E-5*3.3E-5));
+      }
     }
+
     //gzmsg << this->radiation << "," << value << "," << dist << std::endl;
 
+  }
+
+  if ((rand()/RAND_MAX) < (rad - floor(rad))){
+    this->radiation = floor(rad);
+  } else {
+    this->radiation = ceil(rad);
   }
 
 
@@ -221,6 +238,24 @@ void gazebo::sensors::RadiationSensor::RemoveSource(std::string source_name){
     }
   }
 }
+
+bool gazebo::sensors::RadiationSensor::CheckSourceViewable(const gazebo::sensors::RadiationSource* s){
+
+      std::string entityName;
+      double blocking_dist = 0.0;
+      this->blockingRay->SetPoints(this->entity->GetWorldPose().Ign().Pos(), s->GetPose().Pos());
+      this->blockingRay->GetIntersection(blocking_dist, entityName);
+      if (entityName.find(s->name) != std::string::npos) 
+      {
+        return true;
+      } 
+      else
+      {
+        gzwarn << entityName << " is blocking "  << s->name <<" at a distance of " << blocking_dist << " metres"<< std::endl;
+        return false;
+      }
+}
+      
 
 sdf::ElementPtr gazebo::sensors::RadiationSource::GetSDF(){
   return this->sdf;

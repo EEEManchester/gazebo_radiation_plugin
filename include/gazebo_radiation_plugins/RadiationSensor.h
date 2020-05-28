@@ -2,11 +2,16 @@
 #define gazebo_radiation_plugins_RadiationSensor_H
 
 
+#include "boost/pointer_cast.hpp"
+
 #include "gazebo/util/system.hh"
 #include <gazebo/common/Plugin.hh>
 
+#include "gazebo/physics/Collision.hh"
 #include "gazebo/physics/World.hh"
+#include "gazebo/physics/physics.hh"
 #include "gazebo/physics/Entity.hh"
+#include "gazebo/physics/RayShape.hh"
 #include "gazebo/physics/PhysicsTypes.hh"
 
 #include "gazebo/transport/Node.hh"
@@ -65,6 +70,7 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
 
   private: double CheckSourceRange(const ignition::math::Pose3d &_pose);
   private: double CheckSourceAngle(const ignition::math::Pose3d &_pose);
+  private: bool CheckSourceViewable(const gazebo::sensors::RadiationSource * );
 
 
   public: ignition::math::Pose3d GetPose() const;
@@ -80,6 +86,7 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   public: double radiation;
   public: std::string topic;
   public: std::string sensor_type; 
+  public: double sensor_range;
   
 
   public: std::vector<RadiationSource*> sources;
@@ -90,7 +97,9 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   private: double sensitivity_function(double);
 
   private: double mu = 0.0;
-  private: double sig = 0.2;
+  private: double sig = 1.0;
+
+  public: physics::RayShapePtr blockingRay;
 
 
 };
