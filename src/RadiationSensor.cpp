@@ -139,13 +139,21 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
     ignition::math::Pose3d pos = (*ci)->GetPose();
     double dist = this->CheckSourceRange(pos);
     if (dist <= this->sensor_range){
-      if (CheckSourceViewable(*ci)){
+      std::vector<raySegment> raySegments = CheckSourceViewable(this->entity->GetWorldPose().Ign().Pos(),pos.Pos(),(*ci)->name);
+      if( raySegments.empty()){
         std::string type = (*ci)->radiation_type;
         double value = (*ci)->radiation;
         
         double sensitivity = sensitivity_function(this->CheckSourceAngle(pos)/2.0);
         //gzmsg << (*ci)->name << " " << sensitivity << std::endl;
         rad += sensitivity*value/((dist*dist)+(+3.3E-5*3.3E-5));
+      } 
+      else
+      {
+
+        
+
+        rad += ProcessRaySegments(raySegments);
       }
     }
 
@@ -160,6 +168,19 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
   }
 
 
+}
+
+double gazebo::sensors::RadiationSensor::ProcessRaySegments(std::vector<raySegment> ray_vector){
+  
+  gzmsg << "ray interations :" << std::endl;
+
+  for (int i = 0;i<ray_vector.size();i++){
+    gzmsg << "transition from " << ray_vector[i].from << " to " << ray_vector[i].to<< " at length: " << ray_vector[i].length << std::endl;
+  }
+  /*
+  Add function here to do attenuation along the line!!!
+  */
+  return 0.0;
 }
 
 double gazebo::sensors::RadiationSensor::sensitivity_function(double x){
@@ -239,32 +260,47 @@ void gazebo::sensors::RadiationSensor::RemoveSource(std::string source_name){
   }
 }
 
-bool gazebo::sensors::RadiationSensor::CheckSourceViewable(const gazebo::sensors::RadiationSource* s){
+std::vector<raySegment> gazebo::sensors::RadiationSensor::CheckSourceViewable(ignition::math::Vector3d sensor_pos,ignition::math::Vector3d source_pos, std::string name){
 
-      std::string entityName = "";
-      double blocking_dist;
-      boost::recursive_mutex::scoped_lock lock(*(
-      this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+      std::vector<raySegment> v;
 
-      this->blockingRay->SetPoints(this->entity->GetWorldPose().Ign().Pos(), s->GetPose().Pos());
-      this->blockingRay->GetIntersection(blocking_dist, entityName);
-      if (entityName == ""){
-        return true;
-      }
-      else if (blocking_dist > (this->entity->GetWorldPose().Ign().Pos()-s->GetPose().Pos()).Length()) 
-      {
-        return true;
-      }
-      else if (entityName.find(s->name) != std::string::npos) 
-      {
-        return true;
-      } 
-      else
-      {
-        gzwarn << entityName << " is blocking "  << s->name <<": " << blocking_dist << " metres"<< std::endl;
-        //gzwarn << this->entity->GetWorldPose().Ign().Pos()[0] <<"," << this->entity->GetWorldPose().Ign().Pos()[1] << "," << this->entity->GetWorldPose().Ign().Pos()[2] << std::endl;
-        //gzwarn <<  s->GetPose().Pos()[0] << "," <<  s->GetPose().Pos()[1] << "," <<  s->GetPose().Pos()[2] <<std::endl;
-        return false;
+      while(1){
+        std::string entityName = "";
+        double blocking_dist;
+        boost::recursive_mutex::scoped_lock lock(*(
+        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+
+        this->blockingRay->SetPoints(sensor_pos,source_pos);
+        this->blockingRay->GetIntersection(blocking_dist, entityName);
+        if (entityName == ""){
+          return v;
+        }
+        else if (blocking_dist > (sensor_pos-source_pos).Length()) 
+        {
+          return v;
+        }
+        else if (entityName.find(name) != std::string::npos) 
+        {
+          return v;
+        } 
+        else
+        {
+          if(v.empty())
+          {
+            v.push_back(raySegment(blocking_dist,std::string("free_space"),entityName));
+          }
+          else if (v.back().to == entityName)
+          {
+            v.push_back(raySegment(blocking_dist,entityName,std::string("free_space")));
+          }
+          else if (v.back().to == std::string("free_space"))
+          {
+            v.push_back(raySegment(blocking_dist,entityName,std::string("free_space")));
+          }
+          ignition::math::Vector3d v1 = (source_pos - sensor_pos).Normalize()*(blocking_dist+0.0001);; 
+          sensor_pos = v1 + sensor_pos;
+          
+        }
       }
 }
       

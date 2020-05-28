@@ -46,6 +46,13 @@
 // It is very important that your custom sensor class is defined inside the
 // gazebo::sensors namespace.
 
+struct raySegment {
+  double length;
+  std::string from;
+  std::string to;
+  raySegment(double d,  std::string s0, std::string s1) : length(d),from(s0),to(s1) { }
+} ;
+
 namespace gazebo
 {
 namespace sensors
@@ -70,8 +77,8 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
 
   private: double CheckSourceRange(const ignition::math::Pose3d &_pose);
   private: double CheckSourceAngle(const ignition::math::Pose3d &_pose);
-  private: bool CheckSourceViewable(const gazebo::sensors::RadiationSource * );
-
+  private: std::vector<raySegment> CheckSourceViewable(ignition::math::Vector3d,ignition::math::Vector3d, std::string);
+  private: double ProcessRaySegments(std::vector<raySegment>);
 
   public: ignition::math::Pose3d GetPose() const;
   public: ignition::math::Pose3d pose;
