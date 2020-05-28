@@ -154,9 +154,9 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
   }
 
   if ((rand()/RAND_MAX) < (rad - floor(rad))){
-    this->radiation = floor(rad);
-  } else {
     this->radiation = ceil(rad);
+  } else {
+    this->radiation = floor(rad);
   }
 
 
@@ -241,17 +241,29 @@ void gazebo::sensors::RadiationSensor::RemoveSource(std::string source_name){
 
 bool gazebo::sensors::RadiationSensor::CheckSourceViewable(const gazebo::sensors::RadiationSource* s){
 
-      std::string entityName;
-      double blocking_dist = 0.0;
+      std::string entityName = "";
+      double blocking_dist;
+      boost::recursive_mutex::scoped_lock lock(*(
+      this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+
       this->blockingRay->SetPoints(this->entity->GetWorldPose().Ign().Pos(), s->GetPose().Pos());
       this->blockingRay->GetIntersection(blocking_dist, entityName);
-      if (entityName.find(s->name) != std::string::npos) 
+      if (entityName == ""){
+        return true;
+      }
+      else if (blocking_dist > (this->entity->GetWorldPose().Ign().Pos()-s->GetPose().Pos()).Length()) 
+      {
+        return true;
+      }
+      else if (entityName.find(s->name) != std::string::npos) 
       {
         return true;
       } 
       else
       {
         gzwarn << entityName << " is blocking "  << s->name <<" at a distance of " << blocking_dist << " metres"<< std::endl;
+        gzwarn << this->entity->GetWorldPose().Ign().Pos()[0] <<"," << this->entity->GetWorldPose().Ign().Pos()[1] << "," << this->entity->GetWorldPose().Ign().Pos()[2] << std::endl;
+        gzwarn <<  s->GetPose().Pos()[0] << "," <<  s->GetPose().Pos()[1] << "," <<  s->GetPose().Pos()[2] <<std::endl;
         return false;
       }
 }

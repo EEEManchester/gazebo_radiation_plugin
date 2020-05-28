@@ -25,7 +25,7 @@ for i in range(0,len(sources)):
                     y = sources[outputfile+str(i)]['y']
                     z = sources[outputfile+str(i)]['z']
                     #print x,y,z
-                    f1.write("<pose>{} {} {} 0 0 0</pose> \n".format(str(x),str(y),str(z)))
+                    f1.write("<pose>{} {} {} 0 0 0</pose> \n".format(str(x),str(y),str(z+0.1)))
                     pose_set = True
                 else:
                     f1.write(line)
