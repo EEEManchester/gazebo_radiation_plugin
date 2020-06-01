@@ -78,7 +78,7 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   private: double CheckSourceRange(const ignition::math::Pose3d &_pose);
   private: double CheckSourceAngle(const ignition::math::Pose3d &_pose);
   private: std::vector<raySegment> CheckSourceViewable(ignition::math::Vector3d,ignition::math::Vector3d, std::string);
-  private: double ProcessRaySegments(std::vector<raySegment>);
+  private: double AttenuationFactor(std::vector<raySegment>);
 
   public: ignition::math::Pose3d GetPose() const;
   public: ignition::math::Pose3d pose;
@@ -107,6 +107,8 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   private: double sig = 1.0;
 
   public: physics::RayShapePtr blockingRay;
+
+  private: XmlRpc::XmlRpcValue attenuation_factors;
 
 
 };

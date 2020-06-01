@@ -73,7 +73,12 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
     }
   else{
     this->sensor_range = 1000000.0;
+
+  if (n.hasParam("/attenuation_factors")){
+    n.getParam("/attenuation_factors",attenuation_factors);
   }
+
+}
 
 
   // Add the tag to all the RFID sensors.
@@ -140,20 +145,18 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
     double dist = this->CheckSourceRange(pos);
     if (dist <= this->sensor_range){
       std::vector<raySegment> raySegments = CheckSourceViewable(this->entity->GetWorldPose().Ign().Pos(),pos.Pos(),(*ci)->name);
-      if( raySegments.empty()){
+
         std::string type = (*ci)->radiation_type;
         double value = (*ci)->radiation;
         
         double sensitivity = sensitivity_function(this->CheckSourceAngle(pos)/2.0);
         //gzmsg << (*ci)->name << " " << sensitivity << std::endl;
+      if( raySegments.empty()){
         rad += sensitivity*value/((dist*dist)+(+3.3E-5*3.3E-5));
       } 
       else
       {
-
-        
-
-        rad += ProcessRaySegments(raySegments);
+        rad += sensitivity*value/((dist*dist)+(+3.3E-5*3.3E-5))*AttenuationFactor(raySegments);
       }
     }
 
@@ -170,12 +173,37 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
 
 }
 
-double gazebo::sensors::RadiationSensor::ProcessRaySegments(std::vector<raySegment> ray_vector){
+double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegment> ray_vector){
   
   gzmsg << "ray interations :" << std::endl;
+  double attenuation_factor = 1.0;
+  double material_attenuation = 1.0;
+
 
   for (int i = 0;i<ray_vector.size();i++){
     gzmsg << "transition from " << ray_vector[i].from << " to " << ray_vector[i].to<< " at length: " << ray_vector[i].length << std::endl;
+    
+    for(XmlRpc::XmlRpcValue::ValueStruct::const_iterator it = this->attenuation_factors.begin();
+    it != this->attenuation_factors.end(); ++it){
+      XmlRpc::XmlRpcValue x = it->first;
+      if (ray_vector[i].from.find(std::string(x)) != std::string::npos) {
+        XmlRpc::XmlRpcValue y = it->second;
+        material_attenuation = static_cast<double>(y);
+        //break;
+      }
+      //gzmsg << it->first << std::endl;
+
+    } 
+    
+    //(this->attenuation_factors.hasMember(static_cast<std::string>(this->attenuation_factors[ray_vector[i].from]))){
+    // material_attenuation = static_cast<double>(this->attenuation_factors[ray_vector[i].from]);
+    
+    
+    
+    attenuation_factor *= 1.0 - (ray_vector[i].length*material_attenuation);
+
+    gzmsg << "attenuation_factors: " << attenuation_factor << std::endl; 
+  
   }
   /*
   Add function here to do attenuation along the line!!!
@@ -272,6 +300,7 @@ std::vector<raySegment> gazebo::sensors::RadiationSensor::CheckSourceViewable(ig
 
         this->blockingRay->SetPoints(sensor_pos,source_pos);
         this->blockingRay->GetIntersection(blocking_dist, entityName);
+
         if (entityName == ""){
           return v;
         }
@@ -285,6 +314,7 @@ std::vector<raySegment> gazebo::sensors::RadiationSensor::CheckSourceViewable(ig
         } 
         else
         {
+          //entityName = entityName.substr(0, entityName.find("::"));
           if(v.empty())
           {
             v.push_back(raySegment(blocking_dist,std::string("free_space"),entityName));
@@ -295,7 +325,7 @@ std::vector<raySegment> gazebo::sensors::RadiationSensor::CheckSourceViewable(ig
           }
           else if (v.back().to == std::string("free_space"))
           {
-            v.push_back(raySegment(blocking_dist,entityName,std::string("free_space")));
+            v.push_back(raySegment(blocking_dist,std::string("free_space"),entityName));
           }
           ignition::math::Vector3d v1 = (source_pos - sensor_pos).Normalize()*(blocking_dist+0.0001);; 
           sensor_pos = v1 + sensor_pos;

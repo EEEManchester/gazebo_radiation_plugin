@@ -1,0 +1,5 @@
+attenuation_factors:
+  free_space: 0.0
+  unit_box: 0.2
+  unit_cylinder: 0.5
+  

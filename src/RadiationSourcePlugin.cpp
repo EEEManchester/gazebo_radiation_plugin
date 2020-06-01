@@ -55,9 +55,14 @@ namespace gazebo
     msg.header.stamp = ros::Time::now();
     msg.header.frame_id = "sim_world";
     msg.value = this->parentSensor->radiation;
-    msg.position.x = this->parentSensor->pose.Pos()[0];
-    msg.position.y = this->parentSensor->pose.Pos()[1];
-    msg.position.z = this->parentSensor->pose.Pos()[2]; 
+    msg.pose.position.x = this->parentSensor->pose.Pos()[0];
+    msg.pose.position.y = this->parentSensor->pose.Pos()[1];
+    msg.pose.position.z = this->parentSensor->pose.Pos()[2]; 
+    msg.pose.orientation.x = this->parentSensor->pose.Rot().X();
+    msg.pose.orientation.y = this->parentSensor->pose.Rot().Y();
+    msg.pose.orientation.z = this->parentSensor->pose.Rot().Z();
+    msg.pose.orientation.w = this->parentSensor->pose.Rot().W();
+    
     msg.type = this->parentSensor->radiation_type;
 
     this->_publisher.publish(msg);

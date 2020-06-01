@@ -1,4 +1,4 @@
 Header header
 float32 value
-geometry_msgs/Point position
+geometry_msgs/Pose pose
 string type

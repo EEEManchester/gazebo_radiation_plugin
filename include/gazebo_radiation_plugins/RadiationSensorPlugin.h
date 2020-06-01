@@ -11,7 +11,7 @@
 #include "ros/ros.h"
 #include <std_msgs/Float32.h>
 #include <std_msgs/String.h>
-#include <geometry_msgs/Point.h>
+#include <geometry_msgs/Pose.h>
 
 #include <gazebo/sensors/Sensor.hh>
 #include <gazebo/sensors/SensorTypes.hh>
