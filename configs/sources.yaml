@@ -1,0 +1,57 @@
+sources:
+  source_0:
+    noise: 2.0
+    type: alpha
+    units: Sv/h
+    value: 100.0
+    x: -15
+    y: -15
+    z: 0
+  source_1:
+    noise: 2.0
+    type: alpha
+    units: Sv/h
+    value: 200.0
+    x: -15
+    y: -14
+    z: 0
+  source_2:
+    noise: 2.0
+    type: alpha
+    units: Sv/h
+    value: 300.0
+    x: -15
+    y: -13
+    z: 0
+  source_3:
+    noise: 2.0
+    type: beta
+    units: Sv/h
+    value: 400.0
+    x: -5
+    y: -15
+    z: 0
+  source_4:
+    noise: 2.0
+    type: gamma
+    units: Sv/h
+    value: 500.0
+    x: -5
+    y: -7
+    z: 0
+  source_5:
+    noise: 2.0
+    type: gamma
+    units: Sv/h
+    value: 600.0
+    x: -5
+    y: 0
+    z: 0
+  source_6:
+    noise: 2.0
+    type: gamma
+    units: Sv/h
+    value: 700.0
+    x: -5
+    y: 4
+    z: 0
