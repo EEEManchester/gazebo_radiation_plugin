@@ -28,7 +28,7 @@ generate_messages(
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME} radiation_source radiation_source_plugin radiation_sensor radiation_sensor_plugin
-  CATKIN_DEPENDS gazebo_dev pluginlib rosbash message_runtime gazebo_custom_sensor_preloader
+  CATKIN_DEPENDS gazebo_dev pluginlib rosbash message_runtime
 )
 
 include_directories(
