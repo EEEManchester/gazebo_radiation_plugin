@@ -77,9 +77,9 @@ This repository contains several bits of code:
 
 ### Additional Settings
 
-The radiation sensor has some additional settings which can be set on the param server these are type,range and attenuation_factors.
+The radiation sensor has some additional settings which can be set on the param server these are type,range,collimated,mu,sigma and attenuation_factors.
 
-For each sensor type and range should be loaded using /SENSOR_NAME/type and /SENSOR_NAME/range where SENSOR_NAME is the sensor name e.g. sensor_0. These parameters allow you to set maximum sensing ranges and radiation types the sensor is detecting. e.g. Alpha, Beta, Gamma. If these are set the sensor will disregard anything too far away or of the wrong radiation type. 
+For each sensor type and range should be loaded using /SENSOR_NAME/type and /SENSOR_NAME/range where SENSOR_NAME is the sensor name e.g. sensor_0. These parameters allow you to set maximum sensing ranges and radiation types the sensor is detecting . e.g. Alpha, Beta, Gamma; if the sensor is collimated and if it is collimated define the mu and sigma of the (gaussian)sensitivity function. If these are set the sensor will disregard anything too far away or of the wrong radiation type and reduce the measured radiation in accordance with the angle of incidency using the sensitivity function. 
 
 Attenuation_factors is set using a yaml file and is explained in the running the example section.
 

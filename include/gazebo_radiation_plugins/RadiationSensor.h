@@ -105,6 +105,7 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
 
   private: double mu = 0.0;
   private: double sig = 1.0;
+  private: bool collimated = false;
 
   public: physics::RayShapePtr blockingRay;
 

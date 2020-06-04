@@ -8,8 +8,8 @@
   <license>BSD</license>
   <url>https://github.com/EEEManchester/gazebo_radiation_plugins</url>
 
-  <maintainer email="">Martin Pecka</maintainer>
-  <author email="thomas.wright@manchester.ac.uk">Martin Pecka</author>
+  <maintainer  email="thomas.wright@manchester.ac.uk">Thomas Wright</maintainer>
+  <author email="thomas.wright@manchester.ac.uk">Thomas Wright</author>
 
   <buildtool_depend>catkin</buildtool_depend>
   <depend>gazebo_dev</depend>
