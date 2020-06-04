@@ -9,7 +9,7 @@ find_package(catkin REQUIRED COMPONENTS
   gazebo_ros
   pluginlib
   message_generation
-  gazebo_custom_sensor_preloader
+  
 )
 
 find_package(Boost REQUIRED COMPONENTS filesystem)
