@@ -3,13 +3,13 @@
          xsi:noNamespaceSchemaLocation="http://download.ros.org/schema/package_format2.xsd">
   <name>gazebo_radiation_plugins</name>
   <version>1.0.1</version>
-  <description>Gazebo plugin that allows writing custom Gazebo sensors.</description>
+  <description>Gazebo plugin for radiation sources and sensors.</description>
 
   <license>BSD</license>
-  <url>https://github.com/peci1/gazebo_radiation_plugins</url>
+  <url>https://github.com/EEEManchester/gazebo_radiation_plugins</url>
 
-  <maintainer email="peckama2@fel.cvut.cz">Martin Pecka</maintainer>
-  <author email="peckama2@fel.cvut.cz">Martin Pecka</author>
+  <maintainer email="">Martin Pecka</maintainer>
+  <author email="thomas.wright@manchester.ac.uk">Martin Pecka</author>
 
   <buildtool_depend>catkin</buildtool_depend>
   <depend>gazebo_dev</depend>
@@ -19,14 +19,12 @@
   <build_depend>gazebo_ros</build_depend>
   <build_depend>ros_cpp</build_depend>
   <build_depend>message_generation</build_depend>
-  <build_depend>gazebo_custom_sensor_preloader</build_depend>
 
 
   <exec_depend>message_runtime</exec_depend>
   <exec_depend>gazebo_ros</exec_depend>
   <exec_depend>pluginlib</exec_depend>
   <exec_depend>rosbash</exec_depend>
-  <exec_depend>gazebo_custom_sensor_preloader</exec_depend>
 
   <!--
     In your own custom sensor implementations, you'll also have to add
