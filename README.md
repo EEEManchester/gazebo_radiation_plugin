@@ -88,7 +88,9 @@ Attenuation_factors is set using a yaml file and is explained in the running the
 The first thing which needs to be done is load some parameters into the rosparam server which relate to the radiation sources being used. Basic sources can be described in the format shown in configs/sources.yaml requiring x,y,z,type and value,noise and units. Use:
  ```
 roscore
-
+ ```
+Then load the sources yaml file located in the configs folder by cd'ing into the folder and running
+ ```
 rosparam load sources.yaml
 ```
 to load these onto the rosparam server.
