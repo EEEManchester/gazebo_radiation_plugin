@@ -79,7 +79,7 @@ void gazebo::sensors::RadiationSource::Load(const std::string &_worldName)
       }
     }
 
-
+    gzmsg << "spawning source " << this->name << " of type " << this->radiation_type << " with value " << this->radiation << std::endl;;
   }
 }
 

@@ -27,7 +27,7 @@ def main():
         angle = 0.0
         while(1):
                 angle = angle%628
-                quaternion = tf.transformations.quaternion_from_euler(0.0,0.0,angle)
+                quaternion = tf.transformations.quaternion_from_euler(0.0,0.0,angle+3.14)
                 state_msg.pose.orientation.x = quaternion[0]
                 state_msg.pose.orientation.y = quaternion[1]
                 state_msg.pose.orientation.z = quaternion[2]
