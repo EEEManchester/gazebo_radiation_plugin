@@ -1,0 +1,9 @@
+sensors:
+  sensor_0:
+    type: "gamma"
+    range: 5.0
+    collimated: true
+    sensitivity_function: "gaussian"
+    mu: 0.0
+    sigma: 1.0
+    angle_limit: 1.507

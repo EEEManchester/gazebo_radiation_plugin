@@ -60,40 +60,46 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
 
   this->entity = this->world->GetEntity(this->ParentName());
 
-  if (n.hasParam(this->topic + "/type"))
+  if (n.hasParam("sensors/" + this->topic + "/type"))
   {
-    n.getParam(this->topic + "/type", this->sensor_type);
+    n.getParam("sensors/" + this->topic + "/type", this->sensor_type);
   }
 
-  if (n.hasParam(this->topic + "/range"))
+  if (n.hasParam("sensors/" + this->topic + "/range"))
   {
-    n.getParam(this->topic + "/range", this->sensor_range);
+    n.getParam("sensors/" + this->topic + "/range", this->sensor_range);
   }
 
-  if (n.hasParam(this->topic + "/mu"))
+  if (n.hasParam("sensors/" + this->topic + "/collimated"))
   {
-    n.getParam(this->topic + "/mu", this->mu);
-  }
+    n.getParam("sensors/" + this->topic + "/collimated", this->collimated);
+  } 
 
-  if (n.hasParam(this->topic + "/sigma"))
+  if (n.hasParam("sensors/" + this->topic + "/sensitivity_function"))
   {
-    n.getParam(this->topic + "/sigma", this->sig);
-  }
-
-  if (n.hasParam(this->topic + "/collimated"))
-  {
-    n.getParam(this->topic + "/collimated", this->collimated);
+    n.getParam("sensors/" + this->topic + "/sensitivity_function", this->sensitivity_func);
   }  
 
-  else
+  if (n.hasParam("sensors/" + this->topic + "/mu"))
   {
-    this->sensor_range = 1000000.0;
-
-    if (n.hasParam("/attenuation_factors"))
-    {
-      n.getParam("/attenuation_factors", attenuation_factors);
-    }
+    n.getParam("sensors/" + this->topic + "/mu", this->mu);
   }
+
+  if (n.hasParam("sensors/" + this->topic + "/sigma"))
+  {
+    n.getParam("sensors/" + this->topic + "/sigma", this->sig);
+  }
+
+  if (n.hasParam("sensors/" + this->topic + "/angle_limit"))
+  {
+    n.getParam("sensors/" + this->topic + "/angle_limit", this->angle_limit);
+  }
+
+  if (n.hasParam("/attenuation_factors"))
+  {
+    n.getParam("/attenuation_factors", this->attenuation_factors);
+  }
+  
 
   // Add the tag to all the RFID sensors.
   Sensor_V sensors = SensorManager::Instance()->GetSensors();
@@ -162,22 +168,35 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
       double value = (*ci)->radiation;
 
       double sensitivity;
-      if (this->collimated)
+      double angle = this->CheckSourceAngle(pos);
+      if (this->collimated == true)
       {
-        sensitivity = sensitivity_function(this->CheckSourceAngle(pos) / 2.0);
+        sensitivity = sensitivity_function(angle);
       }
       else
       {
         sensitivity = 1.0;
       }
+      float within_angle_limit = 1.0;  
+      if (fabs(this->angle_limit) <= fabs(angle) ){
+        within_angle_limit = 0.0;
+      }
+      float within_range_limit = 1.0;  
+      if (fabs(this->sensor_range) <= fabs(dist) ){
+        within_range_limit = 0.0;
+      }
+      gzmsg << "angle limits " << fabs(this->angle_limit) << " " <<  fabs(angle) <<std::endl;
+       gzmsg << "dist limits " << fabs(this->sensor_range) << " " <<  fabs(dist) <<std::endl;
       //gzmsg << (*ci)->name << " " << sensitivity << std::endl;
+
+      gzmsg << within_range_limit<< " " << within_angle_limit << " " << sensitivity << " " << value << " " << dist << " " << AttenuationFactor(raySegments) << std::endl;
       if (raySegments.empty())
       {
-        rad += sensitivity * value / ((dist * dist) + (+3.3E-5 * 3.3E-5));
+        rad += within_range_limit*within_angle_limit * sensitivity * value / ((dist * dist) + (+3.3E-5 * 3.3E-5));
       }
       else
       {
-        rad += sensitivity * value / ((dist * dist) + (+3.3E-5 * 3.3E-5)) * AttenuationFactor(raySegments);
+        rad += within_range_limit*within_angle_limit * sensitivity * value / ((dist * dist) + (+3.3E-5 * 3.3E-5)) * AttenuationFactor(raySegments);
       }
     }
 
@@ -199,7 +218,8 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
 
   gzmsg << "ray interations :" << std::endl;
   double attenuation_factor = 1.0;
-  double material_attenuation = 1.0;
+  double material_attenuation = 100000000.0;
+  XmlRpc::XmlRpcValue y;
 
   for (int i = 0; i < ray_vector.size(); i++)
   {
@@ -211,8 +231,8 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
       XmlRpc::XmlRpcValue x = it->first;
       if (ray_vector[i].from.find(std::string(x)) != std::string::npos)
       {
-        XmlRpc::XmlRpcValue y = it->second;
-        if (y == "inf")
+        y = it->second;
+        if (static_cast<double>(y) < 0.0)
         {
           material_attenuation = 0;
           attenuation_factor = 0.0;
@@ -220,6 +240,7 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
         else
         {
           material_attenuation = static_cast<double>(y);
+          gzmsg << std::string(x) << ": " << material_attenuation<< std::endl;
         } //break;
       }
       //gzmsg << it->first << std::endl;
@@ -233,7 +254,7 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
     //andys attenuation factor
     attenuation_factor *= exp(-material_attenuation * ray_vector[i].length);
 
-    gzmsg << "attenuation_factors: " << attenuation_factor << std::endl;
+    gzmsg << "attenuation_factors: " << attenuation_factor << " y:"  << static_cast<double>(y) << std::endl;
   }
   gzmsg << std::endl;
   /*
@@ -244,7 +265,13 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
 
 double gazebo::sensors::RadiationSensor::sensitivity_function(double x)
 {
-  return exp(-pow(x - this->mu, 2.0) / (2.0 * pow(this->sig, 2.0)));
+  if (this->sensitivity_func == "gaussian"){
+    return exp(-pow(x - this->mu, 2.0) / (2.0 * pow(this->sig, 2.0)));
+  } 
+  else{
+    gzmsg << "NO SENSITIVITY FUNCTION DEFINED " << this->sensitivity_func << std::endl;
+    return 1.0;
+  }
 }
 
 //////////////////////////////////////////////////

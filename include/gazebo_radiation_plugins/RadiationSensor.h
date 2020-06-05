@@ -90,12 +90,6 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   public: transport::PublisherPtr scanPub_pose;
   public: transport::PublisherPtr scanPub_value;
 
-  public: double radiation;
-  public: std::string topic;
-  public: std::string sensor_type; 
-  public: double sensor_range;
-  
-
   public: std::vector<RadiationSource*> sources;
 
   public: ros::NodeHandle n;
@@ -103,9 +97,16 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
 
   private: double sensitivity_function(double);
 
+
+  public: double radiation;
+  public: std::string topic;
+  public: std::string sensor_type; 
+  public: double sensor_range = 1000000000.0;
   private: double mu = 0.0;
   private: double sig = 1.0;
   private: bool collimated = false;
+  private: double angle_limit = 0.0;
+  private: std::string sensitivity_func = "";
 
   public: physics::RayShapePtr blockingRay;
 

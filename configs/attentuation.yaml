@@ -4,5 +4,5 @@ attenuation_factors:
   unit_cylinder: 0.5
   innerbarrel: 0.0
   outerbarrel: 0.2
-  lead: "inf"
+  lead: -1.0
   
