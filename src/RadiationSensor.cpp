@@ -101,12 +101,12 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
   }
   
 
-  // Add the tag to all the RFID sensors.
+
   Sensor_V sensors = SensorManager::Instance()->GetSensors();
   for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
   {
 
-    //gzmsg << (*iter)->Type() << std::endl;
+
     if ((*iter)->Type() == "radiation_source")
     {
 
@@ -185,11 +185,7 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
       if (fabs(this->sensor_range) <= fabs(dist) ){
         within_range_limit = 0.0;
       }
-      gzmsg << "angle limits " << fabs(this->angle_limit) << " " <<  fabs(angle) <<std::endl;
-       gzmsg << "dist limits " << fabs(this->sensor_range) << " " <<  fabs(dist) <<std::endl;
-      //gzmsg << (*ci)->name << " " << sensitivity << std::endl;
 
-      gzmsg << within_range_limit<< " " << within_angle_limit << " " << sensitivity << " " << value << " " << dist << " " << AttenuationFactor(raySegments) << std::endl;
       if (raySegments.empty())
       {
         rad += within_range_limit*within_angle_limit * sensitivity * value / ((dist * dist) + (+3.3E-5 * 3.3E-5));
@@ -199,8 +195,6 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
         rad += within_range_limit*within_angle_limit * sensitivity * value / ((dist * dist) + (+3.3E-5 * 3.3E-5)) * AttenuationFactor(raySegments);
       }
     }
-
-    //gzmsg << this->radiation << "," << value << "," << dist << std::endl;
   }
 
   if ((rand() / RAND_MAX) < (rad - floor(rad)))
@@ -216,14 +210,14 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
 double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegment> ray_vector)
 {
 
-  gzmsg << "ray interations :" << std::endl;
+  //gzmsg << "ray interations :" << std::endl;
   double attenuation_factor = 1.0;
   double material_attenuation = 100000000.0;
   XmlRpc::XmlRpcValue y;
 
   for (int i = 0; i < ray_vector.size(); i++)
   {
-    gzmsg << "transition from " << ray_vector[i].from << " to " << ray_vector[i].to << " at length: " << ray_vector[i].length << std::endl;
+    //gzmsg << "transition from " << ray_vector[i].from << " to " << ray_vector[i].to << " at length: " << ray_vector[i].length << std::endl;
 
     for (XmlRpc::XmlRpcValue::ValueStruct::const_iterator it = this->attenuation_factors.begin();
          it != this->attenuation_factors.end(); ++it)
@@ -240,23 +234,17 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
         else
         {
           material_attenuation = static_cast<double>(y);
-          gzmsg << std::string(x) << ": " << material_attenuation<< std::endl;
-        } //break;
+       } //break;
       }
-      //gzmsg << it->first << std::endl;
     }
-
-    //(this->attenuation_factors.hasMember(static_cast<std::string>(this->attenuation_factors[ray_vector[i].from]))){
-    // material_attenuation = static_cast<double>(this->attenuation_factors[ray_vector[i].from]);
 
     //old fake attenuation factor
     //attenuation_factor *= 1.0 - (ray_vector[i].length*material_attenuation);
     //andys attenuation factor
     attenuation_factor *= exp(-material_attenuation * ray_vector[i].length);
 
-    gzmsg << "attenuation_factors: " << attenuation_factor << " y:"  << static_cast<double>(y) << std::endl;
   }
-  gzmsg << std::endl;
+
   /*
   Add function here to do attenuation along the line!!!
   */
@@ -269,7 +257,6 @@ double gazebo::sensors::RadiationSensor::sensitivity_function(double x)
     return exp(-pow(x - this->mu, 2.0) / (2.0 * pow(this->sig, 2.0)));
   } 
   else{
-    gzmsg << "NO SENSITIVITY FUNCTION DEFINED " << this->sensitivity_func << std::endl;
     return 1.0;
   }
 }
@@ -281,10 +268,6 @@ double gazebo::sensors::RadiationSensor::CheckSourceRange(const ignition::math::
   ignition::math::Vector3d v;
   v = _pose.Pos() - this->entity->GetWorldPose().Ign().Pos();
 
-  //gzmsg << this->entity->GetWorldPose().Ign().Pos()[0] << " " << this->entity->GetWorldPose().Ign().Pos()[1] << " " << this->entity->GetWorldPose().Ign().Pos()[2] << std::endl;
-  //gzmsg << _pose.Pos()[0] << " " << _pose.Pos()[1] << " " << _pose.Pos()[2] << std::endl;
-  //gzmsg << v[0] << " " << v[1] << " " << v[2] << std::endl;
-  //gzmsg << v.Length() << std::endl;
   return v.Length();
 }
 //////////////////////////////////////////////////
@@ -309,10 +292,7 @@ double gazebo::sensors::RadiationSensor::CheckSourceAngle(const ignition::math::
   v1 = entity->GetWorldPose().Ign().Rot().RotateVector(v);
 
   double angle = std::acos(dot(v0, v1) / (mag(v0) * mag(v1)));
-  //gzmsg << this->entity->GetWorldPose().Ign().Pos()[0] << " " << this->entity->GetWorldPose().Ign().Pos()[1] << " " << this->entity->GetWorldPose().Ign().Pos()[2] << std::endl;
-  //gzmsg << _pose.Pos()[0] << " " << _pose.Pos()[1] << " " << _pose.Pos()[2] << std::endl;
-  //gzmsg << v[0] << " " << v[1] << " " << v[2] << std::endl;
-  //gzmsg << v.Length() << std::endl;
+
   return angle;
 }
 
