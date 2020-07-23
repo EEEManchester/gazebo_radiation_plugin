@@ -212,7 +212,7 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
 
   //gzmsg << "ray interations :" << std::endl;
   double attenuation_factor = 1.0;
-  double material_attenuation = 100000000.0;
+  double material_attenuation = 0.0;
   XmlRpc::XmlRpcValue y;
 
   for (int i = 0; i < ray_vector.size(); i++)

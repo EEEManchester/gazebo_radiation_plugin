@@ -1,0 +1,8 @@
+attenuation_factors:
+  free_space: 0.0
+  unit_box: 0.2
+  unit_cylinder: 0.5
+  innerbarrel: 0.0
+  outerbarrel: 0.2
+  lead: -1.0
+  

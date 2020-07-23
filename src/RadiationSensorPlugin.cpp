@@ -53,7 +53,7 @@ namespace gazebo
 
     gazebo_radiation_plugins::Simulated_Radiation_Msg msg;
     msg.header.stamp = ros::Time::now();
-    msg.header.frame_id = "sim_world";
+    msg.header.frame_id = "sim_sensor";
     msg.value = this->parentSensor->radiation;
     msg.pose.position.x = this->parentSensor->pose.Pos()[0];
     msg.pose.position.y = this->parentSensor->pose.Pos()[1];

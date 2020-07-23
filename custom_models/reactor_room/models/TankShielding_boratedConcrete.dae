@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.83.0 commit date:2020-06-03, commit time:14:38, hash:211b6c29f771</authoring_tool>
+    </contributor>
+    <created>2020-06-18T09:53:28</created>
+    <modified>2020-06-18T09:53:28</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="Base_material_-_Layered_002-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.9843137 0.9803922 0.9607843 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">1</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="Base_material_-_Layered_002-material" name="Base material - Layered.002">
+      <instance_effect url="#Base_material_-_Layered_002-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="TankShielding_boratedConcrete_002-mesh" name="TankShielding_boratedConcrete.002">
+      <mesh>
+        <source id="TankShielding_boratedConcrete_002-mesh-positions">
+          <float_array id="TankShielding_boratedConcrete_002-mesh-positions-array" count="90">-290 330 0 -640 330 0 -640 330 180 -290 330 180 -465 330 90 -290 300 0 -290 300 180 -290 315 90 -610 300 0 -610 300 180 -450 300 90 -610 -220 0 -610 -220 180 -610 40 90 -130 -220 0 -130 -220 180 -370 -220 90 -130 300 0 -130 300 180 -130 40 90 -100 300 0 -100 300 180 -115 300 90 -100 -250 0 -100 -250 180 -100 25 90 -640 -250 0 -640 -250 180 -370 -250 90 -640 40 90</float_array>
+          <technique_common>
+            <accessor source="#TankShielding_boratedConcrete_002-mesh-positions-array" count="30" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="TankShielding_boratedConcrete_002-mesh-normals">
+          <float_array id="TankShielding_boratedConcrete_002-mesh-normals-array" count="18">0 1 0 1 0 0 0 -1 0 -1 0 0 0 0 1 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#TankShielding_boratedConcrete_002-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="TankShielding_boratedConcrete_002-mesh-map-0">
+          <float_array id="TankShielding_boratedConcrete_002-mesh-map-0-array" count="336">0 180 0 0 175 90 175 90 0 0 350 0 175 90 350 0 350 180 350 180 0 180 175 90 0 180 0 0 15 90 15 90 0 0 30 0 15 90 30 0 30 180 30 180 0 180 15 90 0 180 0 0 160 90 160 90 0 0 320 0 160 90 320 0 320 180 320 180 0 180 160 90 0 180 0 0 260 90 260 90 0 0 520 0 260 90 520 0 520 180 520 180 0 180 260 90 0 180 0 0 240 90 240 90 0 0 480 0 240 90 480 0 480 180 480 180 0 180 240 90 0 180 0 0 260 90 260 90 0 0 520 0 260 90 520 0 520 180 520 180 0 180 260 90 0 180 0 0 15 90 15 90 0 0 30 0 15 90 30 0 30 180 30 180 0 180 15 90 0 180 0 0 275 90 275 90 0 0 550 0 275 90 550 0 550 180 550 180 0 180 275 90 0 180 0 0 270 90 270 90 0 0 540 0 270 90 540 0 540 180 540 180 0 180 270 90 0 180 0 0 290 90 290 90 0 0 580 0 290 90 580 0 580 180 580 180 0 180 290 90 80 290 -270 290 -240 260 -240 260 -270 290 -270 -290 -240 260 -270 -290 -240 -260 -240 -260 -270 -290 270 -290 -240 -260 270 -290 240 -260 240 -260 270 -290 270 260 240 -260 270 260 240 260 -240 260 80 260 80 290 270 290 240 -260 270 -290 270 -290 240 -260 -240 -260 270 -290 -240 -260 -270 -290 -270 -290 -240 -260 -270 260 -270 260 -240 -260 -240 260 240 -260 270 290 240 260 240 260 270 290 -80 290 240 260 -80 290 -80 260</float_array>
+          <technique_common>
+            <accessor source="#TankShielding_boratedConcrete_002-mesh-map-0-array" count="168" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="TankShielding_boratedConcrete_002-mesh-vertices">
+          <input semantic="POSITION" source="#TankShielding_boratedConcrete_002-mesh-positions"/>
+        </vertices>
+        <triangles material="Base_material_-_Layered_002-material" count="56">
+          <input semantic="VERTEX" source="#TankShielding_boratedConcrete_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#TankShielding_boratedConcrete_002-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#TankShielding_boratedConcrete_002-mesh-map-0" offset="2" set="0"/>
+          <p>3 0 0 0 0 1 4 0 2 4 0 3 0 0 4 1 0 5 4 0 6 1 0 7 2 0 8 2 0 9 3 0 10 4 0 11 6 1 12 5 1 13 7 1 14 7 1 15 5 1 16 0 1 17 7 1 18 0 1 19 3 1 20 3 1 21 6 1 22 7 1 23 9 2 24 8 2 25 10 2 26 10 2 27 8 2 28 5 2 29 10 2 30 5 2 31 6 2 32 6 2 33 9 2 34 10 2 35 12 1 36 11 1 37 13 1 38 13 1 39 11 1 40 8 1 41 13 1 42 8 1 43 9 1 44 9 1 45 12 1 46 13 1 47 15 0 48 14 0 49 16 0 50 16 0 51 14 0 52 11 0 53 16 0 54 11 0 55 12 0 56 12 0 57 15 0 58 16 0 59 18 3 60 17 3 61 19 3 62 19 3 63 17 3 64 14 3 65 19 3 66 14 3 67 15 3 68 15 3 69 18 3 70 19 3 71 21 0 72 20 0 73 22 0 74 22 0 75 20 0 76 17 0 77 22 0 78 17 0 79 18 0 80 18 0 81 21 0 82 22 0 83 24 1 84 23 1 85 25 1 86 25 1 87 23 1 88 20 1 89 25 1 90 20 1 91 21 1 92 21 1 93 24 1 94 25 1 95 27 2 96 26 2 97 28 2 98 28 2 99 26 2 100 23 2 101 28 2 102 23 2 103 24 2 104 24 2 105 27 2 106 28 2 107 2 3 108 1 3 109 29 3 110 29 3 111 1 3 112 26 3 113 29 3 114 26 3 115 27 3 116 27 3 117 2 3 118 29 3 119 3 4 120 2 4 121 9 4 122 9 4 123 2 4 124 27 4 125 9 4 126 27 4 127 12 4 128 12 4 129 27 4 130 24 4 131 12 4 132 24 4 133 15 4 134 15 4 135 24 4 136 21 4 137 15 4 138 21 4 139 18 4 140 9 4 141 6 4 142 3 4 143 1 5 144 11 5 145 26 5 146 26 5 147 11 5 148 14 5 149 26 5 150 14 5 151 23 5 152 23 5 153 14 5 154 20 5 155 20 5 156 14 5 157 17 5 158 11 5 159 1 5 160 8 5 161 8 5 162 1 5 163 0 5 164 8 5 165 0 5 166 5 5 167</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="TankShielding_boratedConcrete_001" name="TankShielding_boratedConcrete.001" type="NODE">
+        <matrix sid="transform">-4.37114e-10 0.01 0 0 -0.01 -4.37114e-10 0 0 0 0 0.01 0 0 0 0 1</matrix>
+        <instance_geometry url="#TankShielding_boratedConcrete_002-mesh" name="TankShielding_boratedConcrete.001">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Base_material_-_Layered_002-material" target="#Base_material_-_Layered_002-material">
+                <bind_vertex_input semantic="Texture UVs" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

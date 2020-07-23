@@ -14,6 +14,16 @@ find_package(catkin REQUIRED COMPONENTS
 
 find_package(Boost REQUIRED COMPONENTS filesystem)
 
+add_service_files(
+  FILES
+  EnvironmentEvolver.srv
+  GenWorldsFromModels.srv
+  GenYamlsFromWorld.srv
+  ConvertWorldBuilderModel.srv
+  GenRandomEnvironmentalEffects.srv
+  MassYamlLoader.srv
+)
+
 add_message_files(
   FILES
   Simulated_Radiation_Msg.msg

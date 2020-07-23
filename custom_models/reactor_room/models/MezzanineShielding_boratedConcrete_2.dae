@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.83.0 commit date:2020-06-03, commit time:14:38, hash:211b6c29f771</authoring_tool>
+    </contributor>
+    <created>2020-06-18T09:53:27</created>
+    <modified>2020-06-18T09:53:27</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="Base_material_-_Layered_002-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.9843137 0.9803922 0.9607843 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">1</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="Base_material_-_Layered_002-material" name="Base material - Layered.002">
+      <instance_effect url="#Base_material_-_Layered_002-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="MezzanineShielding_boratedConcrete_2_002-mesh" name="MezzanineShielding_boratedConcrete_2.002">
+      <mesh>
+        <source id="MezzanineShielding_boratedConcrete_2_002-mesh-positions">
+          <float_array id="MezzanineShielding_boratedConcrete_2_002-mesh-positions-array" count="42">-205 725 330 -220 725 330 -220 725 490 -205 725 490 -212.5 725 410 -205 -305 330 -205 -305 490 -205 210 410 -220 -305 330 -220 -305 490 -212.5 -305 410 -220 210 410 -212.5 210 490 -212.5 210 330</float_array>
+          <technique_common>
+            <accessor source="#MezzanineShielding_boratedConcrete_2_002-mesh-positions-array" count="14" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="MezzanineShielding_boratedConcrete_2_002-mesh-normals">
+          <float_array id="MezzanineShielding_boratedConcrete_2_002-mesh-normals-array" count="18">0 1 0 1 0 0 0 -1 0 -1 0 0 0 0 1 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#MezzanineShielding_boratedConcrete_2_002-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="MezzanineShielding_boratedConcrete_2_002-mesh-map-0">
+          <float_array id="MezzanineShielding_boratedConcrete_2_002-mesh-map-0-array" count="144">0 160 0 0 7.5 80 7.5 80 0 0 15 0 7.5 80 15 0 15 160 15 160 0 160 7.5 80 0 160 0 0 515 80 515 80 0 0 1030 0 515 80 1030 0 1030 160 1030 160 0 160 515 80 0 160 0 0 7.5 80 7.5 80 0 0 15 0 7.5 80 15 0 15 160 15 160 0 160 7.5 80 0 160 0 0 515 80 515 80 0 0 1030 0 515 80 1030 0 1030 160 1030 160 0 160 515 80 7.5 515 -7.5 515 0 0 0 0 -7.5 515 -7.5 -515 0 0 -7.5 -515 7.5 -515 7.5 -515 7.5 515 0 0 7.5 515 -7.5 515 0 0 0 0 -7.5 515 -7.5 -515 0 0 -7.5 -515 7.5 -515 7.5 -515 7.5 515 0 0</float_array>
+          <technique_common>
+            <accessor source="#MezzanineShielding_boratedConcrete_2_002-mesh-map-0-array" count="72" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="MezzanineShielding_boratedConcrete_2_002-mesh-vertices">
+          <input semantic="POSITION" source="#MezzanineShielding_boratedConcrete_2_002-mesh-positions"/>
+        </vertices>
+        <triangles material="Base_material_-_Layered_002-material" count="24">
+          <input semantic="VERTEX" source="#MezzanineShielding_boratedConcrete_2_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#MezzanineShielding_boratedConcrete_2_002-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#MezzanineShielding_boratedConcrete_2_002-mesh-map-0" offset="2" set="0"/>
+          <p>3 0 0 0 0 1 4 0 2 4 0 3 0 0 4 1 0 5 4 0 6 1 0 7 2 0 8 2 0 9 3 0 10 4 0 11 6 1 12 5 1 13 7 1 14 7 1 15 5 1 16 0 1 17 7 1 18 0 1 19 3 1 20 3 1 21 6 1 22 7 1 23 9 2 24 8 2 25 10 2 26 10 2 27 8 2 28 5 2 29 10 2 30 5 2 31 6 2 32 6 2 33 9 2 34 10 2 35 2 3 36 1 3 37 11 3 38 11 3 39 1 3 40 8 3 41 11 3 42 8 3 43 9 3 44 9 3 45 2 3 46 11 3 47 3 4 48 2 4 49 12 4 50 12 4 51 2 4 52 9 4 53 12 4 54 9 4 55 6 4 56 6 4 57 3 4 58 12 4 59 5 5 60 8 5 61 13 5 62 13 5 63 8 5 64 1 5 65 13 5 66 1 5 67 0 5 68 0 5 69 5 5 70 13 5 71</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="MezzanineShielding_boratedConcrete_2" name="MezzanineShielding_boratedConcrete_2" type="NODE">
+        <matrix sid="transform">-4.37114e-10 0.01 0 0 -0.01 -4.37114e-10 0 0 0 0 0.01 0 0 0 0 1</matrix>
+        <instance_geometry url="#MezzanineShielding_boratedConcrete_2_002-mesh" name="MezzanineShielding_boratedConcrete_2">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Base_material_-_Layered_002-material" target="#Base_material_-_Layered_002-material">
+                <bind_vertex_input semantic="Texture UVs" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

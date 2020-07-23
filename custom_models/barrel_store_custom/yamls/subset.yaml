@@ -1,0 +1,161 @@
+model_subset:
+  barrel_29:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.00486057920081
+  barrel_7:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.00197571221822
+    rust_factor: 0.0
+  barrel_37:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.00540277497835
+    rust_factor: 0.0
+  barrel_25:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.000364268193578
+  barrel_57:
+    radiation_source_name: source_0
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0
+  barrel_52:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.00407715288521
+    rust_factor: 0.0
+  barrel_40:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.00143349725702
+  barrel_15:
+    radiation_source_name: source_1
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0
+  barrel_65:
+    radiation_source_name: source_2
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0
+  barrel_54:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.00147983849881
+    rust_factor: 0.0
+  barrel_1:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0025311204298
+  barrel_17:
+    radiation_source_name: source_3
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0
+  barrel_67:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.00231637225757
+  barrel_43:
+    radiation_source_name: source_4
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0
+  barrel_18:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.00187450085092
+    rust_factor: 0.0
+  barrel_47:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.00492431710702
+  barrel_20:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.00187759901126
+  barrel_61:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.00259193268922
+  barrel_38:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0042395999413
+  barrel_45:
+    radiation_source_name: None
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.00464950772874

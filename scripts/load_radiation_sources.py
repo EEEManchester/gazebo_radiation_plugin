@@ -6,7 +6,7 @@ import os
 
 rospack = rospkg.RosPack()
 
-sources_folder = rospack.get_path("gazebo_radiation_plugins")+"/sources/"
+sources_folder = rospack.get_path("gazebo_radiation_plugins")+"/example_radiation_sources/"
 
 sources = rospy.get_param("sources")
 

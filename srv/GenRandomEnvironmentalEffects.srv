@@ -1,0 +1,8 @@
+string folder
+int16 number_of_radiation_sources
+int16 number_of_rusting_models
+int16 number_of_bending_models
+float32 max_bend_factor
+float32 max_rust_factor
+---
+

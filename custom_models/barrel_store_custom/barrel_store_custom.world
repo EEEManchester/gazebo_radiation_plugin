@@ -1,0 +1,3722 @@
+<sdf version="1.6">
+  <world name="default">
+    <light name="sun" type="directional">
+      <cast_shadows>0</cast_shadows>
+      <pose frame="">0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>   
+    <include>
+     <uri>model://ground_plane</uri>
+    </include>  
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type="adiabatic" />
+    <physics default="0" name="default_physics" type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>0</shadows>
+    </scene>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <state world_name="default">
+      <sim_time>0 0</sim_time>
+      <real_time>0 0</real_time>
+      <wall_time>0 0</wall_time>
+      <iterations>0</iterations>
+    </state>
+    <model name="wall_0">
+      <pose frame="sim_world">-8.5 -0.75 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_0_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_0_collision">
+          <geometry>
+            <box>
+              <size>0.5 28.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_0_visual">
+          <geometry>
+            <box>
+              <size>0.5 28.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_1">
+      <pose frame="sim_world">-8.0 -8.25 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_1_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_1_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_1_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_2">
+      <pose frame="sim_world">-8.0 -0.75 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_2_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_2_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_2_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_3">
+      <pose frame="sim_world">-8.0 5.75 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_3_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_3_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_3_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_4">
+      <pose frame="sim_world">-7.5 -8.25 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_4_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_4_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_4_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_5">
+      <pose frame="sim_world">-7.5 -0.75 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_5_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_5_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_5_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_6">
+      <pose frame="sim_world">-7.5 5.75 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_6_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_6_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_6_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_7">
+      <pose frame="sim_world">4.5 -8.25 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_7_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_7_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_7_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_8">
+      <pose frame="sim_world">4.5 -0.75 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_8_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_8_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_8_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_9">
+      <pose frame="sim_world">4.5 5.75 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_9_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_9_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_9_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_10">
+      <pose frame="sim_world">5.0 -8.25 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_10_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_10_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_10_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_11">
+      <pose frame="sim_world">5.0 -0.75 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_11_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_11_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_11_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_12">
+      <pose frame="sim_world">5.0 5.75 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_12_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_12_collision">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_12_visual">
+          <geometry>
+            <box>
+              <size>0.5 1.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_13">
+      <pose frame="sim_world">5.5 -0.75 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_13_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_13_collision">
+          <geometry>
+            <box>
+              <size>0.5 28.0 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_13_visual">
+          <geometry>
+            <box>
+              <size>0.5 28.0 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_14">
+      <pose frame="sim_world">-1.5 -14.5 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_14_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_14_collision">
+          <geometry>
+            <box>
+              <size>13.5 0.5 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_14_visual">
+          <geometry>
+            <box>
+              <size>13.5 0.5 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_15">
+      <pose frame="sim_world">-5.25 13.0 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_15_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_15_collision">
+          <geometry>
+            <box>
+              <size>6.0 0.5 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_15_visual">
+          <geometry>
+            <box>
+              <size>6.0 0.5 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="wall_16">
+      <pose frame="sim_world">2.5 13.0 1.5 0 0 0</pose>
+      <static>True</static>
+      <link name="wall_16_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="wall_16_collision">
+          <geometry>
+            <box>
+              <size>5.5 0.5 3.0</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="wall_16_visual">
+          <geometry>
+            <box>
+              <size>5.5 0.5 3.0</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.7 0.7 0.7 1</ambient>
+            <diffuse>0.7 0.7 0.7 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_0">
+      <pose frame="sim_world">-2.0 1.0 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_0_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_0_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_0_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_1">
+      <pose frame="sim_world">-2.0 1.0 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_1_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_1_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_1_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_2">
+      <pose frame="sim_world">-2.0 3.0 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_2_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_2_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_2_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_3">
+      <pose frame="sim_world">-2.0 3.0 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_3_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_3_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_3_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_4">
+      <pose frame="sim_world">-1.5 -9.0 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_4_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_4_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_4_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_5">
+      <pose frame="sim_world">-1.5 -9.0 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_5_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_5_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_5_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_6">
+      <pose frame="sim_world">-1.5 -8.5 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_6_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_6_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_6_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_7">
+      <pose frame="sim_world">-1.5 -8.5 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_7_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_7_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_7_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_8">
+      <pose frame="sim_world">-1.5 -8.0 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_8_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_8_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_8_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_9">
+      <pose frame="sim_world">-1.5 -8.0 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_9_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_9_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_9_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_10">
+      <pose frame="sim_world">-1.0 -9.0 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_10_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_10_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_10_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_11">
+      <pose frame="sim_world">-1.0 -9.0 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_11_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_11_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_11_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_12">
+      <pose frame="sim_world">-1.0 -8.5 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_12_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_12_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_12_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_13">
+      <pose frame="sim_world">-1.0 -8.5 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_13_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_13_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_13_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_14">
+      <pose frame="sim_world">-1.0 -8.0 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_14_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_14_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_14_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_15">
+      <pose frame="sim_world">-1.0 -8.0 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_15_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_15_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_15_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_16">
+      <pose frame="sim_world">-0.5 -9.0 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_16_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_16_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_16_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_17">
+      <pose frame="sim_world">-0.5 -9.0 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_17_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_17_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_17_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_18">
+      <pose frame="sim_world">-0.5 -8.5 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_18_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_18_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_18_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_19">
+      <pose frame="sim_world">-0.5 -8.5 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_19_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_19_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_19_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_20">
+      <pose frame="sim_world">-0.5 -8.0 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_20_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_20_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_20_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_21">
+      <pose frame="sim_world">-0.5 -8.0 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_21_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_21_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_21_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_22">
+      <pose frame="sim_world">0.5 1.0 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_22_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_22_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_22_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_23">
+      <pose frame="sim_world">0.5 1.0 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_23_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_23_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_23_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_24">
+      <pose frame="sim_world">0.5 3.0 0.25 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_24_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_24_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_24_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name="box_25">
+      <pose frame="sim_world">0.5 3.0 0.75 0 -0 0</pose>
+      <static>True</static>
+      <link name="box_25_link">
+        <inertial>
+          <mass>100</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+        </inertial>
+        <collision name="box_25_collision">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>              
+            </box>
+          </geometry>
+          <max_contacts>100</max_contacts>
+          <surface>
+            <contact>
+              <ode />
+            </contact>
+            <bounce />
+            <friction>
+              <torsional>
+                <ode />
+              </torsional>
+              <ode />
+            </friction>
+          </surface>
+        </collision>
+        <visual name="box_25_visual">
+          <geometry>
+            <box>
+              <size>0.5 0.5 0.5</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0.3 0.3 0.3 1</ambient>
+            <diffuse>0.3 0.3 0.3 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+  <model name="barrel_0">
+    <pose>-7.49946386043 -13.4956394423 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_0">
+      <collision name="collision_barrel_0">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_0.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_0">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_0.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_1">
+    <pose>-7.49531910349 -12.4995036273 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_1">
+      <collision name="collision_barrel_1">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_1.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_1">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_1.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_2">
+    <pose>-7.50325126906 -11.4971504168 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_2">
+      <collision name="collision_barrel_2">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_2.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_2">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_2.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_3">
+    <pose>-7.49551055436 -10.4985981043 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_3">
+      <collision name="collision_barrel_3">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_3.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_3">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_3.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_4">
+    <pose>-7.50290582448 -9.49903662212 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_4">
+      <collision name="collision_barrel_4">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_4.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_4">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_4.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_5">
+    <pose>-7.49705244831 -7.00229873939 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_5">
+      <collision name="collision_barrel_5">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_5.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_5">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_5.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_6">
+    <pose>-7.49967223361 -6.0038902253 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_6">
+      <collision name="collision_barrel_6">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_6.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_6">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_6.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_7">
+    <pose>-7.50110383266 -4.99580881762 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_7">
+      <collision name="collision_barrel_7">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_7.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_7">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_7.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_8">
+    <pose>-7.4970573021 -4.00167219042 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_8">
+      <collision name="collision_barrel_8">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_8.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_8">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_8.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_9">
+    <pose>-7.49666286393 -2.99770095718 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_9">
+      <collision name="collision_barrel_9">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_9.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_9">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_9.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_10">
+    <pose>-7.50114239477 -1.9993578155 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_10">
+      <collision name="collision_barrel_10">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_10.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_10">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_10.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_11">
+    <pose>-7.50279670955 0.49588956778 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_11">
+      <collision name="collision_barrel_11">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_11.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_11">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_11.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_12">
+    <pose>-7.50300625578 1.49810745039 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_12">
+      <collision name="collision_barrel_12">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_12.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_12">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_12.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_13">
+    <pose>-7.49558838549 2.49713480999 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_13">
+      <collision name="collision_barrel_13">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_13.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_13">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_13.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_14">
+    <pose>-7.50188878479 3.49967507384 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_14">
+      <collision name="collision_barrel_14">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_14.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_14">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_14.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_15">
+    <pose>-7.50159085069 4.49686885913 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_15">
+      <collision name="collision_barrel_15">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_15.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_15">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_15.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_16">
+    <pose>-7.50246693743 9.0035488383 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_16">
+      <collision name="collision_barrel_16">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_16.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_16">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_16.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_17">
+    <pose>-7.50246590527 9.99768880188 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_17">
+      <collision name="collision_barrel_17">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_17.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_17">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_17.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_18">
+    <pose>-6.49693306228 -13.5004257762 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_18">
+      <collision name="collision_barrel_18">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_18.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_18">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_18.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_19">
+    <pose>-6.49695345535 -12.5018535626 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_19">
+      <collision name="collision_barrel_19">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_19.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_19">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_19.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_20">
+    <pose>-6.50212149624 -11.496830809 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_20">
+      <collision name="collision_barrel_20">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_20.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_20">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_20.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_21">
+    <pose>-6.50454517076 -10.4964281128 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_21">
+      <collision name="collision_barrel_21">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_21.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_21">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_21.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_22">
+    <pose>-6.50299599045 -9.50155309343 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_22">
+      <collision name="collision_barrel_22">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_22.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_22">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_22.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_23">
+    <pose>-6.49629804898 -6.99982288057 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_23">
+      <collision name="collision_barrel_23">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_23.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_23">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_23.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_24">
+    <pose>-6.50458308935 -5.99709717446 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_24">
+      <collision name="collision_barrel_24">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_24.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_24">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_24.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_25">
+    <pose>-6.50007409914 -4.99692166561 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_25">
+      <collision name="collision_barrel_25">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_25.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_25">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_25.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_26">
+    <pose>-6.50052807486 -4.00340981999 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_26">
+      <collision name="collision_barrel_26">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_26.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_26">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_26.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_27">
+    <pose>-6.50053900119 -3.00223052578 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_27">
+      <collision name="collision_barrel_27">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_27.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_27">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_27.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_28">
+    <pose>-6.50231335976 -2.00365457262 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_28">
+      <collision name="collision_barrel_28">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_28.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_28">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_28.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_29">
+    <pose>-6.49702010359 0.501031346884 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_29">
+      <collision name="collision_barrel_29">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_29.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_29">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_29.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_30">
+    <pose>-6.4998662537 1.50041963211 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_30">
+      <collision name="collision_barrel_30">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_30.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_30">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_30.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_31">
+    <pose>-6.49925142537 2.49520741355 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_31">
+      <collision name="collision_barrel_31">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_31.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_31">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_31.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_32">
+    <pose>-6.50001449846 3.49739395479 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_32">
+      <collision name="collision_barrel_32">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_32.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_32">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_32.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_33">
+    <pose>-6.50031037946 4.50427497851 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_33">
+      <collision name="collision_barrel_33">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_33.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_33">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_33.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_34">
+    <pose>-6.50054506113 8.99662204493 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_34">
+      <collision name="collision_barrel_34">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_34.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_34">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_34.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_35">
+    <pose>-6.497243487 10.0045745159 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_35">
+      <collision name="collision_barrel_35">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_35.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_35">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_35.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_36">
+    <pose>1.99836590304 8.50486053371 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_36">
+      <collision name="collision_barrel_36">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_36.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_36">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_36.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_37">
+    <pose>1.99944636211 9.49980742181 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_37">
+      <collision name="collision_barrel_37">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_37.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_37">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_37.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_38">
+    <pose>2.99646932365 8.49600360382 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_38">
+      <collision name="collision_barrel_38">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_38.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_38">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_38.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_39">
+    <pose>2.99528349745 9.49799642115 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_39">
+      <collision name="collision_barrel_39">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_39.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_39">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_39.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_40">
+    <pose>3.50478503802 -13.4952279437 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_40">
+      <collision name="collision_barrel_40">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_40.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_40">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_40.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_41">
+    <pose>3.49748140139 -12.5000571083 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_41">
+      <collision name="collision_barrel_41">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_41.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_41">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_41.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_42">
+    <pose>3.50077971932 -11.4971480165 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_42">
+      <collision name="collision_barrel_42">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_42.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_42">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_42.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_43">
+    <pose>3.50009043412 -10.5032076123 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_43">
+      <collision name="collision_barrel_43">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_43.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_43">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_43.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_44">
+    <pose>3.50022217071 -9.50349951887 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_44">
+      <collision name="collision_barrel_44">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_44.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_44">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_44.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_45">
+    <pose>3.50128370753 -6.99591712993 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_45">
+      <collision name="collision_barrel_45">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_45.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_45">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_45.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_46">
+    <pose>3.50480325703 -5.99973738188 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_46">
+      <collision name="collision_barrel_46">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_46.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_46">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_46.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_47">
+    <pose>3.49622948331 -5.00175891834 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_47">
+      <collision name="collision_barrel_47">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_47.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_47">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_47.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_48">
+    <pose>3.50364958882 -3.99841545753 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_48">
+      <collision name="collision_barrel_48">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_48.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_48">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_48.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_49">
+    <pose>3.49964912158 -2.99938609509 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_49">
+      <collision name="collision_barrel_49">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_49.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_49">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_49.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_50">
+    <pose>3.49703007024 -2.00391832602 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_50">
+      <collision name="collision_barrel_50">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_50.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_50">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_50.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_51">
+    <pose>3.49705127996 0.495548044571 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_51">
+      <collision name="collision_barrel_51">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_51.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_51">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_51.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_52">
+    <pose>3.50000665762 1.5027624342 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_52">
+      <collision name="collision_barrel_52">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_52.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_52">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_52.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_53">
+    <pose>3.49614095715 2.50069259699 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_53">
+      <collision name="collision_barrel_53">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_53.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_53">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_53.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_54">
+    <pose>3.50479621401 3.49668465131 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_54">
+      <collision name="collision_barrel_54">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_54.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_54">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_54.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_55">
+    <pose>3.49961780369 4.50353553906 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_55">
+      <collision name="collision_barrel_55">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_55.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_55">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_55.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_56">
+    <pose>4.50126489368 -13.4985707945 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_56">
+      <collision name="collision_barrel_56">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_56.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_56">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_56.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_57">
+    <pose>4.49921944146 -12.5006201906 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_57">
+      <collision name="collision_barrel_57">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_57.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_57">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_57.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_58">
+    <pose>4.5010255868 -11.4954256276 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_58">
+      <collision name="collision_barrel_58">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_58.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_58">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_58.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_59">
+    <pose>4.50173413103 -10.4993315846 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_59">
+      <collision name="collision_barrel_59">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_59.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_59">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_59.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_60">
+    <pose>4.50333501427 -9.50121437924 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_60">
+      <collision name="collision_barrel_60">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_60.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_60">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_60.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_61">
+    <pose>4.50064252399 -6.99870029266 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_61">
+      <collision name="collision_barrel_61">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_61.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_61">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_61.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_62">
+    <pose>4.50123528425 -5.99505209402 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_62">
+      <collision name="collision_barrel_62">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_62.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_62">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_62.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_63">
+    <pose>4.49548512594 -4.99769006361 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_63">
+      <collision name="collision_barrel_63">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_63.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_63">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_63.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_64">
+    <pose>4.4953394975 -3.99959114966 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_64">
+      <collision name="collision_barrel_64">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_64.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_64">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_64.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_65">
+    <pose>4.5006354541 -2.9961400724 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_65">
+      <collision name="collision_barrel_65">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_65.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_65">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_65.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_66">
+    <pose>4.50306527351 -1.99939492637 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_66">
+      <collision name="collision_barrel_66">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_66.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_66">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_66.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_67">
+    <pose>4.5002953213 0.501163771176 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_67">
+      <collision name="collision_barrel_67">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_67.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_67">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_67.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_68">
+    <pose>4.5038843053 1.49561412864 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_68">
+      <collision name="collision_barrel_68">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_68.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_68">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_68.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_69">
+    <pose>4.49733897896 2.50206441101 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_69">
+      <collision name="collision_barrel_69">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_69.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_69">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_69.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_70">
+    <pose>4.50354510771 3.50330429737 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_70">
+      <collision name="collision_barrel_70">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_70.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_70">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_70.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+  <model name="barrel_71">
+    <pose>4.50161109102 4.49658310332 0.5 0 -0 0</pose>
+    <static>true</static>
+    <link name="link_barrel_71">
+      <collision name="collision_barrel_71">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_71.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_barrel_71">
+        <geometry>
+          <mesh><uri>model://barrel_store_custom/models/barrel_71.dae</uri></mesh>
+        </geometry>
+        <material>
+          
+          
+          </material>
+      </visual>
+    </link>
+  </model>
+
+
+      <model name="ground_plane">
+        <pose frame="">0 0 0 0 -0 0</pose>
+        <link name="ground_plane">
+          <pose frame="">0 0 0 0 -0 0</pose>
+        </link>
+      </model>
+    <gui fullscreen="0">
+      <camera name="user_camera">
+        <pose frame="">29.9048 -41.3003 20.9457 0 0.275643 2.35619</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

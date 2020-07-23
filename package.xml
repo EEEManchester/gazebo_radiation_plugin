@@ -31,9 +31,11 @@
     <exec_depend>gazebo_radiation_plugins</exec_depend>
   -->
   <export>
-    <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}" />
+    <gazebo_ros plugin_path="${prefix}/lib" gazebo_media_path="${prefix}" gazebo_model_path="${prefix}/custom_models" />
     <gazebo_radiation_plugins plugin="${prefix}/radiation_source.xml" />
     <gazebo_radiation_plugins plugin="${prefix}/radiation_sensor.xml" />
+     
+    
   </export>
 
 </package>

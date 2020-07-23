@@ -1,0 +1,56 @@
+material defaultBarrelTexture
+{
+  technique
+  {
+    pass
+    {
+      ambient 1.0 1.0 1.0 1.0
+      diffuse 1.0 1.0 1.0 1.0
+      specular 0.2 0.2 0.2 1.0 12.5
+      texture_unit
+      {
+        // Relative to the location of the material script
+        texture ../textures/black.png
+        scale 1.0 1.0
+      }
+    }
+  }
+}
+
+material minorCorrosionBarrelTexture
+{
+  technique
+  {
+    pass
+    {
+      ambient 1.0 1.0 1.0 1.0
+      diffuse 1.0 1.0 1.0 1.0
+      specular 0.2 0.2 0.2 1.0 12.5
+      texture_unit
+      {
+        // Relative to the location of the material script
+        texture ../textures/rust.png
+        scale 1.0 1.0
+      }
+    }
+  }
+}
+
+material majorCorrosionBarrelTexture
+{
+  technique
+  {
+    pass
+    {
+      ambient 1.0 1.0 1.0 1.0
+      diffuse 1.0 1.0 1.0 1.0
+      specular 0.2 0.2 0.2 1.0 12.5
+      texture_unit
+      {
+        // Relative to the location of the material script
+        texture ../textures/major.png
+      	scale 1 1
+      }
+    }
+  }
+}

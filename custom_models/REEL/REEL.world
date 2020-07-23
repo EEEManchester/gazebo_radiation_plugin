@@ -1,0 +1,1328 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>0</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <include>
+     <uri>model://ground_plane</uri>
+    </include>     
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>0</shadows>
+    </scene>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <state world_name='default'>
+      <sim_time>0 0</sim_time>
+      <real_time>0 0</real_time>
+      <wall_time>0 0</wall_time>
+    </state>
+  <model name="Body1.055">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.055">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.055.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.055">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.055.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.069">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.069">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.069.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.069">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.069.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.056">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.056">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.056.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.056">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.056.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.038">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.038">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.038.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.038">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.038.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.005">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.005">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.005.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.005">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.005.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.065">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.065">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.065.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.065">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.065.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.067">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.067">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.067.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.067">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.067.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.051">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.051">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.051.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.051">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.051.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.016">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.016">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.016.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.016">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.016.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.032">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.032">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.032.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.032">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.032.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.022">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.022">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.022.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.022">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.022.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.029">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.029">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.029.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.029">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.029.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.006">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.006">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.006.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.006">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.006.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.062">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.062">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.062.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.062">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.062.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.074">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.074">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.074.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.074">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.074.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.023">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.023">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.023.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.023">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.023.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.003">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.003">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.003.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.003">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.003.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.043">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.043">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.043.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.043">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.043.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.031">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.031">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.031.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.031">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.031.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.025">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.025">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.025.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.025">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.025.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.017">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.017">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.017.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.017">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.017.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.008">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.008">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.008.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.008">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.008.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.014">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.014">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.014.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.014">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.014.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.009">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.009">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.009.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.009">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.009.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.057">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.057">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.057.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.057">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.057.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.036">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.036">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.036.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.036">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.036.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.007">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.007">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.007.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.007">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.007.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.039">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.039">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.039.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.039">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.039.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.037">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.037">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.037.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.037">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.037.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.001">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.001">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.001.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.001">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.001.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.046">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.046">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.046.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.046">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.046.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.050">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.050">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.050.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.050">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.050.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.015">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.015">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.015.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.015">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.015.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.011">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.011">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.011.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.011">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.011.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.072">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.072">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.072.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.072">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.072.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.053">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.053">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.053.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.053">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.053.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.020">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.020">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.020.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.020">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.020.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.041">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.041">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.041.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.041">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.041.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.059">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.059">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.059.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.059">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.059.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.013">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.013">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.013.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.013">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.013.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.024">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.024">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.024.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.024">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.024.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.026">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.026">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.026.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.026">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.026.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.035">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.035">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.035.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.035">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.035.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.042">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.042">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.042.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.042">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.042.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.060">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.060">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.060.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.060">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.060.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.004">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.004">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.004.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.004">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.004.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.063">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.063">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.063.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.063">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.063.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.021">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.021">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.021.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.021">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.021.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.048">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.048">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.048.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.048">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.048.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.061">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.061">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.061.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.061">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.061.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.045">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.045">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.045.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.045">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.045.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.040">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.040">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.040.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.040">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.040.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.054">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.054">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.054.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.054">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.054.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.070">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.070">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.070.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.070">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.070.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.019">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.019">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.019.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.019">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.019.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.018">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.018">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.018.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.018">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.018.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.028">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.028">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.028.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.028">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.028.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.052">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.052">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.052.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.052">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.052.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.027">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.027">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.027.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.027">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.027.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.073">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.073">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.073.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.073">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.073.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.010">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.010">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.010.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.010">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.010.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.002">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.002">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.002.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.002">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.002.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.034">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.034">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.034.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.034">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.034.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.066">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.066">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.066.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.066">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.066.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.044">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.044">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.044.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.044">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.044.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.047">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.047">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.047.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.047">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.047.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.068">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.068">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.068.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.068">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.068.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.033">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.033">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.033.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.033">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.033.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.012">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.012">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.012.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.012">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.012.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.049">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.049">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.049.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.049">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.049.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.071">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.071">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.071.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.071">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.071.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.030">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.030">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.030.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.030">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.030.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.064">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.064">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.064.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.064">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.064.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+  <model name="Body1.058">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_Body1.058">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.058.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_Body1.058">
+        <geometry>
+          <mesh><uri>model://REEL/models/Body1.058.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>29.9048 -41.3003 20.9457 0 0.275643 2.35619</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>

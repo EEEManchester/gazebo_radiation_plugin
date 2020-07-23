@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.83.0 commit date:2020-06-03, commit time:14:38, hash:211b6c29f771</authoring_tool>
+    </contributor>
+    <created>2020-06-18T09:53:27</created>
+    <modified>2020-06-18T09:53:27</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="Paint_-_Metallic__Silver__002-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.9843137 0.9803922 0.9607843 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">1</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="Paint_-_Metallic__Silver__002-material" name="Paint - Metallic (Silver).002">
+      <instance_effect url="#Paint_-_Metallic__Silver__002-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="MezzanineOverhead_stainlessSteel_002-mesh" name="MezzanineOverhead_stainlessSteel.002">
+      <mesh>
+        <source id="MezzanineOverhead_stainlessSteel_002-mesh-positions">
+          <float_array id="MezzanineOverhead_stainlessSteel_002-mesh-positions-array" count="138">-720 325 330 -700 325 330 -700 325 530 -720 325 530 -710 325 430 -700 345 330 -700 345 530 -700 335 430 -720 345 330 -710 335 330 -700 -255 330 -720 -255 330 -720 -255 530 -700 -255 530 -710 -255 430 -700 -275 330 -700 -275 530 -700 -265 430 -720 -275 330 -710 -265 330 -270 345 530 -270 325 530 -250 325 530 -250 -255 530 -270 -255 530 -270 -275 530 -485 35 530 -270 325 330 -250 325 330 -260 325 430 -270 345 330 -270 335 430 -250 345 330 -260 335 330 -250 -255 330 -270 -255 330 -260 -255 430 -270 -275 330 -270 -265 430 -250 -275 330 -260 -265 330 -250 345 560 -250 -275 560 -720 -275 560 -720 345 560 -485 35 560</float_array>
+          <technique_common>
+            <accessor source="#MezzanineOverhead_stainlessSteel_002-mesh-positions-array" count="46" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="MezzanineOverhead_stainlessSteel_002-mesh-normals">
+          <float_array id="MezzanineOverhead_stainlessSteel_002-mesh-normals-array" count="18">0 -1 0 1 0 0 0 0 -1 0 1 0 -1 0 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#MezzanineOverhead_stainlessSteel_002-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="MezzanineOverhead_stainlessSteel_002-mesh-map-0">
+          <float_array id="MezzanineOverhead_stainlessSteel_002-mesh-map-0-array" count="528">20 0 20 200 10 100 10 100 20 200 0 200 10 100 0 200 0 0 0 0 20 0 10 100 20 0 20 200 10 100 10 100 20 200 0 200 10 100 0 200 0 0 0 0 20 0 10 100 215 310 215 290 225 300 225 300 215 290 235 290 225 300 235 290 235 310 235 310 215 310 225 300 20 0 20 200 10 100 10 100 20 200 0 200 10 100 0 200 0 0 0 0 20 0 10 100 20 0 20 200 10 100 10 100 20 200 0 200 10 100 0 200 0 0 0 0 20 0 10 100 215 -310 235 -310 225 -300 225 -300 235 -310 235 -290 225 -300 235 -290 215 -290 215 -290 215 -310 225 -300 215 310 -215 310 215 290 215 290 -215 310 -215 290 215 290 -215 290 0 0 0 0 -215 290 -215 -290 0 0 -215 -290 215 -290 215 -290 -215 -290 215 -310 215 -310 -215 -290 -215 -310 -215 290 -235 290 -215 -290 -215 -290 -235 290 -235 -290 235 -290 235 290 215 -290 215 -290 235 290 215 290 215 -290 215 290 0 0 20 0 20 200 10 100 10 100 20 200 0 200 10 100 0 200 0 0 0 0 20 0 10 100 20 0 20 200 10 100 10 100 20 200 0 200 10 100 0 200 0 0 0 0 20 0 10 100 -215 310 -235 310 -225 300 -225 300 -235 310 -235 290 -225 300 -235 290 -215 290 -215 290 -215 310 -225 300 20 0 20 200 10 100 10 100 20 200 0 200 10 100 0 200 0 0 0 0 20 0 10 100 20 0 20 200 10 100 10 100 20 200 0 200 10 100 0 200 0 0 0 0 20 0 10 100 -215 -310 -215 -290 -225 -300 -225 -300 -215 -290 -235 -290 -225 -300 -235 -290 -235 -310 -235 -310 -215 -310 -225 -300 600 -200 620 -200 600 0 600 0 620 -200 620 30 600 0 620 30 0 30 600 0 0 30 20 0 20 0 0 30 0 -200 20 0 0 -200 20 -200 450 -200 470 -200 450 0 450 0 470 -200 470 30 450 0 470 30 0 30 450 0 0 30 20 0 20 0 0 30 0 -200 20 0 0 -200 20 -200 600 -200 620 -200 600 0 600 0 620 -200 620 30 600 0 620 30 0 30 600 0 0 30 20 0 20 0 0 30 0 -200 20 0 0 -200 20 -200 450 -200 470 -200 450 0 450 0 470 -200 470 30 450 0 470 30 0 30 450 0 0 30 20 0 20 0 0 30 0 -200 20 0 0 -200 20 -200 235 -310 235 310 0 0 0 0 235 310 -235 310 0 0 -235 310 -235 -310 -235 -310 235 -310 0 0</float_array>
+          <technique_common>
+            <accessor source="#MezzanineOverhead_stainlessSteel_002-mesh-map-0-array" count="264" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="MezzanineOverhead_stainlessSteel_002-mesh-vertices">
+          <input semantic="POSITION" source="#MezzanineOverhead_stainlessSteel_002-mesh-positions"/>
+        </vertices>
+        <triangles material="Paint_-_Metallic__Silver__002-material" count="88">
+          <input semantic="VERTEX" source="#MezzanineOverhead_stainlessSteel_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#MezzanineOverhead_stainlessSteel_002-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#MezzanineOverhead_stainlessSteel_002-mesh-map-0" offset="2" set="0"/>
+          <p>3 0 0 0 0 1 4 0 2 4 0 3 0 0 4 1 0 5 4 0 6 1 0 7 2 0 8 2 0 9 3 0 10 4 0 11 2 1 12 1 1 13 7 1 14 7 1 15 1 1 16 5 1 17 7 1 18 5 1 19 6 1 20 6 1 21 2 1 22 7 1 23 5 2 24 1 2 25 9 2 26 9 2 27 1 2 28 0 2 29 9 2 30 0 2 31 8 2 32 8 2 33 5 2 34 9 2 35 13 3 36 10 3 37 14 3 38 14 3 39 10 3 40 11 3 41 14 3 42 11 3 43 12 3 44 12 3 45 13 3 46 14 3 47 16 1 48 15 1 49 17 1 50 17 1 51 15 1 52 10 1 53 17 1 54 10 1 55 13 1 56 13 1 57 16 1 58 17 1 59 15 2 60 18 2 61 19 2 62 19 2 63 18 2 64 11 2 65 19 2 66 11 2 67 10 2 68 10 2 69 15 2 70 19 2 71 6 2 72 20 2 73 2 2 74 2 2 75 20 2 76 21 2 77 2 2 78 21 2 79 26 2 80 26 2 81 21 2 82 24 2 83 26 2 84 24 2 85 13 2 86 13 2 87 24 2 88 16 2 89 16 2 90 24 2 91 25 2 92 21 2 93 22 2 94 24 2 95 24 2 96 22 2 97 23 2 98 12 2 99 3 2 100 13 2 101 13 2 102 3 2 103 2 2 104 13 2 105 2 2 106 26 2 107 21 0 108 27 0 109 29 0 110 29 0 111 27 0 112 28 0 113 29 0 114 28 0 115 22 0 116 22 0 117 21 0 118 29 0 119 20 4 120 30 4 121 31 4 122 31 4 123 30 4 124 27 4 125 31 4 126 27 4 127 21 4 128 21 4 129 20 4 130 31 4 131 30 2 132 32 2 133 33 2 134 33 2 135 32 2 136 28 2 137 33 2 138 28 2 139 27 2 140 27 2 141 30 2 142 33 2 143 23 3 144 34 3 145 36 3 146 36 3 147 34 3 148 35 3 149 36 3 150 35 3 151 24 3 152 24 3 153 23 3 154 36 3 155 24 4 156 35 4 157 38 4 158 38 4 159 35 4 160 37 4 161 38 4 162 37 4 163 25 4 164 25 4 165 24 4 166 38 4 167 37 2 168 35 2 169 40 2 170 40 2 171 35 2 172 34 2 173 40 2 174 34 2 175 39 2 176 39 2 177 37 2 178 40 2 179 28 1 180 32 1 181 22 1 182 22 1 183 32 1 184 41 1 185 22 1 186 41 1 187 42 1 188 22 1 189 42 1 190 23 1 191 23 1 192 42 1 193 39 1 194 23 1 195 39 1 196 34 1 197 37 0 198 39 0 199 25 0 200 25 0 201 39 0 202 42 0 203 25 0 204 42 0 205 43 0 206 25 0 207 43 0 208 16 0 209 16 0 210 43 0 211 18 0 212 16 0 213 18 0 214 15 0 215 11 4 216 18 4 217 12 4 218 12 4 219 18 4 220 43 4 221 12 4 222 43 4 223 44 4 224 12 4 225 44 4 226 3 4 227 3 4 228 44 4 229 8 4 230 3 4 231 8 4 232 0 4 233 5 3 234 8 3 235 6 3 236 6 3 237 8 3 238 44 3 239 6 3 240 44 3 241 41 3 242 6 3 243 41 3 244 20 3 245 20 3 246 41 3 247 32 3 248 20 3 249 32 3 250 30 3 251 42 5 252 41 5 253 45 5 254 45 5 255 41 5 256 44 5 257 45 5 258 44 5 259 43 5 260 43 5 261 42 5 262 45 5 263</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="MezzanineOverhead_stainlessSteel_001" name="MezzanineOverhead_stainlessSteel.001" type="NODE">
+        <matrix sid="transform">-4.37114e-10 0.01 0 0 -0.01 -4.37114e-10 0 0 0 0 0.01 0 0 0 0 1</matrix>
+        <instance_geometry url="#MezzanineOverhead_stainlessSteel_002-mesh" name="MezzanineOverhead_stainlessSteel.001">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Paint_-_Metallic__Silver__002-material" target="#Paint_-_Metallic__Silver__002-material">
+                <bind_vertex_input semantic="Texture UVs" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

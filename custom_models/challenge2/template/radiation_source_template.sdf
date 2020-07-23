@@ -1,0 +1,38 @@
+    <model name="radiation_source_{name}">
+      <pose>{transform}</pose>
+      <static>true</static>
+      <link name="link_radiation_source_{name}">
+        <pose>0.0 0 0 0 0 0</pose>
+        <visual name="visual_radiation_source_{name}_0">
+          <pose> 0 0 0.0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>1 0.0  0 1.0</ambient>
+            <diffuse>1 0.0  0 1.0</diffuse>
+          </material>
+        </visual>
+        <visual name="visual_radiation_source_{name}_1">
+          <pose> 0 0 2.0 0 0 0</pose>
+          <geometry>
+            <box>
+              <size>0.1 0.1 0.1</size>
+            </box>
+          </geometry>
+          <material>
+            <ambient>0 1.0  0 1.0</ambient>
+            <diffuse>0 1.0  0 1.0</diffuse>
+          </material>
+        </visual>
+        <sensor name="radiation_source_{name}" type="radiation_source">
+          <always_on> 1 </always_on>
+          <update_rate> 1.0 </update_rate>
+          <topic>{source}/{type}</topic>
+          <plugin name="radiation_source_plugin" filename="libradiation_source_plugin.so" />
+
+        </sensor>
+      </link>
+	</model>

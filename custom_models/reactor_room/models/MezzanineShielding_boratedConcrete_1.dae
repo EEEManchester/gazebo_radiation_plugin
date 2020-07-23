@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.83.0 commit date:2020-06-03, commit time:14:38, hash:211b6c29f771</authoring_tool>
+    </contributor>
+    <created>2020-06-18T09:53:27</created>
+    <modified>2020-06-18T09:53:27</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="Base_material_-_Layered_002-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.9843137 0.9803922 0.9607843 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">1</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="Base_material_-_Layered_002-material" name="Base material - Layered.002">
+      <instance_effect url="#Base_material_-_Layered_002-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="MezzanineShielding_boratedConcrete_1_002-mesh" name="MezzanineShielding_boratedConcrete_1.002">
+      <mesh>
+        <source id="MezzanineShielding_boratedConcrete_1_002-mesh-positions">
+          <float_array id="MezzanineShielding_boratedConcrete_1_002-mesh-positions-array" count="54">-750 710 330 -485 710 330 -485 710 490 -750 710 490 -617.5 710 410 -750 -305 330 -750 -305 490 -750 202.5 410 -765 -305 330 -765 -305 490 -757.5 -305 410 -765 725 330 -765 725 490 -765 210 410 -485 725 330 -485 725 490 -625 725 410 -485 717.5 410</float_array>
+          <technique_common>
+            <accessor source="#MezzanineShielding_boratedConcrete_1_002-mesh-positions-array" count="18" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="MezzanineShielding_boratedConcrete_1_002-mesh-normals">
+          <float_array id="MezzanineShielding_boratedConcrete_1_002-mesh-normals-array" count="18">0 -1 0 1 0 0 -1 0 0 0 1 0 0 0 1 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#MezzanineShielding_boratedConcrete_1_002-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="MezzanineShielding_boratedConcrete_1_002-mesh-map-0">
+          <float_array id="MezzanineShielding_boratedConcrete_1_002-mesh-map-0-array" count="192">0 160 0 0 132.5 80 132.5 80 0 0 265 0 132.5 80 265 0 265 160 265 160 0 160 132.5 80 0 160 0 0 507.5 80 507.5 80 0 0 1015 0 507.5 80 1015 0 1015 160 1015 160 0 160 507.5 80 0 160 0 0 7.5 80 7.5 80 0 0 15 0 7.5 80 15 0 15 160 15 160 0 160 7.5 80 0 160 0 0 515 80 515 80 0 0 1030 0 515 80 1030 0 1030 160 1030 160 0 160 515 80 0 160 0 0 140 80 140 80 0 0 280 0 140 80 280 0 280 160 280 160 0 160 140 80 0 160 0 0 7.5 80 7.5 80 0 0 15 0 7.5 80 15 0 15 160 15 160 0 160 7.5 80 140 500 140 515 -125 500 -125 500 140 515 -140 515 -125 500 -140 515 -140 -515 -140 -515 -125 -515 -125 500 140 -500 -125 -500 140 -515 140 -515 -125 -500 -140 -515 -140 -515 -125 -500 -140 515 -140 515 -125 -500 -125 515</float_array>
+          <technique_common>
+            <accessor source="#MezzanineShielding_boratedConcrete_1_002-mesh-map-0-array" count="96" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="MezzanineShielding_boratedConcrete_1_002-mesh-vertices">
+          <input semantic="POSITION" source="#MezzanineShielding_boratedConcrete_1_002-mesh-positions"/>
+        </vertices>
+        <triangles material="Base_material_-_Layered_002-material" count="32">
+          <input semantic="VERTEX" source="#MezzanineShielding_boratedConcrete_1_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#MezzanineShielding_boratedConcrete_1_002-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#MezzanineShielding_boratedConcrete_1_002-mesh-map-0" offset="2" set="0"/>
+          <p>3 0 0 0 0 1 4 0 2 4 0 3 0 0 4 1 0 5 4 0 6 1 0 7 2 0 8 2 0 9 3 0 10 4 0 11 6 1 12 5 1 13 7 1 14 7 1 15 5 1 16 0 1 17 7 1 18 0 1 19 3 1 20 3 1 21 6 1 22 7 1 23 9 0 24 8 0 25 10 0 26 10 0 27 8 0 28 5 0 29 10 0 30 5 0 31 6 0 32 6 0 33 9 0 34 10 0 35 12 2 36 11 2 37 13 2 38 13 2 39 11 2 40 8 2 41 13 2 42 8 2 43 9 2 44 9 2 45 12 2 46 13 2 47 15 3 48 14 3 49 16 3 50 16 3 51 14 3 52 11 3 53 16 3 54 11 3 55 12 3 56 12 3 57 15 3 58 16 3 59 2 1 60 1 1 61 17 1 62 17 1 63 1 1 64 14 1 65 17 1 66 14 1 67 15 1 68 15 1 69 2 1 70 17 1 71 2 4 72 15 4 73 3 4 74 3 4 75 15 4 76 12 4 77 3 4 78 12 4 79 9 4 80 9 4 81 6 4 82 3 4 83 1 5 84 0 5 85 14 5 86 14 5 87 0 5 88 11 5 89 11 5 90 0 5 91 8 5 92 8 5 93 0 5 94 5 5 95</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="MezzanineShielding_boratedConcrete_1" name="MezzanineShielding_boratedConcrete_1" type="NODE">
+        <matrix sid="transform">-4.37114e-10 0.01 0 0 -0.01 -4.37114e-10 0 0 0 0 0.01 0 0 0 0 1</matrix>
+        <instance_geometry url="#MezzanineShielding_boratedConcrete_1_002-mesh" name="MezzanineShielding_boratedConcrete_1">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Base_material_-_Layered_002-material" target="#Base_material_-_Layered_002-material">
+                <bind_vertex_input semantic="Texture UVs" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

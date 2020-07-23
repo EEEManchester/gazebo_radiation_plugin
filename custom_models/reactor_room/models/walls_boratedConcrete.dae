@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <asset>
+    <contributor>
+      <author>Blender User</author>
+      <authoring_tool>Blender 2.83.0 commit date:2020-06-03, commit time:14:38, hash:211b6c29f771</authoring_tool>
+    </contributor>
+    <created>2020-06-18T09:53:28</created>
+    <modified>2020-06-18T09:53:28</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_effects>
+    <effect id="Base_material_-_Layered_002-effect">
+      <profile_COMMON>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <color sid="diffuse">0.9843137 0.9803922 0.9607843 1</color>
+            </diffuse>
+            <reflectivity>
+              <float sid="specular">1</float>
+            </reflectivity>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images/>
+  <library_materials>
+    <material id="Base_material_-_Layered_002-material" name="Base material - Layered.002">
+      <instance_effect url="#Base_material_-_Layered_002-effect"/>
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="walls_boratedConcrete_002-mesh" name="walls_boratedConcrete.002">
+      <mesh>
+        <source id="walls_boratedConcrete_002-mesh-positions">
+          <float_array id="walls_boratedConcrete_002-mesh-positions-array" count="144">310 -950 160 310 -950 0 310 -900 0 310 -900 160 310 -925 80 410 -950 160 410 -900 160 360 -925 160 -950 -900 0 -950 -900 300 950 -900 300 950 -900 0 440 -900 0 440 -900 160 0 -900 150 410 -660 0 410 -950 0 410 -660 160 410 -805 80 170 -660 0 170 -660 160 290 -660 80 170 -630 0 170 -630 160 170 -645 80 440 -630 0 440 -630 160 305 -630 80 440 -765 80 -950 900 0 950 900 0 950 900 300 -950 900 300 0 900 150 -950 0 150 950 0 150 1000 950 0 -1000 950 0 -1000 950 300 1000 950 300 0 950 150 1000 -950 0 1000 -950 300 1000 0 150 -1000 -950 300 -1000 -950 0 0 -950 150 -1000 0 150</float_array>
+          <technique_common>
+            <accessor source="#walls_boratedConcrete_002-mesh-positions-array" count="48" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="walls_boratedConcrete_002-mesh-normals">
+          <float_array id="walls_boratedConcrete_002-mesh-normals-array" count="18">1 0 0 0 0 -1 0 1 0 -1 0 0 0 -1 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#walls_boratedConcrete_002-mesh-normals-array" count="6" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="walls_boratedConcrete_002-mesh-map-0">
+          <float_array id="walls_boratedConcrete_002-mesh-map-0-array" count="576">0 0 0 50 -80 25 -80 25 0 50 -160 50 -80 25 -160 50 -160 0 -160 0 0 0 -80 25 0 0 0 50 -50 25 -50 25 0 50 -100 50 -50 25 -100 50 -100 0 -100 0 0 0 -50 25 510 160 540 160 0 300 0 300 540 160 640 160 0 300 640 160 1900 300 1900 300 640 160 950 150 1900 300 950 150 1900 0 1900 0 950 150 640 0 640 0 950 150 640 160 0 300 0 0 510 160 510 160 0 0 510 0 0 160 0 0 145 80 145 80 0 0 290 0 145 80 290 0 290 160 290 160 240 160 145 80 145 80 240 160 0 160 0 160 0 0 120 80 120 80 0 0 240 0 120 80 240 0 240 160 240 160 0 160 120 80 0 160 0 0 15 80 15 80 0 0 30 0 15 80 30 0 30 160 30 160 0 160 15 80 0 160 0 0 135 80 135 80 0 0 270 0 135 80 270 0 270 160 270 160 0 160 135 80 0 160 0 0 135 80 135 80 0 0 270 0 135 80 270 0 270 160 270 160 0 160 135 80 105 -135 135 -135 105 105 105 105 135 -135 135 135 105 105 135 135 -135 135 -135 135 -135 105 105 105 0 300 0 0 950 150 950 150 0 0 1900 0 950 150 1900 0 1900 300 1900 300 0 300 950 150 0 300 0 0 900 150 900 150 0 0 1800 0 900 150 1800 0 1800 300 1800 300 0 300 900 150 0 300 0 0 900 150 900 150 0 0 1800 0 900 150 1800 0 1800 300 1800 300 0 300 900 150 0 300 0 0 1000 150 1000 150 0 0 2000 0 1000 150 2000 0 2000 300 2000 300 0 300 1000 150 0 300 0 0 950 150 950 150 0 0 1900 0 950 150 1900 0 1900 300 1900 300 0 300 950 150 1410 0 2000 0 1410 160 1410 160 2000 0 2000 300 1410 160 2000 300 1310 160 1310 160 2000 300 0 300 1310 160 0 300 1000 150 1000 150 0 300 0 0 1000 150 0 0 1310 0 1310 0 1310 160 1000 150 0 300 0 0 950 150 950 150 0 0 1900 0 950 150 1900 0 1900 300 1900 300 0 300 950 150 950 -900 1000 950 950 900 950 900 1000 950 -1000 950 950 900 -1000 950 -950 900 -950 900 -1000 950 -1000 -950 -950 900 -1000 -950 -950 -900 -950 -900 -1000 -950 1000 -950 -950 -900 1000 -950 950 -900 950 -900 1000 -950 1000 950 -410 -660 -440 -900 -410 -950 -410 -950 -440 -900 -950 -900 -410 -950 -950 -900 -1000 -950 -1000 -950 -950 -900 -950 900 -1000 -950 -950 900 -1000 950 -1000 950 -950 900 950 900 -1000 950 950 900 1000 950 1000 950 950 900 950 -900 1000 950 950 -900 1000 -950 1000 -950 950 -900 -310 -950 -310 -950 950 -900 -310 -900 -170 -660 -170 -630 -410 -660 -410 -660 -170 -630 -440 -630 -410 -660 -440 -630 -440 -900</float_array>
+          <technique_common>
+            <accessor source="#walls_boratedConcrete_002-mesh-map-0-array" count="288" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="walls_boratedConcrete_002-mesh-vertices">
+          <input semantic="POSITION" source="#walls_boratedConcrete_002-mesh-positions"/>
+        </vertices>
+        <triangles material="Base_material_-_Layered_002-material" count="96">
+          <input semantic="VERTEX" source="#walls_boratedConcrete_002-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#walls_boratedConcrete_002-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#walls_boratedConcrete_002-mesh-map-0" offset="2" set="0"/>
+          <p>3 0 0 0 0 1 4 0 2 4 0 3 0 0 4 1 0 5 4 0 6 1 0 7 2 0 8 2 0 9 3 0 10 4 0 11 6 1 12 5 1 13 7 1 14 7 1 15 5 1 16 0 1 17 7 1 18 0 1 19 3 1 20 3 1 21 6 1 22 7 1 23 13 2 24 6 2 25 10 2 26 10 2 27 6 2 28 3 2 29 10 2 30 3 2 31 9 2 32 9 2 33 3 2 34 14 2 35 9 2 36 14 2 37 8 2 38 8 2 39 14 2 40 2 2 41 2 2 42 14 2 43 3 2 44 10 2 45 11 2 46 13 2 47 13 2 48 11 2 49 12 2 50 17 3 51 15 3 52 18 3 53 18 3 54 15 3 55 16 3 56 18 3 57 16 3 58 5 3 59 5 3 60 6 3 61 18 3 62 18 3 63 6 3 64 17 3 65 20 4 66 19 4 67 21 4 68 21 4 69 19 4 70 15 4 71 21 4 72 15 4 73 17 4 74 17 4 75 20 4 76 21 4 77 23 3 78 22 3 79 24 3 80 24 3 81 22 3 82 19 3 83 24 3 84 19 3 85 20 3 86 20 3 87 23 3 88 24 3 89 26 2 90 25 2 91 27 2 92 27 2 93 25 2 94 22 2 95 27 2 96 22 2 97 23 2 98 23 2 99 26 2 100 27 2 101 13 0 102 12 0 103 28 0 104 28 0 105 12 0 106 25 0 107 28 0 108 25 0 109 26 0 110 26 0 111 13 0 112 28 0 113 6 5 114 13 5 115 17 5 116 17 5 117 13 5 118 26 5 119 17 5 120 26 5 121 23 5 122 23 5 123 20 5 124 17 5 125 32 4 126 29 4 127 33 4 128 33 4 129 29 4 130 30 4 131 33 4 132 30 4 133 31 4 134 31 4 135 32 4 136 33 4 137 9 0 138 8 0 139 34 0 140 34 0 141 8 0 142 29 0 143 34 0 144 29 0 145 32 0 146 32 0 147 9 0 148 34 0 149 31 3 150 30 3 151 35 3 152 35 3 153 30 3 154 11 3 155 35 3 156 11 3 157 10 3 158 10 3 159 31 3 160 35 3 161 39 2 162 36 2 163 40 2 164 40 2 165 36 2 166 37 2 167 40 2 168 37 2 169 38 2 170 38 2 171 39 2 172 40 2 173 42 0 174 41 0 175 43 0 176 43 0 177 41 0 178 36 0 179 43 0 180 36 0 181 39 0 182 39 0 183 42 0 184 43 0 185 16 4 186 41 4 187 5 4 188 5 4 189 41 4 190 42 4 191 5 4 192 42 4 193 0 4 194 0 4 195 42 4 196 44 4 197 0 4 198 44 4 199 46 4 200 46 4 201 44 4 202 45 4 203 46 4 204 45 4 205 1 4 206 1 4 207 0 4 208 46 4 209 38 3 210 37 3 211 47 3 212 47 3 213 37 3 214 45 3 215 47 3 216 45 3 217 44 3 218 44 3 219 38 3 220 47 3 221 10 5 222 39 5 223 31 5 224 31 5 225 39 5 226 38 5 227 31 5 228 38 5 229 32 5 230 32 5 231 38 5 232 44 5 233 32 5 234 44 5 235 9 5 236 9 5 237 44 5 238 42 5 239 9 5 240 42 5 241 10 5 242 10 5 243 42 5 244 39 5 245 15 1 246 12 1 247 16 1 248 16 1 249 12 1 250 11 1 251 16 1 252 11 1 253 41 1 254 41 1 255 11 1 256 30 1 257 41 1 258 30 1 259 36 1 260 36 1 261 30 1 262 29 1 263 36 1 264 29 1 265 37 1 266 37 1 267 29 1 268 8 1 269 37 1 270 8 1 271 45 1 272 45 1 273 8 1 274 1 1 275 1 1 276 8 1 277 2 1 278 19 1 279 22 1 280 15 1 281 15 1 282 22 1 283 25 1 284 15 1 285 25 1 286 12 1 287</p>
+        </triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="walls_boratedConcrete_001" name="walls_boratedConcrete.001" type="NODE">
+        <matrix sid="transform">-4.37114e-10 0.01 0 0 -0.01 -4.37114e-10 0 0 0 0 0.01 0 0 0 0 1</matrix>
+        <instance_geometry url="#walls_boratedConcrete_002-mesh" name="walls_boratedConcrete.001">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="Base_material_-_Layered_002-material" target="#Base_material_-_Layered_002-material">
+                <bind_vertex_input semantic="Texture UVs" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

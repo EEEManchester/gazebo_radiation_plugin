@@ -1,0 +1,12 @@
+models:
+  barrel_40:
+    world_path: /home/tom/ROS/custom_gazebo_sensor/catkin_ws/src/gazebo_radiation_plugin/custom_models/barrel_store_custom/
+    dae: models/barrel_40.dae
+    material: materials/textures/barrel_40.png
+    bend_factor: 0.0
+    rust_factor: 0.00143349725702
+    centre:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    height: None

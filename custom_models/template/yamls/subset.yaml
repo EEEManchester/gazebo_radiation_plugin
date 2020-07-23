@@ -1,0 +1,8 @@
+model_subset:
+  example_model_name:
+    radiation_source_name: ""
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+
