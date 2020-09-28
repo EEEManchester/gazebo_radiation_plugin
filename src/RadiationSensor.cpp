@@ -197,14 +197,15 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
     }
   }
 
-  if ((rand() / RAND_MAX) < (rad - floor(rad)))
-  {
-    this->radiation = ceil(rad);
-  }
-  else
-  {
-    this->radiation = floor(rad);
-  }
+  this->radiation = rad;
+  // if ((rand() / RAND_MAX) < (rad - floor(rad)))
+  // {
+  //   this->radiation = ceil(rad);
+  // }
+  // else
+  // {
+  //   this->radiation = floor(rad);
+  // }
 }
 
 double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegment> ray_vector)
@@ -377,9 +378,11 @@ std::vector<raySegment> gazebo::sensors::RadiationSensor::CheckSourceViewable(ig
       {
         v.push_back(raySegment(blocking_dist, v.back().to, entityName));
       }
-      ignition::math::Vector3d v1 = (source_pos - sensor_pos).Normalize() * (blocking_dist + 0.0001);
-      ;
+      ignition::math::Vector3d v1 = (source_pos - sensor_pos).Normalize() * (blocking_dist + 0.0000001);
+      
       sensor_pos = v1 + sensor_pos;
+
+      std::cout <<"transition " << v.back().length << " " << v.back().from << " " << v.back().to << std::endl;
     }
   }
 }

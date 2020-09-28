@@ -1,0 +1,8 @@
+attenuation_factors:
+  free_space: 0.0
+  aluminium: 2.0
+  stainlessSteel: 5.0
+  concrete: 10.0
+  boratedConcrete: 100.0
+  lead: -1.0
+  
