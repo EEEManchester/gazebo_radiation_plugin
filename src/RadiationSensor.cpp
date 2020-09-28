@@ -188,11 +188,11 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
 
       if (raySegments.empty())
       {
-        rad += within_range_limit*within_angle_limit * sensitivity * value / ((dist * dist) + (+3.3E-5 * 3.3E-5));
+        rad += within_range_limit*within_angle_limit * sensitivity * value * SolidAngle(dist);
       }
       else
       {
-        rad += within_range_limit*within_angle_limit * sensitivity * value / ((dist * dist) + (+3.3E-5 * 3.3E-5)) * AttenuationFactor(raySegments);
+        rad += within_range_limit*within_angle_limit * sensitivity * value * SolidAngle(dist) * AttenuationFactor(raySegments);
       }
     }
   }
@@ -206,6 +206,15 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
     this->radiation = floor(rad);
   }
 }
+
+
+double gazebo::sensors::RadiationSensor::SolidAngle(double dist)
+{
+  // Based on circular cross section detector - always normal to source
+  double detector_radius = 1E-3;
+  return 0.5*( 1 - (  dist / std::sqrt(pow(dist, 2.0) + pow(detector_radius, 2.0))  ) );
+}
+
 
 double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegment> ray_vector)
 {
