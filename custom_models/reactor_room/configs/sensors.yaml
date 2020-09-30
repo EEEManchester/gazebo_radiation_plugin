@@ -3,6 +3,7 @@ sensors:
     type: "gamma"
     range: 10.0
     collimated: false
+    poisson: false
     sensitivity_function: "gaussian"
     mu: 0.0
     sigma: 0.0

@@ -41,6 +41,7 @@
 
 #include <memory>
 #include <math.h>
+#include <random>  // Used for Poisson statistics
 
 
 // It is very important that your custom sensor class is defined inside the
@@ -97,7 +98,7 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
 
   private: double sensitivity_function(double);
 
-
+  // User inputs and defaults
   public: double radiation;
   public: std::string topic;
   public: std::string sensor_type; 
@@ -107,10 +108,13 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   private: bool collimated = false;
   private: double angle_limit = 0.0;
   private: std::string sensitivity_func = "";
+  private: bool poisson = false;
 
   public: physics::RayShapePtr blockingRay;
 
   private: XmlRpc::XmlRpcValue attenuation_factors;
+
+  private: std::default_random_engine generator;  // Random number generator for Poisson distribution
 
 
 };
