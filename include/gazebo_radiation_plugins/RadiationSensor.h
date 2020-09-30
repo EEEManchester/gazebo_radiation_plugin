@@ -97,6 +97,7 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   private: XmlRpc::XmlRpcValue params;
 
   private: double sensitivity_function(double);
+  private: double SolidAngle(double);
 
   // User inputs and defaults
   public: double radiation;

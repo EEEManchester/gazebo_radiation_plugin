@@ -215,10 +215,13 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
 }
 
 
+double gazebo::sensors::RadiationSensor::SolidAngle(double dist)
+{
   // Based on circular cross section detector - always normal to source
-  double detector_radius = 1E-2; // 1 cm radius
+  double detector_radius = 1E-3;
   double correction_factor = 0.5*(1 - (1 / std::sqrt(1 + pow(detector_radius, 2.0))));  // Correct intensity to 1 m value
   return (1/correction_factor)*0.5*( 1 - (  dist / std::sqrt(pow(dist, 2.0) + pow(detector_radius, 2.0))  ) );
+}
 
 
 double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegment> ray_vector)
