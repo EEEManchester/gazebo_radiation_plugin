@@ -4,6 +4,8 @@
   <arg name="headless" default="false" />
   <arg name="world_name" default="$(find gazebo_radiation_plugins)/custom_models/reactor_room/updated_reactor_room2.world" />
 
+  <param name="use_sim_time" value="$(arg use_sim_time)"/>
+
   <!-- Short-term hack to support the original front_laser:=true argument for spawning
        the simulator. This will be removed in favour of using the config:=x arg instead. -->
   <arg name="front_laser" default="true" />
@@ -15,8 +17,6 @@
   <rosparam file="$(find gazebo_radiation_plugins)/custom_models/reactor_room/configs/attentuation.yaml" command="load"  />
   <rosparam file="$(find gazebo_radiation_plugins)/custom_models/reactor_room/configs/sensors.yaml" command="load"  />
   <rosparam file="$(find gazebo_radiation_plugins)/custom_models/reactor_room/configs/radiation.yaml" command="load"  />
-
-  <node pkg="tf" type="static_transform_publisher" name="sim_sensor_to_robot" args="0 0 0 0 0 0 base_link sim_sensor 100"/>
 
   <!-- Launch Gazebo with the specified world -->
 
@@ -40,6 +40,16 @@
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen"
 	      args="-urdf -model jackal -param robot_description -x -0 -y 0 -z 1.0" />
 
-  <include file="$(find gazebo_radiation_plugins)/launch/gmapping_movebase.launch" /-->
-  <include file="$(find gazebo_radiation_plugins)/launch/radmap.launch" /-->
+  <!-- Attach sensor to Jackal -->
+  <node pkg="tf" type="static_transform_publisher" name="sim_sensor_to_robot" args="0 0 0 0 0 0 base_link sim_sensor 100"/>
+
+  <!-- Run gmapping -->
+  <include file="$(find jackal_navigation)/launch/include/gmapping.launch" />
+
+  <!-- Run Move Base -->
+  <include file="$(find gazebo_radiation_plugins)/launch/move_base.launch" />
+
+  <!-- Run RVIZ -->
+  <node name="rviz" pkg="rviz" type="rviz"/>
+
 </launch>

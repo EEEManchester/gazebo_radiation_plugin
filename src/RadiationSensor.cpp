@@ -75,6 +75,11 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
     n.getParam("sensors/" + this->topic + "/collimated", this->collimated);
   } 
 
+  if (n.hasParam("sensors/" + this->topic + "/poisson"))
+  {
+    n.getParam("sensors/" + this->topic + "/poisson", this->poisson);
+  } 
+
   if (n.hasParam("sensors/" + this->topic + "/sensitivity_function"))
   {
     n.getParam("sensors/" + this->topic + "/sensitivity_function", this->sensitivity_func);
@@ -188,25 +193,37 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
 
       if (raySegments.empty())
       {
-        rad += within_range_limit*within_angle_limit * sensitivity * value / ((dist * dist) + (+3.3E-5 * 3.3E-5));
+        rad += within_range_limit*within_angle_limit * sensitivity * value * SolidAngle(dist);
       }
       else
       {
-        rad += within_range_limit*within_angle_limit * sensitivity * value / ((dist * dist) + (+3.3E-5 * 3.3E-5)) * AttenuationFactor(raySegments);
+        rad += within_range_limit*within_angle_limit * sensitivity * value * SolidAngle(dist) * AttenuationFactor(raySegments);
       }
     }
   }
 
-  this->radiation = rad;
-  // if ((rand() / RAND_MAX) < (rad - floor(rad)))
-  // {
-  //   this->radiation = ceil(rad);
-  // }
-  // else
-  // {
-  //   this->radiation = floor(rad);
-  // }
+  // Discretise into integer events, with variance of a Poisson distribution (if user selected)
+  if (this->poisson == true)
+  {
+    std::poisson_distribution<int> distribution(rad);
+    int number = distribution(this->generator);
+    this->radiation = number;
+  }
+  else
+  {
+    this->radiation = rad;
+  }
 }
+
+
+double gazebo::sensors::RadiationSensor::SolidAngle(double dist)
+{
+  // Based on circular cross section detector - always normal to source
+  double detector_radius = 1E-3;
+  double correction_factor = 0.5*(1 - (1 / std::sqrt(1 + pow(detector_radius, 2.0))));  // Correct intensity to 1 m value
+  return (1/correction_factor)*0.5*( 1 - (  dist / std::sqrt(pow(dist, 2.0) + pow(detector_radius, 2.0))  ) );
+}
+
 
 double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegment> ray_vector)
 {
