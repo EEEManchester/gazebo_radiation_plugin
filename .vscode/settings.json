@@ -62,7 +62,12 @@
         "utility": "cpp",
         "typeindex": "cpp",
         "typeinfo": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "forward_list": "cpp",
+        "any": "cpp",
+        "optional": "cpp",
+        "string_view": "cpp",
+        "valarray": "cpp"
     },
     "python.pythonPath": "/usr/bin/python"
 }

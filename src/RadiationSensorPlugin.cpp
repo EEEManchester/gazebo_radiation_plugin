@@ -42,7 +42,7 @@ namespace gazebo
     this->updateConnection = this->parentSensor->ConnectUpdated(
         std::bind(&RadiationSensorPlugin::OnUpdate, this));
   
-    _publisher = _nh.advertise<gazebo_radiation_plugins::Simulated_Radiation_Msg>(this->parentSensor->topic, 1);
+    _publisher = _nh.advertise<gazebo_radiation_plugins::Simulated_Radiation_Msg>(this->parentSensor->topic, 10);
 
   
   }

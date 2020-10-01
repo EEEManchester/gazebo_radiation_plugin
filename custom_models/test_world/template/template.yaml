@@ -1,0 +1,12 @@
+models:
+  {model_name}
+    world_path: {path}
+    dae: {dae}
+    material: {material}
+    bend_factor: {bend_factor}
+    rust_factor: {rust_factor}
+    centre:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    height: None

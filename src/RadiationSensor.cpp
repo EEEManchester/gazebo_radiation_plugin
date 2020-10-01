@@ -201,6 +201,7 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
       }
     }
   }
+
   // Discretise into integer events, with variance of a Poisson distribution (if user selected)
   if (this->poisson == true)
   {
@@ -394,9 +395,11 @@ std::vector<raySegment> gazebo::sensors::RadiationSensor::CheckSourceViewable(ig
       {
         v.push_back(raySegment(blocking_dist, v.back().to, entityName));
       }
-      ignition::math::Vector3d v1 = (source_pos - sensor_pos).Normalize() * (blocking_dist + 0.0001);
-      ;
+      ignition::math::Vector3d v1 = (source_pos - sensor_pos).Normalize() * (blocking_dist + 0.0000001);
+      
       sensor_pos = v1 + sensor_pos;
+
+      std::cout <<"transition " << v.back().length << " " << v.back().from << " " << v.back().to << std::endl;
     }
   }
 }
