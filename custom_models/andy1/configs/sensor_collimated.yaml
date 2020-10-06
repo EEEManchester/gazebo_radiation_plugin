@@ -1,0 +1,10 @@
+sensors:
+  sensor_0:
+    type: "gamma"
+    range: 1000.0
+    collimated: true
+    poisson: true
+    sensitivity_function: ""
+    mu: 0.0
+    sigma: 0.0
+    angle_limit: 0.174533

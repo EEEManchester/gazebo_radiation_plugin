@@ -40,6 +40,6 @@
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" output="screen"
 	      args="-urdf -model jackal -param robot_description -x -0 -y 0 -z 1.0" />
 
-  <include file="$(find gazebo_radiation_plugins)/launch/gmapping_movebase.launch" /-->
-  <include file="$(find gazebo_radiation_plugins)/launch/radmap.launch" /-->
+  <include file="$(find gazebo_radiation_plugins)/launch/gmapping_movebase.launch" />
+  <include file="$(find gazebo_radiation_plugins)/launch/radmap.launch" />
 </launch>

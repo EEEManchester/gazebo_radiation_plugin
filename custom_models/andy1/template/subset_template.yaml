@@ -1,0 +1,10 @@
+  {model_name}
+    radiation_source_name: {radiation_source}
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: {bend_factor}
+    rust_factor: {rust_factor}
+    
+

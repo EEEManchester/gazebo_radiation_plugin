@@ -1,0 +1,12 @@
+models:
+  model_name:
+    world_path: full/path/to/file.world
+    dae: path/to/dae_file.dae
+    material: path/to/texture.png
+    bend_factor: 0.0
+    rust_factor: 0.0
+    centre:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    height: None

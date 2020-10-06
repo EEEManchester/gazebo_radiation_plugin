@@ -1,0 +1,12 @@
+models:
+  barrel_1:
+    world_path: /home/tom/ROS/custom_gazebo_sensor/catkin_ws/src/gazebo_radiation_plugin/custom_models/challenge1/
+    dae: models/barrel_1.dae
+    material: materials/textures/barrel_1.png
+    bend_factor: 0.2
+    rust_factor: 0.0
+    centre:
+      x: 0.0
+      y: 0.0
+      z: 0.0
+    height: None

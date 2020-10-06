@@ -1,0 +1,18 @@
+sources:
+  source_0:
+    noise: 2.0
+    type: gamma
+    units: Sv/h
+    value: 1000.0
+    x: 0
+    y: 0
+    z: 0
+  source_1:
+    noise: 2.0
+    type: gamma
+    units: Sv/h
+    value: 500.0
+    x: 0
+    y: 0
+    z: 0
+

@@ -1,0 +1,40 @@
+model_subset:
+  cylinder_48:
+    radiation_source_name: "source_0"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  cylinder_102:
+    radiation_source_name: "source_1"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  cylinder_67:
+    radiation_source_name: "source_2"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  cylinder_165:
+    radiation_source_name: "source_3"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  cylinder_84:
+    radiation_source_name: "source_4"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  cylinder_129:
+    radiation_source_name: "source_5"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+
+    
+

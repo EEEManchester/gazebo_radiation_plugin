@@ -1,0 +1,10 @@
+model_subset:
+  barrel_0:
+    radiation_source_name: "source_0"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+
+    
+
