@@ -57,7 +57,7 @@ void gazebo::sensors::RadiationSource::Load(const std::string &_worldName)
     this->scanPub_type = this->node->Advertise<msgs::Any>(this->name+"/type");
   
  
-    this->entity = this->world->GetEntity(this->ParentName());
+    this->entity = this->world->EntityByName(this->ParentName());
 
     n.getParam("/sources/"+this->name,params);
 
@@ -134,7 +134,7 @@ bool gazebo::sensors::RadiationSource::UpdateImpl(const bool force)
 
 ignition::math::Pose3d gazebo::sensors::RadiationSource::GetPose() const
 {
-  return this->entity->GetWorldPose().Ign();
+  return this->entity->WorldPose();
   
 }
 

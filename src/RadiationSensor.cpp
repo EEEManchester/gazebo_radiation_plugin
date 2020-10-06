@@ -58,7 +58,7 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
   //this->sensor_type = this->sdf->GetElement("sensor_type")->Get<std::string>();
   this->sensor_type = "";
 
-  this->entity = this->world->GetEntity(this->ParentName());
+  this->entity = this->world->EntityByName(this->ParentName());
 
   if (n.hasParam("sensors/" + this->topic + "/type"))
   {
@@ -121,7 +121,7 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
   }
 
   this->blockingRay = boost::dynamic_pointer_cast<gazebo::physics::RayShape>(
-      this->world->GetPhysicsEngine()->CreateShape("ray", gazebo::physics::CollisionPtr()));
+      this->world->Physics()->CreateShape("ray", gazebo::physics::CollisionPtr()));
 }
 
 void gazebo::sensors::RadiationSensor::Fini()
@@ -167,7 +167,7 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
     double dist = this->CheckSourceRange(pos);
     if (dist <= this->sensor_range)
     {
-      std::vector<raySegment> raySegments = CheckSourceViewable(this->entity->GetWorldPose().Ign().Pos(), pos.Pos(), (*ci)->name);
+      std::vector<raySegment> raySegments = CheckSourceViewable(this->entity->WorldPose().Pos(), pos.Pos(), (*ci)->name);
 
       std::string type = (*ci)->radiation_type;
       double value = (*ci)->radiation;
@@ -284,7 +284,7 @@ double gazebo::sensors::RadiationSensor::CheckSourceRange(const ignition::math::
 {
   // copy sensor vector pos into a temp var
   ignition::math::Vector3d v;
-  v = _pose.Pos() - this->entity->GetWorldPose().Ign().Pos();
+  v = _pose.Pos() - this->entity->WorldPose().Pos();
 
   return v.Length();
 }
@@ -306,8 +306,8 @@ double gazebo::sensors::RadiationSensor::CheckSourceAngle(const ignition::math::
   ignition::math::Vector3d v1;
   ignition::math::Vector3d v(1, 0, 0);
 
-  v0 = _pose.Pos() - entity->GetWorldPose().Ign().Pos();
-  v1 = entity->GetWorldPose().Ign().Rot().RotateVector(v);
+  v0 = _pose.Pos() - entity->WorldPose().Pos();
+  v1 = entity->WorldPose().Rot().RotateVector(v);
 
   double angle = std::acos(dot(v0, v1) / (mag(v0) * mag(v1)));
 
@@ -317,7 +317,7 @@ double gazebo::sensors::RadiationSensor::CheckSourceAngle(const ignition::math::
 //////////////////////////////////////////////////
 ignition::math::Pose3d gazebo::sensors::RadiationSensor::GetPose() const
 {
-  return this->entity->GetWorldPose().Ign();
+  return this->entity->WorldPose();
 }
 
 void gazebo::sensors::RadiationSensor::AddSource(RadiationSource *_rs)
@@ -359,7 +359,7 @@ std::vector<raySegment> gazebo::sensors::RadiationSensor::CheckSourceViewable(ig
     std::string entityName = "";
     double blocking_dist;
     boost::recursive_mutex::scoped_lock lock(*(
-        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+        this->world->Physics()->GetPhysicsUpdateMutex()));
 
     this->blockingRay->SetPoints(sensor_pos, source_pos);
     this->blockingRay->GetIntersection(blocking_dist, entityName);
