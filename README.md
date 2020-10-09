@@ -245,3 +245,52 @@ rosrun gazebo_radiation_plugins model_mover.py
 
 Now you should be able to see the rostopic showing up for the sensor and how the value changes as you move it around. NB: if collomation is being use then the green square represents the front of the sensor and thus the sensor will need rotating around to face the sources. 
 
+
+# The Physics
+
+Sources of radiation are modelled as point sources, with constant activity (decays per second).  The intensity of radiation as a function of position in a simulated environment is based on two phenonema, the fraction of radiation impinging on a psuedo-detector and shielding due to objects in the environment.
+
+## Modeling a Radiation Sensor
+
+At a distance, ```D```, from a point radioactive source the number of radiation interactions, ```I_D```,  which occur for a circular sensor, when facing normal to the source is described by:
+
+```I_D = 1/2 * I_0 * ( 1- ( D / sqrt(D^2 + R^2) ) )```
+
+where ```I_0``` is the activity of the source, ```D``` is the distance between the sensor and the source, and ```R``` is the radius of the circular sensor face.  As ```D >> R```, the relationship reduces to the commonly known inverse distance squared law (```I``` proportional to ```1/D^2```).  
+
+When the sensor is in very close proximity to a source (```D -> 0```), the total interactions is half the total.  This is more physically accurate that other implementations which only use an inverse distance squared approach (which tends to infinity).
+
+## Attenuation
+
+Between a source and the detector, materials act to absorb, scatter and generally attenuate the expected intensity.   For a given thickness of material ```Z```, and linear attenuation coefficient ```a```, the ration of measured intensity, ```I``` compared to the expected intensity ```I_D``` is described by the Beer-Lambert Law:
+
+```I / I_D = exp(-aZ)```
+
+Given an imaginary ray between a source and the detector, all objects (including air) and the distance travelled through that medium needs to be recorded.  The total attenuation through ```j``` objects is the product of all the individual attenuation contributions described by the Beer-Lambert Law.
+
+This yields the measured intensity at distance ```I_D```  to be:
+
+```I_D = [ 1/2 * I_0 * ( 1- ( D / sqrt(D^2 + R^2) ) ) ] * PRODUCT_j(exp(-a_j * Z_j))```
+
+## Sensor Sensitivity
+
+A real-world detector is often more sensitive to radiation in particular directions, either due to the geometry of the detecting volume, or due to other materials attenuation radiation (such as the detector casing or deliberate collimation with lead/tungsten).
+
+This sensitivity can either be explicitly defined, or approximated ysing a convenient function such as a Gaussian or Uniform distribution.  Given the angle between the detector face and the source, ```angle```, this yields a value between 0-1 for the sensitivity based on function ```f(angle)```.  Therefore, the intensity measured by a detector is further corrected to give:
+
+```I_D = f(angle) * [ 1/2 * I_0 * ( 1- ( D / sqrt(D^2 + R^2) ) ) ] * PRODUCT_j(exp(-a_j * Z_j))```
+
+
+## Multiple Radiation Sources
+
+An instrument of uniform sensitivity will detect photons or heavy particles from radioactive decay regardless of source, therefore multiple sources will provide a contribution to the total radiation flux impinging on the pseudo-sensor.
+
+However, the flux from each source is modified based on attenuation by objects and the sensitivity with respect to the sensor orientation.  The total intensity then is the summation of all contributions from different sources given their distance, attenuation, and sensitivity.
+
+```I_D_Total = SUM [ f(angle) * [ 1/2 * I_0 * ( 1- ( D / sqrt(D^2 + R^2) ) ) ] * PRODUCT_j(exp(-a_j * Z_j))]```
+
+## Variance of Radioactive Decay
+
+Radioactive decay is a naturally random process.  Though the average activity of a source can be estimated, for a given period of time the number of decay events will fluctuate, and this fluctuation can be described by a Poisson Distribution.
+
+The radiation intensity impinging on pseudo-detector (by multiple sources), can be augmented to include this fluctuation expected from real-world radioactive materials.  The total radiation intensity is used as the mean of a Poisson distribution, and a random integer number of events are drawn from this distribution.
