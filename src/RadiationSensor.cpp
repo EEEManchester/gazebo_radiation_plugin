@@ -399,7 +399,7 @@ std::vector<raySegment> gazebo::sensors::RadiationSensor::CheckSourceViewable(ig
       
       sensor_pos = v1 + sensor_pos;
 
-      std::cout <<"transition " << v.back().length << " " << v.back().from << " " << v.back().to << std::endl;
+      //std::cout <<"transition " << v.back().length << " " << v.back().from << " " << v.back().to << std::endl;
     }
   }
 }
