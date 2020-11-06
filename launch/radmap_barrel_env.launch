@@ -1,0 +1,13 @@
+<launch>
+<!-- Set variables for filenames -->
+
+  <!-- Costmap yaml file -->
+  <arg name="costmap_yaml" default="$(find gazebo_radiation_plugins)/launch/params/radmap_params_barrel_env.yaml"/>
+
+<!-- launch costmap_2d node independently -->
+
+  <node name="radmap" pkg="costmap_2d" type="costmap_2d_node" output="screen">
+    <rosparam file="$(arg costmap_yaml)" command="load" ns="costmap" />
+  </node>
+
+</launch>

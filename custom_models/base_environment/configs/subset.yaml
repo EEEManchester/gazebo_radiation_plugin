@@ -1,0 +1,31 @@
+model_subset:
+  barrel_1:
+    radiation_source_name: "source_0"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  cylinder_21:
+    radiation_source_name: "source_1"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  cylinder_45:
+    radiation_source_name: "source_2"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  cylinder_96:
+    radiation_source_name: "source_3"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0
+  cylinder_114:
+    radiation_source_name: "source_4"
+    radiation_position_offset: 
+      x: 0.0
+      y: 0.0
+      z: 0.0

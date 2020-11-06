@@ -1,0 +1,49 @@
+sources:
+  source_0:
+    noise: 500.0
+    type: gamma
+    units: cps
+    value: 50.0
+    x: 0
+    y: 0
+    z: 0
+  source_1:
+    noise: 500.0
+    type: gamma
+    units: Sv/h
+    value: 50.0
+    x: 0
+    y: 0
+    z: 0
+  source_2:
+    noise: 200.0
+    type: gamma
+    units: Sv/h
+    value: 500.0
+    x: 0
+    y: 0
+    z: 0
+  source_3:
+    noise: 100.0
+    type: gamma
+    units: Sv/h
+    value: 20.0
+    x: 0
+    y: 0
+    z: 0
+  source_4:
+    noise: 200.0
+    type: gamma
+    units: Sv/h
+    value: 90.0
+    x: 0
+    y: 0
+    z: 0
+  source_5:
+    noise: 0.0
+    type: gamma
+    units: Sv/h
+    value: 10.0
+    x: 0
+    y: 0
+    z: 0

@@ -26,7 +26,10 @@ class Evolver(object):
 
         ratio = f*np.cos(z*3.14/h)
 
-        if ratio < 0.0:
+        if (f > 0.0) & (ratio < 0.0):
+            ratio = 0.0
+
+        if (f < 0.0) & (ratio > 0.0):
             ratio = 0.0
 
         rx = p[0]+(x*(ratio))
@@ -177,7 +180,7 @@ class Evolver(object):
                 if boundary[i,j] == 255:
                     boundary_list.append([i,j])
 
-        i = 0
+        i = 1
         while i < int(cols*rows*rust_factor):
             idx = random.randint(0,len(boundary_list)-1)
             open_neighbours = []

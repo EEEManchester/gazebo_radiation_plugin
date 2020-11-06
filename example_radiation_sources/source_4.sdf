@@ -41,8 +41,7 @@
         <update_rate> 1.0 </update_rate>
 <topic>source_4/gamma</topic> 
        <plugin name="radiation_source_plugin" filename="libradiation_source_plugin.so"/>      
-       
-       </plugin>  
+ 
       
       </sensor>
 

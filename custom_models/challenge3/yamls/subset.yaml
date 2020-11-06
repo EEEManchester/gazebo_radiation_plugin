@@ -1,0 +1,56 @@
+model_subset:
+  wall_3:
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0
+  wall_1:
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0
+  wall_0:
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0
+  barrel_0:
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.00150308819292
+  barrel_1:
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.2
+    rust_factor: 0.0
+    centre:
+      x: 0.3
+      y: 0.3
+      z: 0.3
+  cylinder_1:
+    radiation_source_name: source_3
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0
+  cylinder_0:
+    radiation_source_name: source_4
+    radiation_position_offset: 
+      x: 0
+      y: 0
+      z: 0
+    bend_factor: 0.0
+    rust_factor: 0.0
