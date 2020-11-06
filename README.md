@@ -234,7 +234,7 @@ rosrun gazebo_radiation_plugins load_radiation_sources.py
 
 And then finally we can load an example sensor using:
 ```
-rosrun gazebo_ros spawn_model -file src/gazebo_radiation_plugins/templates/radiation_sensor.sdf  -sdf -x 0 -y 0 -z 0.1 -model sensor
+rosrun gazebo_ros spawn_model -file src/gazebo_radiation_plugins/sdf/radiation_sensor.sdf  -sdf -x 0 -y 0 -z 0.1 -model sensor
 ```
 (for real use this sensor would be attached to a robot).
 
