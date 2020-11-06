@@ -42,7 +42,7 @@
 <topic>source_3/beta</topic> 
        <plugin name="radiation_source_plugin" filename="libradiation_source_plugin.so"/>      
        
-       </plugin>  
+ 
       
       </sensor>
 

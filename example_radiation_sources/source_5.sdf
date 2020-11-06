@@ -62,7 +62,7 @@
       <topic>source_5/gamma</topic> 
             <plugin name="radiation_source_plugin" filename="libradiation_source_plugin.so"/>      
             
-            </plugin>  
+  
             
             </sensor>
 
