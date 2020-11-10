@@ -153,7 +153,7 @@ bool gazebo::sensors::RadiationSensor::UpdateImpl(const bool force)
   {
     {
       boost::recursive_mutex::scoped_lock lock(*(
-          this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+          this->world->Physics()->GetPhysicsUpdateMutex()));
       
       msgs::Pose msg_pose;
       this->pose = this->GetPose();
