@@ -11,10 +11,9 @@
 using gazebo::sensors::Sensor;
 using gazebo::sensors::SensorFactory;
 
-
 extern "C"
 {
-GZ_REGISTER_STATIC_SENSOR("radiation_source", RadiationSource)
+  GZ_REGISTER_STATIC_SENSOR("radiation_source", RadiationSource)
 }
 
 // you can also use other sensor categories
@@ -24,11 +23,9 @@ gazebo::sensors::RadiationSource::RadiationSource()
   this->active = true;
 }
 
-gazebo::sensors::RadiationSource::~RadiationSource() 
+gazebo::sensors::RadiationSource::~RadiationSource()
 {
-  
 }
-
 
 /////////////////////////////////////////////////
 void gazebo::sensors::RadiationSource::Load(const std::string &_worldName, sdf::ElementPtr _sdf)
@@ -36,37 +33,31 @@ void gazebo::sensors::RadiationSource::Load(const std::string &_worldName, sdf::
   Sensor::Load(_worldName, _sdf);
 }
 
-
 void gazebo::sensors::RadiationSource::Load(const std::string &_worldName)
 {
   Sensor::Load(_worldName);
 
   this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-    std::bind(&gazebo::sensors::RadiationSource::UpdateImpl, this,true));
-
+      std::bind(&gazebo::sensors::RadiationSource::UpdateImpl, this, true));
 
   if (this->sdf->GetElement("topic"))
   {
     this->topic = this->sdf->GetElement("topic")->Get<std::string>();
     this->name = this->topic.substr(0, this->topic.find("/"));
-    this->radiation_type = this->topic.substr(this->name.size()+1, this->topic.find("/"));
+    this->radiation_type = this->topic.substr(this->name.size() + 1, this->topic.find("/"));
 
+    this->radPub_pose = this->node->Advertise<msgs::Pose>(this->name + "/pose");
+    this->radPub_value = this->node->Advertise<msgs::Any>(this->name + "/value");
+    this->radPub_type = this->node->Advertise<msgs::Any>(this->name + "/type");
 
-    this->scanPub_pose = this->node->Advertise<msgs::Pose>(this->name+"/pose");
-    this->scanPub_value = this->node->Advertise<msgs::Any>(this->name+"/value");
-    this->scanPub_type = this->node->Advertise<msgs::Any>(this->name+"/type");
-  
- 
     this->entity = this->world->GetEntity(this->ParentName());
 
-    n.getParam("/sources/"+this->name,params);
+    n.getParam("/sources/" + this->name, params);
 
     this->radiation = params["value"];
     this->units = static_cast<std::string>(params["units"]);
     this->noise = params["noise"];
 
-
-    // Add the tag to all the RFID sensors.
     Sensor_V sensors = SensorManager::Instance()->GetSensors();
     for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
     {
@@ -75,14 +66,13 @@ void gazebo::sensors::RadiationSource::Load(const std::string &_worldName)
       if ((*iter)->Type() == "radiation_sensor")
       {
         std::dynamic_pointer_cast<RadiationSensor>(*iter)->AddSource(this);
-        
       }
     }
 
-    gzmsg << "spawning source " << this->name << " of type " << this->radiation_type << " with value " << this->radiation << std::endl;;
+    gzmsg << "spawning source " << this->name << " of type " << this->radiation_type << " with value " << this->radiation << std::endl;
+    ;
   }
 }
-
 
 void gazebo::sensors::RadiationSource::Fini()
 {
@@ -95,7 +85,6 @@ void gazebo::sensors::RadiationSource::Fini()
     if ((*iter)->Type() == "radiation_sensor")
     {
       std::dynamic_pointer_cast<RadiationSensor>(*iter)->RemoveSource(this->name);
-      
     }
   }
 
@@ -106,36 +95,56 @@ void gazebo::sensors::RadiationSource::Fini()
 void gazebo::sensors::RadiationSource::Init()
 {
   Sensor::Init();
-
-
 }
 
 bool gazebo::sensors::RadiationSource::UpdateImpl(const bool force)
+{
+
+  if (this->gotSensor == false)
+  {
+    Sensor_V sensors = SensorManager::Instance()->GetSensors();
+    for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
     {
+      if ((*iter)->Type() == this->Name())
+      {
 
-    msgs::Pose msg_pose;
-    this->pose = this->GetPose();
-
-    msgs::Set(&msg_pose, pose);
-
-    msgs::Any msg_value;
-    msg_value = msgs::ConvertAny(this->radiation + rand()/(RAND_MAX/this->noise));
-
-    msgs::Any msg_type;
-    msg_type = msgs::ConvertAny(this->radiation_type);
-
-
-    this->scanPub_pose->Publish(msg_pose);
-    this->scanPub_value->Publish(msg_value);   
-    this->scanPub_type->Publish(msg_type);   
-
+        this->sensor = (*iter);
+        this->gotSensor = true;
+      }
     }
+  }
 
+
+  msgs::Pose msg_pose;
+  this->pose = this->GetPose();
+  msgs::Set(&msg_pose, pose);
+
+  msgs::Any msg_value;
+  msg_value = msgs::ConvertAny(this->radiation + rand() / (RAND_MAX / this->noise));
+
+  msgs::Any msg_type;
+  msg_type = msgs::ConvertAny(this->radiation_type);
+
+  this->radPub_pose->Publish(msg_pose);
+  this->radPub_value->Publish(msg_value);
+  this->radPub_type->Publish(msg_type);
+
+  return true;
+}
 
 ignition::math::Pose3d gazebo::sensors::RadiationSource::GetPose() const
 {
-  return this->entity->GetWorldPose().Ign();
-  
+  ignition::math::Pose3d p;
+
+  if (this->gotSensor)
+  {
+    p = this->sensor->Pose() + this->entity->GetWorldPose().Ign();
+  }
+  else
+  {
+    p = this->entity->GetWorldPose().Ign();
+  }
+  return p;
 }
 
 // void gazebo::sensors::RadiationSource::SetPose() const
@@ -144,6 +153,7 @@ ignition::math::Pose3d gazebo::sensors::RadiationSource::GetPose() const
 //   return this->entity->SetWorldPose();s
 // }
 
- sdf::ElementPtr gazebo::sensors::RadiationSource::GetSDF(){
-   return this->sdf;
- }
+sdf::ElementPtr gazebo::sensors::RadiationSource::GetSDF()
+{
+  return this->sdf;
+}

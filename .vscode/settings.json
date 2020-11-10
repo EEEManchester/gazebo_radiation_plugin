@@ -67,7 +67,8 @@
         "any": "cpp",
         "optional": "cpp",
         "string_view": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "string": "cpp"
     },
     "python.pythonPath": "/usr/bin/python"
 }

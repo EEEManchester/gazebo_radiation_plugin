@@ -1,29 +1,9 @@
 <robot>
-
-  <link name="sensor_offset">
-    <inertial>
-      <mass value="0.01"/>
-      <origin xyz="0 0 0"/>
-      <inertia ixx="1e-7" ixy="0" ixz="0" iyy="1e-7" iyz="0" izz="1e-7"/>
-    </inertial>
-    <visual>
-      <origin xyz="0 0 0.5" rpy="0 0 0" />
-      <geometry>
-        <box size="0.05 0.05 0.05" />
-      </geometry>
-    </visual>
-  </link>
-  <joint name="sensor_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="chassis_link" />
-    <child link="sensor_offset" />
-  </joint>
-
   <link name="radiation_sensor">
     <inertial>
-      <mass value="0.01"/>
+      <mass value="0.001"/>
       <origin xyz="0 0 0"/>
-      <inertia ixx="1e-7" ixy="0" ixz="0" iyy="1e-7" iyz="0" izz="1e-7"/>
+      <inertia ixx="1e-3" ixy="0" ixz="0" iyy="1e-3" iyz="0" izz="1e-3"/>
     </inertial>
     <visual>
       <origin xyz="0 0 0.5" rpy="0 0 0" />
@@ -32,19 +12,23 @@
       </geometry>
     </visual>
   </link>
-  <joint name="radiation_sensor_joint" type="fixed">
-    <origin xyz="0 0 0" rpy="0 0 0"/>
-    <parent link="sensor_offset" />
+
+  <joint name="radiation_sensor" type="fixed">
+    <origin xyz="0 0 1" rpy="0 0 0"/>
+    <parent link="chassis_link" />
     <child link="radiation_sensor" />
   </joint>
 
-<gazebo reference="radiation_sensor">
-      <sensor name="radiation sensor" type="radiation_sensor">
-        <always_on> 1 </always_on>
-        <update_rate> 1.0 </update_rate>
-        <topic>sensor_0</topic>
-        <plugin name="radiation_sensor_plugin" filename="libradiation_sensor_plugin.so" />
-      </sensor>
-</gazebo>
+
+  <gazebo reference="radiation_sensor">
+        <sensor name="radiation_sensor" type="radiation_sensor">
+          <always_on> 1 </always_on>
+          <update_rate> 1.0 </update_rate>
+          <topic>sensor_0</topic>
+          <plugin name="radiation_sensor_plugin" filename="libradiation_sensor_plugin.so" />
+        </sensor>
+  </gazebo>
+
+
 
 </robot>

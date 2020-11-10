@@ -49,8 +49,8 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
 
   if (this->sdf->GetElement("topic"))
   {
-    this->scanPub_pose = this->node->Advertise<msgs::Pose>(this->sdf->GetElement("topic")->Get<std::string>() + "/pose");
-    this->scanPub_value = this->node->Advertise<msgs::Any>(this->sdf->GetElement("topic")->Get<std::string>() + "/value");
+    this->radPub_pose = this->node->Advertise<msgs::Pose>(this->sdf->GetElement("topic")->Get<std::string>() + "/pose");
+    this->radPub_value = this->node->Advertise<msgs::Any>(this->sdf->GetElement("topic")->Get<std::string>() + "/value");
   }
 
   this->topic = this->sdf->GetElement("topic")->Get<std::string>();
@@ -73,17 +73,17 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
   if (n.hasParam("sensors/" + this->topic + "/collimated"))
   {
     n.getParam("sensors/" + this->topic + "/collimated", this->collimated);
-  } 
+  }
 
   if (n.hasParam("sensors/" + this->topic + "/poisson"))
   {
     n.getParam("sensors/" + this->topic + "/poisson", this->poisson);
-  } 
+  }
 
   if (n.hasParam("sensors/" + this->topic + "/sensitivity_function"))
   {
     n.getParam("sensors/" + this->topic + "/sensitivity_function", this->sensitivity_func);
-  }  
+  }
 
   if (n.hasParam("sensors/" + this->topic + "/mu"))
   {
@@ -104,14 +104,10 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
   {
     n.getParam("/attenuation_factors", this->attenuation_factors);
   }
-  
-
 
   Sensor_V sensors = SensorManager::Instance()->GetSensors();
   for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
   {
-
-
     if ((*iter)->Type() == "radiation_source")
     {
 
@@ -121,7 +117,7 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
   }
 
   this->blockingRay = boost::dynamic_pointer_cast<gazebo::physics::RayShape>(
-      this->world->GetPhysicsEngine()->CreateShape("ray", gazebo::physics::CollisionPtr()));
+  this->world->GetPhysicsEngine()->CreateShape("ray", gazebo::physics::CollisionPtr()));
 }
 
 void gazebo::sensors::RadiationSensor::Fini()
@@ -139,23 +135,45 @@ void gazebo::sensors::RadiationSensor::Init()
 bool gazebo::sensors::RadiationSensor::UpdateImpl(const bool force)
 {
 
-  msgs::Pose msg_pose;
-  this->pose = this->GetPose();
-  msgs::Set(&msg_pose, pose);
+  if (this->gotSensor == false)
+  {
+    Sensor_V sensors = SensorManager::Instance()->GetSensors();
+    for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
+    {
+      if ((*iter)->Type() == this->Name())
+      {
 
-  this->EvaluateSources();
-  msgs::Any msg_value;
-  msg_value = msgs::ConvertAny(this->radiation);
+        this->sensor = (*iter);
+        this->gotSensor = true;
+      }
+    }
+  }
 
-  this->scanPub_pose->Publish(msg_pose);
-  this->scanPub_value->Publish(msg_value);
+  if (this->gotSensor)
+  {
+    {
+      boost::recursive_mutex::scoped_lock lock(*(
+          this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+      
+      msgs::Pose msg_pose;
+      this->pose = this->GetPose();
+      msgs::Set(&msg_pose, pose);
 
+      this->EvaluateSources();
+      msgs::Any msg_value;
+      msg_value = msgs::ConvertAny(this->radiation);
+
+      this->radPub_pose->Publish(msg_pose);
+      this->radPub_value->Publish(msg_value);
+    }
+  }
   return true;
 }
 
 //////////////////////////////////////////////////
 void gazebo::sensors::RadiationSensor::EvaluateSources()
 {
+
   std::vector<RadiationSource *>::const_iterator ci;
 
   // iterate through the tags contained given rfid tag manager
@@ -165,10 +183,10 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
   {
     ignition::math::Pose3d pos = (*ci)->GetPose();
     double dist = this->CheckSourceRange(pos);
+
     if (dist <= this->sensor_range)
     {
-      std::vector<raySegment> raySegments = CheckSourceViewable(this->entity->GetWorldPose().Ign().Pos(), pos.Pos(), (*ci)->name);
-
+      std::vector<raySegment> raySegments = CheckSourceViewable(this->GetPose().Pos(), pos.Pos(), (*ci)->name);
       std::string type = (*ci)->radiation_type;
       double value = (*ci)->radiation;
 
@@ -182,48 +200,54 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
       {
         sensitivity = 1.0;
       }
-      float within_angle_limit = 1.0;  
-      if (fabs(this->angle_limit) <= fabs(angle) ){
+      float within_angle_limit = 1.0;
+      if (fabs(this->angle_limit) <= fabs(angle))
+      {
         within_angle_limit = 0.0;
       }
-      float within_range_limit = 1.0;  
-      if (fabs(this->sensor_range) <= fabs(dist) ){
+      float within_range_limit = 1.0;
+      if (fabs(this->sensor_range) <= fabs(dist))
+      {
         within_range_limit = 0.0;
       }
 
       if (raySegments.empty())
       {
-        rad += within_range_limit*within_angle_limit * sensitivity * value * SolidAngle(dist);
+        rad += (within_range_limit * within_angle_limit * sensitivity * value * SolidAngle(dist));
       }
       else
       {
-        rad += within_range_limit*within_angle_limit * sensitivity * value * SolidAngle(dist) * AttenuationFactor(raySegments);
+        rad += (within_range_limit * within_angle_limit * sensitivity * value * SolidAngle(dist) * AttenuationFactor(raySegments));
       }
     }
   }
 
+  this->radiationArray[this->radCount] = rad;
+  std::sort(this->radiationArray, this->radiationArray + 9);
+  this->radCount++;
+  this->radCount = this->radCount % 9;
   // Discretise into integer events, with variance of a Poisson distribution (if user selected)
   if (this->poisson == true)
   {
-    std::poisson_distribution<int> distribution(rad);
+    std::poisson_distribution<int> distribution(this->radiationArray[4]);
+    //std::poisson_distribution<int> distribution(rad);
     int number = distribution(this->generator);
     this->radiation = number;
   }
   else
   {
-    this->radiation = rad;
+    this->radiation = this->radiationArray[4];
+    //this->radiation = rad;
   }
 }
-
 
 double gazebo::sensors::RadiationSensor::SolidAngle(double dist)
 {
   // Based on circular cross section detector - always normal to source
   double detector_radius = 1E-3;
-  double correction_factor = 0.5*(1 - (1 / std::sqrt(1 + pow(detector_radius, 2.0))));  // Correct intensity to 1 m value
-  return (1/correction_factor)*0.5*( 1 - (  dist / std::sqrt(pow(dist, 2.0) + pow(detector_radius, 2.0))  ) );
+  double correction_factor = 0.5 * (1 - (1 / std::sqrt(1 + pow(detector_radius, 2.0)))); // Correct intensity to 1 m value
+  return (1 / correction_factor) * 0.5 * (1 - (dist / std::sqrt(pow(dist, 2.0) + pow(detector_radius, 2.0))));
 }
-
 
 double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegment> ray_vector)
 {
@@ -252,7 +276,7 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
         else
         {
           material_attenuation = static_cast<double>(y);
-       } //break;
+        } //break;
       }
     }
 
@@ -260,7 +284,6 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
     //attenuation_factor *= 1.0 - (ray_vector[i].length*material_attenuation);
     //andys attenuation factor
     attenuation_factor *= exp(-material_attenuation * ray_vector[i].length);
-
   }
 
   /*
@@ -271,10 +294,12 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
 
 double gazebo::sensors::RadiationSensor::sensitivity_function(double x)
 {
-  if (this->sensitivity_func == "gaussian"){
+  if (this->sensitivity_func == "gaussian")
+  {
     return exp(-pow(x - this->mu, 2.0) / (2.0 * pow(this->sig, 2.0)));
-  } 
-  else{
+  }
+  else
+  {
     return 1.0;
   }
 }
@@ -282,9 +307,8 @@ double gazebo::sensors::RadiationSensor::sensitivity_function(double x)
 //////////////////////////////////////////////////
 double gazebo::sensors::RadiationSensor::CheckSourceRange(const ignition::math::Pose3d &_pose)
 {
-  // copy sensor vector pos into a temp var
   ignition::math::Vector3d v;
-  v = _pose.Pos() - this->entity->GetWorldPose().Ign().Pos();
+  v = _pose.Pos() - this->GetPose().Pos();
 
   return v.Length();
 }
@@ -306,9 +330,8 @@ double gazebo::sensors::RadiationSensor::CheckSourceAngle(const ignition::math::
   ignition::math::Vector3d v1;
   ignition::math::Vector3d v(1, 0, 0);
 
-  v0 = _pose.Pos() - entity->GetWorldPose().Ign().Pos();
-  v1 = entity->GetWorldPose().Ign().Rot().RotateVector(v);
-
+  v0 = _pose.Pos() - this->GetPose().Pos();
+  v1 = this->GetPose().Rot().RotateVector(v);
   double angle = std::acos(dot(v0, v1) / (mag(v0) * mag(v1)));
 
   return angle;
@@ -317,7 +340,17 @@ double gazebo::sensors::RadiationSensor::CheckSourceAngle(const ignition::math::
 //////////////////////////////////////////////////
 ignition::math::Pose3d gazebo::sensors::RadiationSensor::GetPose() const
 {
-  return this->entity->GetWorldPose().Ign();
+
+  ignition::math::Pose3d p;
+  if (this->gotSensor)
+  {
+    p = this->sensor->Pose() + this->entity->GetWorldPose().Ign();
+  }
+  else
+  {
+    p = this->entity->GetWorldPose().Ign();
+  }
+  return p;
 }
 
 void gazebo::sensors::RadiationSensor::AddSource(RadiationSource *_rs)
@@ -358,12 +391,8 @@ std::vector<raySegment> gazebo::sensors::RadiationSensor::CheckSourceViewable(ig
   {
     std::string entityName = "";
     double blocking_dist;
-    boost::recursive_mutex::scoped_lock lock(*(
-        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
-
     this->blockingRay->SetPoints(sensor_pos, source_pos);
     this->blockingRay->GetIntersection(blocking_dist, entityName);
-
     if (entityName == "")
     {
       return v;
@@ -395,11 +424,10 @@ std::vector<raySegment> gazebo::sensors::RadiationSensor::CheckSourceViewable(ig
       {
         v.push_back(raySegment(blocking_dist, v.back().to, entityName));
       }
-      ignition::math::Vector3d v1 = (source_pos - sensor_pos).Normalize() * (blocking_dist + 0.0000001);
-      
-      sensor_pos = v1 + sensor_pos;
 
-      //std::cout <<"transition " << v.back().length << " " << v.back().from << " " << v.back().to << std::endl;
+      ignition::math::Vector3d v1 = (source_pos - sensor_pos).Normalize() * (blocking_dist + 0.0001);
+
+      sensor_pos = v1 + sensor_pos;
     }
   }
 }
