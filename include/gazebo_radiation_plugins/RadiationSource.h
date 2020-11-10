@@ -4,6 +4,7 @@
 
 #include "gazebo/util/system.hh"
 #include <gazebo/common/Plugin.hh>
+#include <gazebo/common/Events.hh>
 
 #include "gazebo/physics/World.hh"
 #include "gazebo/physics/Entity.hh"
@@ -13,6 +14,7 @@
 #include "gazebo/transport/Publisher.hh"
 #include <gazebo/transport/transport.hh>
 #include "gazebo/transport/TransportTypes.hh"
+#include "gazebo/physics/WorldState.hh"
 
 #include "gazebo/msgs/msgs.hh"
 
@@ -20,7 +22,7 @@
 #include <gazebo/sensors/SensorFactory.hh>
 #include "gazebo/sensors/SensorManager.hh"
 
-#include <gazebo/common/Events.hh>
+
 
 #include <sdf/sdf.hh>
 #include "ros/ros.h"
@@ -68,16 +70,16 @@ class GAZEBO_VISIBLE RadiationSource : public Sensor
 
   public: physics::EntityPtr entity;
 
-  public: transport::PublisherPtr scanPub_pose;
-  public: transport::PublisherPtr scanPub_value;
-  public: transport::PublisherPtr scanPub_type;
 
+  public: transport::PublisherPtr radPub_pose;
+  public: transport::PublisherPtr radPub_value;
+  public: transport::PublisherPtr radPub_type;
+
+  public: SensorPtr sensor;
+  public: bool gotSensor = false;
 
   public: ros::NodeHandle n;
   private: XmlRpc::XmlRpcValue params;
-
-  
-
   //private: std::unique_ptr<ros::NodeHandle> rosNode;
  private: event::ConnectionPtr updateConnection;
     

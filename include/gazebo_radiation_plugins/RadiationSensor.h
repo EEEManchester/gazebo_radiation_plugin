@@ -6,6 +6,7 @@
 
 #include "gazebo/util/system.hh"
 #include <gazebo/common/Plugin.hh>
+#include <gazebo/common/Events.hh>
 
 #include "gazebo/physics/Collision.hh"
 #include "gazebo/physics/World.hh"
@@ -13,6 +14,7 @@
 #include "gazebo/physics/Entity.hh"
 #include "gazebo/physics/RayShape.hh"
 #include "gazebo/physics/PhysicsTypes.hh"
+#include "gazebo/physics/WorldState.hh"
 
 #include "gazebo/transport/Node.hh"
 #include "gazebo/transport/Publisher.hh"
@@ -26,7 +28,7 @@
 #include "gazebo/sensors/SensorManager.hh"
 
 
-#include <gazebo/common/Events.hh>
+
 
 #include <sdf/sdf.hh>
 #include "ros/ros.h"
@@ -88,10 +90,12 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
 
   private: event::ConnectionPtr updateConnection;
     
-  public: transport::PublisherPtr scanPub_pose;
-  public: transport::PublisherPtr scanPub_value;
+  public: transport::PublisherPtr radPub_pose;
+  public: transport::PublisherPtr radPub_value;
 
   public: std::vector<RadiationSource*> sources;
+  public: SensorPtr sensor;
+  public: bool gotSensor = false;
 
   public: ros::NodeHandle n;
   private: XmlRpc::XmlRpcValue params;
@@ -117,6 +121,8 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
 
   private: std::default_random_engine generator;  // Random number generator for Poisson distribution
 
+  private: int radCount = 0;
+  private: double radiationArray[9];
 
 };
 
