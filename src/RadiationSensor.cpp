@@ -192,7 +192,7 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
 
       double sensitivity;
       double angle = this->CheckSourceAngle(pos);
-      if (this->collimated == true)
+      if (this->sensitivity_func != "")
       {
         sensitivity = sensitivity_function(angle);
       }
@@ -201,9 +201,11 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
         sensitivity = 1.0;
       }
       float within_angle_limit = 1.0;
-      if (fabs(this->angle_limit) <= fabs(angle))
-      {
-        within_angle_limit = 0.0;
+      if (this->collimated == true){
+        if (fabs(this->angle_limit) <= fabs(angle))
+        {
+          within_angle_limit = 0.0;
+        }
       }
       float within_range_limit = 1.0;
       if (fabs(this->sensor_range) <= fabs(dist))
