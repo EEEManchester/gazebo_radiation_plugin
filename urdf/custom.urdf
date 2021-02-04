@@ -14,7 +14,7 @@
   </link>
 
   <joint name="radiation_sensor" type="fixed">
-    <origin xyz="0 0 1" rpy="0 0 0"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
     <parent link="chassis_link" />
     <child link="radiation_sensor" />
   </joint>
