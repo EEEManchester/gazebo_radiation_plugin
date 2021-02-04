@@ -221,7 +221,12 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
       {
         rad += (within_range_limit * within_angle_limit * sensitivity * value * SolidAngle(dist) * AttenuationFactor(raySegments));
       }
+
+      //gzmsg << within_range_limit << " " << within_angle_limit << " " << sensitivity << " " << value << " " << SolidAngle(dist) << " " << AttenuationFactor(raySegments) << std::endl;
+        
     }
+
+    //gzmsg << "" <<std::endl;
   }
 
   this->radiationArray[this->radCount] = rad;

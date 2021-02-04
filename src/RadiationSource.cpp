@@ -54,9 +54,11 @@ void gazebo::sensors::RadiationSource::Load(const std::string &_worldName)
 
     n.getParam("/sources/" + this->name, params);
 
-    this->radiation = params["value"];
+    this->radiation = static_cast<double>(params["value"]);
     this->units = static_cast<std::string>(params["units"]);
-    this->noise = params["noise"];
+    this->noise = static_cast<double>(params["noise"]);
+
+    gzwarn << "PARAMS LOADED" << std::endl;
 
     Sensor_V sensors = SensorManager::Instance()->GetSensors();
     for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
