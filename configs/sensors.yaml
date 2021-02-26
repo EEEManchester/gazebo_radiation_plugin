@@ -1,9 +1,12 @@
 sensors:
   sensor_0:
     type: "gamma"
-    range: 5.0
-    collimated: false
-    sensitivity_function: "gaussian"
+    range: 100.0
+    collimated: ""
+    collimation_attenuation: 0.1
+    sensitivity_function: ""
     mu: 0.0
-    sigma: 1.0
+    sigma: 0.0
     angle_limit: 3.2
+    azimuth_limit: 0.1
+    elevation_limit: 1.5

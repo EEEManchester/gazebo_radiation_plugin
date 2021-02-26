@@ -72,26 +72,30 @@ void gazebo::sensors::RadiationSource::Load(const std::string &_worldName)
     }
 
     gzmsg << "spawning source " << this->name << " of type " << this->radiation_type << " with value " << this->radiation << std::endl;
-    ;
   }
 }
 
 void gazebo::sensors::RadiationSource::Fini()
 {
 
-  Sensor_V sensors = SensorManager::Instance()->GetSensors();
-  for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
   {
+    boost::recursive_mutex::scoped_lock lock(*(
+        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
 
-    //gzmsg << (*iter)->Type() << std::endl;
-    if ((*iter)->Type() == "radiation_sensor")
+    Sensor_V sensors = SensorManager::Instance()->GetSensors();
+    for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
     {
-      std::dynamic_pointer_cast<RadiationSensor>(*iter)->RemoveSource(this->name);
-    }
-  }
 
-  Sensor::Fini();
-  this->entity.reset();
+      //gzmsg << (*iter)->Type() << std::endl;
+      if ((*iter)->Type() == "radiation_sensor")
+      {
+        std::dynamic_pointer_cast<RadiationSensor>(*iter)->RemoveSource(this->name);
+      }
+    }
+
+    //this->entity.reset();
+    Sensor::Fini();
+  }
 }
 
 void gazebo::sensors::RadiationSource::Init()
@@ -116,14 +120,20 @@ bool gazebo::sensors::RadiationSource::UpdateImpl(const bool force)
     }
   }
 
-
   msgs::Pose msg_pose;
   this->pose = this->GetPose();
   msgs::Set(&msg_pose, pose);
 
   msgs::Any msg_value;
-  msg_value = msgs::ConvertAny(this->radiation + rand() / (RAND_MAX / this->noise));
 
+  if (this->noise != 0.0)
+  {
+    msg_value = msgs::ConvertAny(this->radiation + rand() / (RAND_MAX / this->noise));
+  }
+  else
+  {
+    msg_value = msgs::ConvertAny(this->radiation);
+  }
   msgs::Any msg_type;
   msg_type = msgs::ConvertAny(this->radiation_type);
 
@@ -146,7 +156,7 @@ ignition::math::Pose3d gazebo::sensors::RadiationSource::GetPose() const
   {
     p = this->entity->WorldPose();
   }
-  return p; 
+  return p;
 }
 
 // void gazebo::sensors::RadiationSource::SetPose() const

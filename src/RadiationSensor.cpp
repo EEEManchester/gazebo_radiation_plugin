@@ -75,6 +75,11 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
     n.getParam("sensors/" + this->topic + "/collimated", this->collimated);
   }
 
+  if (n.hasParam("sensors/" + this->topic + "/collimation_attenuation"))
+  {
+    n.getParam("sensors/" + this->topic + "/collimation_attenuation", this->collimation_attenuation);
+  }
+
   if (n.hasParam("sensors/" + this->topic + "/poisson"))
   {
     n.getParam("sensors/" + this->topic + "/poisson", this->poisson);
@@ -99,11 +104,25 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
   {
     n.getParam("sensors/" + this->topic + "/angle_limit", this->angle_limit);
   }
+  if (n.hasParam("sensors/" + this->topic + "/azimuth_limit"))
+  {
+    n.getParam("sensors/" + this->topic + "/azimuth_limit", this->az_limit);
+  }
+  if (n.hasParam("sensors/" + this->topic + "/elevation_limit"))
+  {
+    n.getParam("sensors/" + this->topic + "/elevation_limit", this->el_limit);
+  }
 
   if (n.hasParam("/attenuation_factors"))
   {
     n.getParam("/attenuation_factors", this->attenuation_factors);
   }
+
+  
+  frustum_points.push_back(std::pair<float,float>(-1*this->az_limit,-1*this->el_limit));
+  frustum_points.push_back(std::pair<float,float>(this->az_limit,-1*this->el_limit));
+  frustum_points.push_back(std::pair<float,float>(-1*this->az_limit,this->el_limit));
+  frustum_points.push_back(std::pair<float,float>(this->az_limit,this->el_limit));
 
   Sensor_V sensors = SensorManager::Instance()->GetSensors();
   for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
@@ -117,14 +136,18 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
   }
 
   this->blockingRay = boost::dynamic_pointer_cast<gazebo::physics::RayShape>(
-  this->world->Physics()->CreateShape("ray", gazebo::physics::CollisionPtr()));
+      this->world->Physics()->CreateShape("ray", gazebo::physics::CollisionPtr()));
 }
 
 void gazebo::sensors::RadiationSensor::Fini()
 {
+  {
+    boost::recursive_mutex::scoped_lock lock(*(
+        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
 
-  Sensor::Fini();
-  this->entity.reset();
+    this->entity.reset();
+    Sensor::Fini();
+  }
 }
 
 void gazebo::sensors::RadiationSensor::Init()
@@ -154,7 +177,7 @@ bool gazebo::sensors::RadiationSensor::UpdateImpl(const bool force)
     {
       boost::recursive_mutex::scoped_lock lock(*(
           this->world->Physics()->GetPhysicsUpdateMutex()));
-      
+
       msgs::Pose msg_pose;
       this->pose = this->GetPose();
       msgs::Set(&msg_pose, pose);
@@ -201,11 +224,9 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
         sensitivity = 1.0;
       }
       float within_angle_limit = 1.0;
-      if (this->collimated == true){
-        if (fabs(this->angle_limit) <= fabs(angle))
-        {
-          within_angle_limit = 0.0;
-        }
+      if (this->collimated != "")
+      {
+        within_angle_limit = CheckCollimation(angle, pos);
       }
       float within_range_limit = 1.0;
       if (fabs(this->sensor_range) <= fabs(dist))
@@ -222,30 +243,146 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
         rad += (within_range_limit * within_angle_limit * sensitivity * value * SolidAngle(dist) * AttenuationFactor(raySegments));
       }
 
-      //gzmsg << within_range_limit << " " << within_angle_limit << " " << sensitivity << " " << value << " " << SolidAngle(dist) << " " << AttenuationFactor(raySegments) << std::endl;
-        
+      //gzmsg << within_range_limit << "  " << within_angle_limit << "  " << sensitivity << "  " << value << "  " << SolidAngle(dist) << AttenuationFactor(raySegments) << std::endl;
+      //gzmsg << "radiation =  " << rad << std::endl;
     }
-
-    //gzmsg << "" <<std::endl;
   }
 
-  this->radiationArray[this->radCount] = rad;
-  std::sort(this->radiationArray, this->radiationArray + 9);
-  this->radCount++;
-  this->radCount = this->radCount % 9;
-  // Discretise into integer events, with variance of a Poisson distribution (if user selected)
-  if (this->poisson == true)
+  if (rad > 0.0)
   {
-    std::poisson_distribution<int> distribution(this->radiationArray[4]);
-    //std::poisson_distribution<int> distribution(rad);
-    int number = distribution(this->generator);
-    this->radiation = number;
+    this->radiationArray[this->radCount] = rad;
+    std::sort(this->radiationArray, this->radiationArray + 9);
+    this->radCount++;
+    this->radCount = this->radCount % 9;
+    // Discretise into integer events, with variance of a Poisson distribution (if user selected)
+    if (this->poisson == true)
+    {
+      std::poisson_distribution<int> distribution(this->radiationArray[4]);
+      //std::poisson_distribution<int> distribution(rad);
+      int number = distribution(this->generator);
+      this->radiation = number;
+    }
+    else
+    {
+      this->radiation = this->radiationArray[4];
+      //this->radiation = rad;
+    }
   }
   else
   {
-    this->radiation = this->radiationArray[4];
-    //this->radiation = rad;
+    this->radiation = rad;
   }
+}
+double gazebo::sensors::RadiationSensor::CheckCollimation(double angle, const ignition::math::Pose3d &_pose)
+{
+  if (this->collimated == "slot")
+  {
+
+
+    ignition::math::Vector3d v = _pose.Pos() - this->GetPose().Pos();
+    ignition::math::Vector3d vx(1, 0, 0);
+    //ignition::math::Vector3d vy(0, 1, 0);
+    ignition::math::Vector3d v0 = this->GetPose().Rot().RotateVector(vx);
+    //ignition::math::Vector3d v1 = this->GetPose().Rot().RotateVector(vy);
+
+    v.Normalize();
+    v0.Normalize();
+
+    //gzmsg << "v " << v.X() << " "<< v.Y() << " "<< v.Z() << " " << std::endl;
+    //gzmsg << "v0 " << v0.X() << " "<< v0.Y() << " "<< v0.Z() << " " << std::endl;
+
+    ignition::math::Quaterniond q;
+    ignition::math::Vector3d cross = v0.Cross(v);
+    q.X() = cross.X();
+    q.Y() = cross.Y();
+    q.Z() = cross.Z();
+    q.W() = sqrt(pow(v.Length(),2)*pow(v0.Length(),2)) + v0.Dot(v);
+    q.Normalize();
+    
+    //gzmsg << "Q" << std::endl;
+    //gzmsg << q.X() << "," << q.Y() << "," << q.Z() << "," << q.W() << std::endl;
+    //gzmsg << q.Roll() << "," << q.Pitch() << "," << q.Yaw() << std::endl;
+  
+    ignition::math::Quaterniond q1;
+    ignition::math::Vector3d vq(0.0,q.Pitch(),q.Yaw());
+    q1 = q1.EulerToQuaternion(vq);
+
+
+    float az = q.Yaw();
+    float el = q.Pitch();
+
+    float roll = this->GetPose().Rot().Roll();
+
+    gzmsg << az << " " << el << " " << roll << std::endl;
+
+    std::vector<std::pair<float,float> > rotated_frustum_points;
+    
+    for (int i =0;i<this->frustum_points.size();i++){
+      std::pair<float,float> rot_pair(this->frustum_points[i].first*std::cos(roll)-this->frustum_points[i].second*std::sin(roll),this->frustum_points[i].first*std::sin(roll)+this->frustum_points[i].second*std::cos(roll));
+      rotated_frustum_points.push_back(rot_pair);
+      gzmsg << rot_pair.first <<"," << rot_pair.second << std::endl;
+    }
+
+
+    std::vector<std::pair<float,float> > bounding_lines;
+    bounding_lines.push_back(calc_equations(rotated_frustum_points[0],rotated_frustum_points[1]));
+    bounding_lines.push_back(calc_equations(rotated_frustum_points[2],rotated_frustum_points[3]));
+    bounding_lines.push_back(calc_equations(rotated_frustum_points[0],rotated_frustum_points[2]));
+    bounding_lines.push_back(calc_equations(rotated_frustum_points[1],rotated_frustum_points[3]));
+
+
+
+    std::vector<float> values;
+    for (int i = 0; i < bounding_lines.size();i++){
+      values.push_back(bounding_lines[i].first*az + bounding_lines[i].second - el);
+      gzmsg << bounding_lines[i].first << " "  << bounding_lines[i].second << std::endl;
+    }
+
+
+    gzmsg << values[0] << " " << values[1] << " "<< values[2] << " "<< values[3] << std::endl;
+
+    if (((values[0] <=0)&(values[1] >=0))|((values[1] <=0)&(values[0] >=0))){
+        if (((values[2] <=0)&(values[3] >=0))|((values[3] <=0)&(values[2] >=0))){
+          gzwarn << "INSIDE FRUSTRUM" << std::endl;
+
+          return 1.0;
+    
+      }
+    }
+    return this->collimation_attenuation;
+
+  }
+  else if (this->collimated == "pinhole")
+  {
+    if (fabs(this->angle_limit) <= fabs(angle))
+    {
+      return this->collimation_attenuation;
+    }
+    else
+    {
+      return 1.0;
+    }
+  }
+  gzwarn << "COLLIMATION NOT IMPLEMENTED DEFAULTING TO UNCOLLIMATED" << std::endl;
+  return 1.0;
+}
+
+
+std::pair<float,float>  gazebo::sensors::RadiationSensor::calc_equations(std::pair<float,float> i,std::pair<float,float> j){
+
+
+    float grad; 
+    float intercept;
+    if (i.first != j.first) {
+      grad = (i.second - j.second)/( i.first - j.first );
+      intercept = i.second - grad*i.first;
+    } else{
+      grad = std::numeric_limits<int>::max();
+      intercept = i.second - grad*i.first;
+    }
+
+    return std::pair<float,float>(grad,intercept);
+
 }
 
 double gazebo::sensors::RadiationSensor::SolidAngle(double dist)
@@ -266,7 +403,7 @@ double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegmen
 
   for (int i = 0; i < ray_vector.size(); i++)
   {
-    //gzmsg << "transition from " << ray_vector[i].from << " to " << ray_vector[i].to << " at length: " << ray_vector[i].length << std::endl;
+    //gzmsg << "transition from " << ray_vector[i].from << " to " << ray_vector[i].to << " at length: " << ray_vector[i].length << " ATTENUAITING " << attenuation_factor << std::endl;
 
     for (XmlRpc::XmlRpcValue::ValueStruct::const_iterator it = this->attenuation_factors.begin();
          it != this->attenuation_factors.end(); ++it)
@@ -362,29 +499,39 @@ ignition::math::Pose3d gazebo::sensors::RadiationSensor::GetPose() const
 
 void gazebo::sensors::RadiationSensor::AddSource(RadiationSource *_rs)
 {
-  if (this->sensor_type == "")
-  {
-    gzmsg << "adding source " << _rs->GetSDF()->GetElement("topic")->Get<std::string>() << std::endl;
 
-    this->sources.push_back(_rs);
-  }
-  else if (_rs->radiation_type == this->sensor_type)
   {
-    gzmsg << "adding source " << _rs->GetSDF()->GetElement("topic")->Get<std::string>() << std::endl;
+    boost::recursive_mutex::scoped_lock lock(*(
+        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
 
-    this->sources.push_back(_rs);
+    if (this->sensor_type == "")
+    {
+      gzmsg << "adding source " << _rs->GetSDF()->GetElement("topic")->Get<std::string>() << std::endl;
+
+      this->sources.push_back(_rs);
+    }
+    else if (_rs->radiation_type == this->sensor_type)
+    {
+      gzmsg << "adding source " << _rs->GetSDF()->GetElement("topic")->Get<std::string>() << std::endl;
+
+      this->sources.push_back(_rs);
+    }
   }
 }
 
 void gazebo::sensors::RadiationSensor::RemoveSource(std::string source_name)
 {
-  for (int i = 0; i < this->sources.size(); i++)
   {
-    if (this->sources[i]->name == source_name)
+    boost::recursive_mutex::scoped_lock lock(*(
+        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+
+    for (int i = 0; i < this->sources.size(); i++)
     {
-      gzmsg << this->sources[i]->name << " removed " << this->sources.size() << std::endl;
-      this->sources.erase(this->sources.begin() + i);
-      i--;
+      if (this->sources[i]->name == source_name)
+      {
+        gzmsg << this->sources[i]->name << " removed " << this->sources.size() << std::endl;
+        this->sources.erase(this->sources.begin() + i);
+      }
     }
   }
 }
