@@ -1,0 +1,8 @@
+attenuation_factors:
+  free_space: 0.0
+  barrel: 9.0
+  cylinder: 9.0
+  box: 1000.0
+  wall: 1000.0
+  lead: -1.0
+  

@@ -1,0 +1,6 @@
+attenuation_factors:
+  free_space: 0.0
+  box: 10.0
+  wall: 1000.0
+  lead: -1.0
+  

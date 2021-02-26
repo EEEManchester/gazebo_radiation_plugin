@@ -80,6 +80,7 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
 
   private: double CheckSourceRange(const ignition::math::Pose3d &_pose);
   private: double CheckSourceAngle(const ignition::math::Pose3d &_pose);
+  private: double CheckCollimation(double,const ignition::math::Pose3d &_pose);
   private: std::vector<raySegment> CheckSourceViewable(ignition::math::Vector3d,ignition::math::Vector3d, std::string);
   private: double AttenuationFactor(std::vector<raySegment>);
 
@@ -110,12 +111,16 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   public: double sensor_range = 1000000000.0;
   private: double mu = 0.0;
   private: double sig = 1.0;
-  private: bool collimated = false;
+  private: double collimation_attenuation = 0.0;
+  private: std::string collimated = "";
   private: double angle_limit = 0.0;
+  private: double az_limit = 0.0;
+  private: double el_limit = 0.0;
   private: std::string sensitivity_func = "";
   private: bool poisson = false;
-
+  private: std::vector<std::pair<float,float> > frustum_points;
   public: physics::RayShapePtr blockingRay;
+  private: std::pair<float,float>  calc_equations(std::pair<float,float>,std::pair<float,float>);
 
   private: XmlRpc::XmlRpcValue attenuation_factors;
 

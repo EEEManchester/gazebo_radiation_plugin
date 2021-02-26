@@ -38,8 +38,8 @@
       </visual>
       <sensor name="radiation_source" type="radiation_source">
         <always_on> 1 </always_on>
-        <update_rate> 1.0 </update_rate>
-        <topic>gamma/source_0</topic>       
+        <update_rate> 100.0 </update_rate>
+        <topic>source_0/gamma</topic>       
        <plugin name="radiation_source_plugin" filename="libradiation_source_plugin.so"/>      
        
        </plugin>  

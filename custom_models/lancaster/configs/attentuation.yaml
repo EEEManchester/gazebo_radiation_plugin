@@ -1,0 +1,6 @@
+attenuation_factors:
+  free_space: 0.0
+  water: 8.956
+  concrete: 18.943
+  lead: -1.0
+  

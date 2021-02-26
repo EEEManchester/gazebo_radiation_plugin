@@ -47,3 +47,43 @@ sources:
     x: 0
     y: 0
     z: 0
+  source_6:
+    noise: 20.0
+    type: gamma
+    units: Sv/h
+    value: 200.0
+    x: 0
+    y: 0
+    z: 0
+  source_7:
+    noise: 2.0
+    type: gamma
+    units: Sv/h
+    value: 250.0
+    x: 0
+    y: 0
+    z: 0
+  source_8:
+    noise: 0.0
+    type: gamma
+    units: Sv/h
+    value: 20.0
+    x: 0
+    y: 0
+    z: 0
+  source_9:
+    noise: 0.0
+    type: gamma
+    units: Sv/h
+    value: 10.0
+    x: 0
+    y: 0
+    z: 0
+  source_10:
+    noise: 0.0
+    type: gamma
+    units: Sv/h
+    value: 10.0
+    x: 0
+    y: 0
+    z: 0

@@ -1,0 +1,17 @@
+  <model name="{fname}">
+    <pose>0 0 0.0 0 0 0</pose>
+    <static>true</static>
+    <link name="link_{}">
+      <pose>0.0 0 0 0 0 0</pose>
+      <collision name="collision_{fname}">
+        <geometry>
+          <mesh><uri>model://{model_folder_name}/models/{fname}.dae</uri></mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_{fname}">
+        <geometry>
+          <mesh><uri>model://{model_folder_name}/models/{fname}.dae</uri></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
