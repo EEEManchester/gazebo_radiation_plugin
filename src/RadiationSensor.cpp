@@ -160,11 +160,9 @@ bool gazebo::sensors::RadiationSensor::UpdateImpl(const bool force)
 
   if (this->gotSensor == false)
   {
-
     Sensor_V sensors = SensorManager::Instance()->GetSensors();
     for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
     {
-
       if ((*iter)->Type() == this->Name())
       {
 
@@ -176,7 +174,6 @@ bool gazebo::sensors::RadiationSensor::UpdateImpl(const bool force)
 
   if (this->gotSensor)
   {
-
     {
       boost::recursive_mutex::scoped_lock lock(*(
           this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
@@ -240,8 +237,6 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
       if (raySegments.empty())
       {
         rad += (within_range_limit * within_angle_limit * sensitivity * value * SolidAngle(dist));
-
-        //gzmsg << "NO ATTENUAITON " << rad << std::endl;
       }
       else
       {
@@ -401,7 +396,7 @@ double gazebo::sensors::RadiationSensor::SolidAngle(double dist)
 double gazebo::sensors::RadiationSensor::AttenuationFactor(std::vector<raySegment> ray_vector)
 {
 
-  //gzmsg << "ray interations " << std::endl;
+  //gzmsg << "ray interations :" << std::endl;
   double attenuation_factor = 1.0;
   double material_attenuation = 0.0;
   XmlRpc::XmlRpcValue y;

@@ -55,12 +55,10 @@ void gazebo::sensors::RadiationSource::Load(const std::string &_worldName)
     n.getParam("/sources/" + this->name, params);
 
     this->radiation = static_cast<double>(params["value"]);
-
     this->units = static_cast<std::string>(params["units"]);
-
     this->noise = static_cast<double>(params["noise"]);
 
-    gzwarn << "PARAM LOADED" << std::endl;
+    gzwarn << "PARAMS LOADED" << std::endl;
 
     Sensor_V sensors = SensorManager::Instance()->GetSensors();
     for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
@@ -69,7 +67,7 @@ void gazebo::sensors::RadiationSource::Load(const std::string &_worldName)
       //gzmsg << (*iter)->Type() << std::endl;
       if ((*iter)->Type() == "radiation_sensor")
       {
-        std::static_pointer_cast<RadiationSensor>(*iter)->AddSource(this);
+        std::dynamic_pointer_cast<RadiationSensor>(*iter)->AddSource(this);
       }
     }
 
@@ -97,7 +95,6 @@ void gazebo::sensors::RadiationSource::Fini()
 
     //this->entity.reset();
     Sensor::Fini();
-    
   }
 }
 
@@ -137,7 +134,6 @@ bool gazebo::sensors::RadiationSource::UpdateImpl(const bool force)
   {
     msg_value = msgs::ConvertAny(this->radiation);
   }
-
   msgs::Any msg_type;
   msg_type = msgs::ConvertAny(this->radiation_type);
 
