@@ -41,7 +41,7 @@
 	      args="-urdf -model jackal -param robot_description -x -0 -y 0 -z 1.0" />
 
   <include file="$(find gazebo_radiation_plugins)/launch/gmapping_movebase.launch" />
-  <include file="$(find gazebo_radiation_plugins)/launch/radmap.launch" />
+  <!--<include file="$(find gazebo_radiation_plugins)/launch/radmap.launch" /> -->
 
   <node name="rviz" pkg="rviz" type="rviz"  args="-d $(find gazebo_radiation_plugins)launch/rviz_config/husky_radiation_mapping.rviz"/>
 
