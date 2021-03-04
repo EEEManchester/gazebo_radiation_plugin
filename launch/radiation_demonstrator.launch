@@ -49,7 +49,7 @@
   <!-- Run Move Base -->
   <include file="$(find gazebo_radiation_plugins)/launch/move_base.launch" />
 
-  <include file="$(find gazebo_radiation_plugins)/launch/radmap.launch" />
+  <!-- <include file="$(find gazebo_radiation_plugins)/launch/radmap.launch" /> -->
 
   <!-- Run RVIZ -->
   <node name="rviz" pkg="rviz" type="rviz"  args="-d $(find gazebo_radiation_plugins)launch/rviz_config/husky_radiation_mapping.rviz"/>
