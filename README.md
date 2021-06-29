@@ -1,7 +1,5 @@
 # Gazebosim Radiation Sensor/Sources Plugin
 
-**Needs proof reading and more detail adding to the example**
-
 The repository contains code to adding custom radiation sensors and sources into gazebo. 
 
 These sensors and sources provide plugin libraries defines in the radiation_sensor/source.xml files which can be included like any other sensor into an sdf using the "plugin" tags inside the "sensor" tags.
@@ -14,7 +12,7 @@ Info about the sources are also published on: "/radiation_sensor_plugin/source_Y
 
 #### Recent Additions
 
-* Launch files added to allow for mapping of an environement using a husky with a radiation sensor using the radiation_mapping.launch file. (requires radiation_layer)
+* Launch files added to allow for mapping of an environement using a husky with a radiation sensor using the radiation_mapping.launch file. (requires radiation_layer for visualisation)
 * More environments added, including some (reactor room and REEl) made from CAD files
 * blender_script added to export .fbx cad files to daes
 * Scripts and services added to allow the importing of worlds from the gazebosim_world_builder and to generate worlds from a folder of dae files i.e. for use with the blender script.
@@ -28,11 +26,14 @@ This repository borrows a script called custom sensor preloader from: https://gi
 
 I should just make this depend on that package but I get compile issues when I try to do this.(Most likely user error).   
 
-**I am not trying to take credit for peci1's god like coding of the preloader!**
+**I am not trying to take credit for peci1's coding of the preloader!**
 
 -------
 
 ## Install Requirements
+
+Please make sure you are installing the correct branch. The master is Kinetic/Gazebo7 with a branch for Melodic/Gazebo9 (which also seems to work with Noetic)
+
 
 To use the radiaiton sources and sensors gazebosim must be of a version  7.4.* or higher. The easiest way to update this for a user running ros kinetic is to run:
 
@@ -192,8 +193,15 @@ Attenuation_factors is set using a yaml file and is explained in the running the
 
 ### Running the example
 
+The easiest way to test if this reposity is working for you is to simply source the workspace and roslaunch the radiation_demonstrator.launch. From here you should then be able to echo out the values coming from the radiatin sensor. 
 
-**EXAMPLE NEEDS UPDATING WITH ALL NEW FEATURES!!!!**
+Alternatively if you have the radiation layer installed the values can be painted into an occupancy grid by:   
+1. Install the radiation layer in your catkin workspace 
+2. In the radiation_demonstrator launch file you will find a launch file commented out called radmap.launch. This needs uncommenting.
+3. Replace the radmap_params.yaml file in launch/params/ with radiation layer yaml file.
+4. Add the radiation occupancy grid to rviz for viewing.
+
+Alternatively if you wish to run an example step by step you can follow the below steps to build a simple environment from scratch.
 
 The first thing which needs to be done is load some parameters into the rosparam server which relate to the radiation sources being used. Basic sources can be described in the format shown in configs/sources.yaml requiring x,y,z,type and value,noise and units. Use:
  ```
@@ -202,6 +210,8 @@ roscore
 Then load the sources yaml file located in the configs folder by cd'ing into the folder and running
  ```
 rosparam load sources.yaml
+rosparam load sensors.yaml 
+
 ```
 to load these onto the rosparam server.
 
