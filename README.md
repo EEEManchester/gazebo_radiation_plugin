@@ -248,7 +248,7 @@ rosrun gazebo_ros spawn_model -file src/gazebo_radiation_plugin/sdf/radiation_se
 ```
 (for real use this sensor would be attached to a robot).
 
-a script to move the example sensor is included.
+a script to move the example sensor is included. Or alternatively you can simply drag it around inside gazebo.
 ```
 rosrun gazebo_radiation_plugins model_mover.py
 ```
