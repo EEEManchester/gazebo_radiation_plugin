@@ -201,6 +201,9 @@ Alternatively if you have the radiation layer installed the values can be painte
 3. Replace the radmap_params.yaml file in launch/params/ with radiation layer yaml file.
 4. Add the radiation occupancy grid to rviz for viewing.
 
+A simple version of the radiation layer can be found here: https://github.com/EEEManchester/simple_radiation_layer
+
+
 Alternatively if you wish to run an example step by step you can follow the below steps to build a simple environment from scratch.
 
 The first thing which needs to be done is load some parameters into the rosparam server which relate to the radiation sources being used. Basic sources can be described in the format shown in configs/sources.yaml requiring x,y,z,type and value,noise and units. Use:
