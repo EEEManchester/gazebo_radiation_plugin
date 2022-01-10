@@ -127,7 +127,6 @@ class GAZEBO_VISIBLE RadiationSensor : public Sensor
   private: std::default_random_engine generator;  // Random number generator for Poisson distribution
 
   private: int radCount = 0;
-  private: double radiationArray[9];
 
 };
 

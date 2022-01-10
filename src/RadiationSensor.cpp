@@ -250,22 +250,16 @@ void gazebo::sensors::RadiationSensor::EvaluateSources()
 
   if (rad > 0.0)
   {
-    this->radiationArray[this->radCount] = rad;
-    std::sort(this->radiationArray, this->radiationArray + 9);
-    this->radCount++;
-    this->radCount = this->radCount % 9;
     // Discretise into integer events, with variance of a Poisson distribution (if user selected)
     if (this->poisson == true)
     {
-      std::poisson_distribution<int> distribution(this->radiationArray[4]);
-      //std::poisson_distribution<int> distribution(rad);
+      std::poisson_distribution<int> distribution(rad);
       int number = distribution(this->generator);
       this->radiation = number;
     }
     else
     {
-      this->radiation = this->radiationArray[4];
-      //this->radiation = rad;
+      this->radiation = rad;
     }
   }
   else
