@@ -2,4 +2,4 @@ custom_models/barrel/
 custom_models/barrel_store/
 custom_models/challenge1/
 build/
-.vscode
+.vscode/*
