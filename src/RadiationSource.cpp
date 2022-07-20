@@ -50,7 +50,7 @@ void gazebo::sensors::RadiationSource::Load(const std::string &_worldName)
     this->radPub_value = this->node->Advertise<msgs::Any>(this->name + "/value");
     this->radPub_type = this->node->Advertise<msgs::Any>(this->name + "/type");
 
-    this->entity = this->world->GetEntity(this->ParentName());
+    this->entity = this->world->EntityByName(this->ParentName());
 
     n.getParam("/sources/" + this->name, params);
 
@@ -80,7 +80,7 @@ void gazebo::sensors::RadiationSource::Fini()
 
   {
     boost::recursive_mutex::scoped_lock lock(*(
-        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+        this->world->Physics()->GetPhysicsUpdateMutex()));
 
     Sensor_V sensors = SensorManager::Instance()->GetSensors();
     for (Sensor_V::iterator iter = sensors.begin(); iter != sensors.end(); ++iter)
@@ -150,11 +150,11 @@ ignition::math::Pose3d gazebo::sensors::RadiationSource::GetPose() const
 
   if (this->gotSensor)
   {
-    p = this->sensor->Pose() + this->entity->GetWorldPose().Ign();
+    p = this->sensor->Pose() + this->entity->WorldPose();
   }
   else
   {
-    p = this->entity->GetWorldPose().Ign();
+    p = this->entity->WorldPose();
   }
   return p;
 }
