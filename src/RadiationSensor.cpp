@@ -58,7 +58,7 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
   //this->sensor_type = this->sdf->GetElement("sensor_type")->Get<std::string>();
   this->sensor_type = "";
 
-  this->entity = this->world->GetEntity(this->ParentName());
+  this->entity = this->world->EntityByName(this->ParentName());
 
   if (n.hasParam("sensors/" + this->topic + "/type"))
   {
@@ -136,14 +136,14 @@ void gazebo::sensors::RadiationSensor::Load(const std::string &_worldName)
   }
 
   this->blockingRay = boost::dynamic_pointer_cast<gazebo::physics::RayShape>(
-      this->world->GetPhysicsEngine()->CreateShape("ray", gazebo::physics::CollisionPtr()));
+      this->world->Physics()->CreateShape("ray", gazebo::physics::CollisionPtr()));
 }
 
 void gazebo::sensors::RadiationSensor::Fini()
 {
   {
     boost::recursive_mutex::scoped_lock lock(*(
-        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+        this->world->Physics()->GetPhysicsUpdateMutex()));
 
     this->entity.reset();
     Sensor::Fini();
@@ -176,7 +176,7 @@ bool gazebo::sensors::RadiationSensor::UpdateImpl(const bool force)
   {
     {
       boost::recursive_mutex::scoped_lock lock(*(
-          this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+          this->world->Physics()->GetPhysicsUpdateMutex()));
 
       msgs::Pose msg_pose;
       this->pose = this->GetPose();
@@ -482,11 +482,11 @@ ignition::math::Pose3d gazebo::sensors::RadiationSensor::GetPose() const
   ignition::math::Pose3d p;
   if (this->gotSensor)
   {
-    p = this->sensor->Pose() + this->entity->GetWorldPose().Ign();
+    p = this->sensor->Pose() + this->entity->WorldPose();
   }
   else
   {
-    p = this->entity->GetWorldPose().Ign();
+    p = this->entity->WorldPose();
   }
   return p;
 }
@@ -496,7 +496,7 @@ void gazebo::sensors::RadiationSensor::AddSource(RadiationSource *_rs)
 
   {
     boost::recursive_mutex::scoped_lock lock(*(
-        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+        this->world->Physics()->GetPhysicsUpdateMutex()));
 
     if (this->sensor_type == "")
     {
@@ -517,7 +517,7 @@ void gazebo::sensors::RadiationSensor::RemoveSource(std::string source_name)
 {
   {
     boost::recursive_mutex::scoped_lock lock(*(
-        this->world->GetPhysicsEngine()->GetPhysicsUpdateMutex()));
+        this->world->Physics()->GetPhysicsUpdateMutex()));
 
     for (int i = 0; i < this->sources.size(); i++)
     {

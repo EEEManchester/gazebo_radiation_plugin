@@ -67,6 +67,8 @@ add_library(radiation_sensor_plugin SHARED src/RadiationSensorPlugin.cpp)
 add_dependencies(radiation_sensor_plugin ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(radiation_sensor_plugin ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES} ${IGNITION-MSGS_LIBRARIES})
 
+catkin_install_python(PROGRAMS scripts/generate_radiation_sources.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 file(GENERATE
   OUTPUT "${CATKIN_DEVEL_PREFIX}/${CATKIN_PACKAGE_BIN_DESTINATION}/gzserver"

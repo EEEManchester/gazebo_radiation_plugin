@@ -29,7 +29,6 @@ rolling_window: false
 plugins:
 #- {name: static_layer, type: "costmap_2d::StaticLayer"}
 - {name: radiation_layer, type: "radiation_layer_namespace::RadLayer"}
-- {name: height_layer, type: "height_layer_namespace::HeightLayer"}
 - {name: inflater_layer, type: "costmap_2d::InflationLayer"}
 
 #obstacles_layer:
@@ -41,14 +40,8 @@ inflater_layer:
 
 radiation_layer:
   radiation_topic: radiation_sensor_plugin/sensor_0
-  radiation_radius: 2.0
-  averaging_scale_length: 1.0  # Scale (variance mu of Gaussian kernel) in metres
-  combination_method: 3  # default - 0 = UpdateWithMax, 1 = UpdateWithOverwrite, 2 = UpdateWithAddition, 3 = updateWithMaxPreserveNoInfo
-  minimum_weight: 0.00  # default = 0.0, only update costmap with cells with weight above value
+  radiation_radius: 1.0
+  combination_method: 0  # default - 0 = UpdateWithMax, 1 = UpdateWithOverwrite, 2 = UpdateWithAddition, 3 = updateWithMaxPreserveNoInfo
 
-height_layer:
-  sensor_topic: radiation_sensor_plugin/sensor_0
-  sensor_radius: 2.0
-  averaging_scale_length: 1.0  # Scale (variance mu of Gaussian kernel) in metres
-  combination_method: 3  # default - 0 = UpdateWithMax, 1 = UpdateWithOverwrite, 2 = UpdateWithAddition, 3 = updateWithMaxPreserveNoInfo
-  minimum_weight: 0.00  # default = 0.0, only update costmap with cells with weight above value
+
+
